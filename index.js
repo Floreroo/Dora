@@ -48,7 +48,7 @@ return message.channel.send(`> El nuevo prefix en este servidor es` + " " + "``"
 const args = message.content.slice(prefix.length).trim().split(/ +/);
 const commandName = args.shift().toLowerCase();
 
-const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.alias && cmd.alias.includes(commandName));
 if (!command) return;
 
 try {
