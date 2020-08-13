@@ -1,18 +1,18 @@
 const Discord = require('discord.js')
-const client = new Discord.Client()
+
+module.exports = {
+  name: "stats",
+  alias: [],
+  descripcion: "Las stats del bot",
+  run: (client, message, args) => {
 
 
-
-client.on('message', message => { 
-     if(message.author.bot) return
      const moment = require('moment')
      require('moment-duration-format');
      let kasake = client.users.cache.get("598550433421590544")
 const actividad = moment.duration(client.uptime).format(" D [dias], H [hrs], m [mins], s [secs]");
-if(message.content.startsWith(prefix + 'stats')){
 let embed = new Discord.MessageEmbed()
-.setTitle('*Stats*')
-.setDescription('Banana Bot esta activo! - v0.10.3')
+.setAuthor(client.user.tag + client.user.displayAvatarURL)
 .addField('<:VerifiedBotDeveloper:730664032591413299> | **Developer**', "Srto Kasake#9538")
 .addField('<a:Cargando2:729507466286596106> | **Ayudantes**', 'undefined xd')
 .addField(' <:server:730679464035483748> | **Servers** ', client.guilds.cache.size)
@@ -27,7 +27,7 @@ let embed = new Discord.MessageEmbed()
 .setThumbnail(client.user.displayAvatarURL())
 message.channel.send(embed)
  }
-});
+}
 
 
 

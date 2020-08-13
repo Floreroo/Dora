@@ -1,5 +1,4 @@
 const Discord = require('discord.js')
-const client = new Discord.Client();
 
 module.exports = {
   name: "e",
@@ -38,8 +37,7 @@ message.channel.send(embed1)
     .addField("Error", `\`\`\`js\n${err}\`\`\``)
     message.channel.send(embed2)
     
-  }
-  }
-
-  }}
+     }
+    }
+}};
 
