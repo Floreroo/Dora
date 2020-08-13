@@ -20,18 +20,14 @@ const actividad = moment.duration(client.uptime).format(" D [dias], H [hrs], m [
 
             msg.awaitReactions((reaction, user) => { 
                 if (message.author.id !== user.id) return;
-                if (reaction.emoji.name === '1️⃣') { 
+                if (reaction.emoji.name === '⬅') { 
                     let kulo = new Discord.MessageEmbed()
-        .addField("<:VerifiedBotDeveloper:730664032591413299> __**Developers**__", true)
-        .addField("> Invitaciones", " \n**Banana**: " + " [Bot](https://discord.com/api/oauth2/authorize?client_id=687102753763229892&permissions=8&scope=bot) ", true)
-        .setColor('RANDOM')
-        .setFooter('• Srto Kasake#9538', kasake.displayAvatarURL())
-        .setThumbnail(client.user.displayAvatarURL())
+                 
                     msg.edit(kulo)
                 }
-                if (reaction.emoji.name === '2️⃣') {
+                if (reaction.emoji.name === '➡') {
                     let dosembed = new Discord.MessageEmbed()
-                    .setDescription('En proceso...')
+                    .setDescription('')
                     .setColor('RANDOM')
                     msg.edit(dosembed)
                 }

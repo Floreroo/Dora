@@ -30,7 +30,7 @@ client.on('message', async message => {
   if(prefix_db.tiene(`${message.guild.id}`)) {
     prefix = await prefix_db.obtener(`${message.guild.id}`)
   }else{
-    prefix = "r!"
+    prefix = "c!"
   }
   
   if(!message.content.startsWith(prefix)) return;
@@ -67,5 +67,5 @@ try {
 
 client.login(config.token);
 console.log(`Inciando sesión como Rune xd`)
-console.log(`Numero de comandos, ${client.commands.size}`)
-console.log('Lets fucking go!')  
+console.log(`Numero de comandos: ${client.commands.size}`)
+console.log('Stamo activo papi')  
