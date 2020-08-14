@@ -5,7 +5,9 @@ const db = require('megadb');
 const fs = require('fs');
 let prefix_db = new db.crearDB('prefixes')
 
-
+client.on('message', msg => {
+console.log(msg.member.user.tag +": " + msg.content)
+})
 
 //Command hendler//
 
@@ -13,11 +15,11 @@ let prefix_db = new db.crearDB('prefixes')
 
 client.commands = new Discord.Collection();
 
-let archivos = fs.readdirSync("./Rune/").filter((f) => f.endsWith('.js'));
+let archivos = fs.readdirSync("./Meu Cabrinha😍/").filter((f) => f.endsWith('.js'));
 
 
 for(var archi of archivos){ 
-let comando = require('./Rune/'+archi)
+let comando = require('./Meu Cabrinha😍/'+archi)
 client.commands.set(comando.name, comando)
 }
 
@@ -66,6 +68,5 @@ try {
 
 
 client.login(config.token);
-console.log(`Inciando sesión como Rune xd`)
 console.log(`Numero de comandos: ${client.commands.size}`)
-console.log('Stamo activo papi')  
+ 
