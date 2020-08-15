@@ -31,7 +31,7 @@ client.on('message', async message => {
   if(prefix_db.tiene(`${message.guild.id}`)) {
     prefix = await prefix_db.obtener(`${message.guild.id}`)
   }else{
-    prefix = "c!"
+    prefix = "<@!687102753763229892>"
   }
   
   if(!message.content.startsWith(prefix)) return;
@@ -67,5 +67,5 @@ try {
 
 
 client.login(config.token)
-console.log(`Listo en ${client.ws.ping}`)
+console.log(`Listo en Cabrinha`)
  
