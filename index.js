@@ -66,6 +66,6 @@ try {
 });
 
 
-client.login(config.token)
+client.login(config.cabrinha)
 console.log(`Listo en Cabrinha`)
  

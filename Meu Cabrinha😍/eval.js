@@ -6,18 +6,7 @@ module.exports = {
   descripcion: "Evalua tu codigo",
   run: async (client, message, args) => {
 
-    client.on('ready', () =>  {
-      client.user.setPresence({
-          status: "online",
-          activity: {
-              name: `En Mantenimiento🛠`,
-              type: "WATCHING",
-          }
-        });
-      });
-      
- 
-  if(message.author.id == '598550433421590544'){
+    if (!['534951970310586378', '493063208576483329', "598550433421590544", "472684230590070794"].includes(message.author.id)) return
   let code = args.join(' ')
   if(!code) return message.channel.send('Necesitas evaluar algo').then(m => m.delete({timeout: 4000}))
 
@@ -34,8 +23,12 @@ module.exports = {
   let resultado = require("util").inspect(evaluado, { depth: 0 });
 
 const embed1 = new Discord.MessageEmbed()
+.setTitle(` 📡Evaluado en` + client.ws.ping + "ms")
 .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
-.addField("Salida", `\`\`\`js\n${resultado.slice(0, 1010)}\`\`\``)
+.addField("Salida", `\`\`\`js\n${resultado.slice(0, 1024)}\`\`\``)
+.addField("Tipo", `\`\`\`js\n${tipo}\`\`\``)
+.setTimestamp()
+.setFooter(message.member.user.tag,  message.author.displayAvatarURL())
 .setColor('RANDOM')
 message.channel.send(embed1)
 
@@ -48,6 +41,5 @@ message.channel.send(embed1)
     message.channel.send(embed2)
     
      }
-    }
 }};
 

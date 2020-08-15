@@ -1,0 +1,26 @@
+{
+  "729502369020117052": {
+    "texto": "Hola {user}",
+    "canal": {
+      "type": "text",
+      "deleted": false,
+      "id": "739003289194201170",
+      "name": "➕│guildmemberadd",
+      "rawPosition": 9,
+      "parentID": "739002936121622558",
+      "permissionOverwrites": [
+        "739009735516225538",
+        "740567067585019954",
+        "743994339679666186"
+      ],
+      "topic": null,
+      "nsfw": false,
+      "lastMessageID": "744032346742849647",
+      "rateLimitPerUser": 0,
+      "lastPinTimestamp": null,
+      "guild": "729502369020117052",
+      "messages": [],
+      "createdTimestamp": 1596262514161
+    }
+  }
+}

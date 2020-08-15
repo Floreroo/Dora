@@ -1,10 +1,13 @@
 const Discord = require('discord.js')
 const client = new Discord.Client();
 const config = require('./config.json')
-const prefix = "."
-const args = message.content.slice(prefix.length).trim().split(/ +/);
-const cmd = args.shift().toLowerCase();
+const db = require('megadb');
+const prefix = "_"
+let welcome_db = new db.crearDB('setwelcome')
 
+client.on('message', message => {
+     const args = message.content.slice(prefix.length).trim().split(/ +/);
+const cmd = args.shift().toLowerCase();
 if(cmd == 'help'){
     
     let kasake = client.users.cache.get("598550433421590544")
@@ -37,5 +40,16 @@ if(cmd == 'help'){
            });
           }); 
           }
+});
 
-client.login(config.token)
+
+client.on('message', message => {
+    const args = message.content.slice(prefix.length).trim().split(/ +/);
+            const cmd = args.shift().toLowerCase();
+          if(cmd == 'setwelcome'){
+        
+          }
+        });
+client.login(config.pruebas).then(() => {
+    console.log('Listo!')
+});
