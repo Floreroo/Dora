@@ -1,11 +1,21 @@
 const Discord = require('discord.js')
 
 module.exports = {
-  name: "e",
+  nombre: "e",
   alias: ["eval"],
   descripcion: "Evalua tu codigo",
   run: async (client, message, args) => {
 
+    client.on('ready', () =>  {
+      client.user.setPresence({
+          status: "online",
+          activity: {
+              name: `En Mantenimiento🛠`,
+              type: "WATCHING",
+          }
+        });
+      });
+      
  
   if(message.author.id == '598550433421590544'){
   let code = args.join(' ')

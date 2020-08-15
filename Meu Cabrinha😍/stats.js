@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 
 module.exports = {
-  name: "stats",
+  nombre: "stats",
   alias: [],
   descripcion: "Las stats del bot",
   run: (client, message, args) => {

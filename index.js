@@ -12,7 +12,6 @@ console.log(msg.member.user.tag +": " + msg.content)
 //Command hendler//
 
 
-
 client.commands = new Discord.Collection();
 
 let archivos = fs.readdirSync("./Meu Cabrinha😍/").filter((f) => f.endsWith('.js'));
@@ -20,7 +19,7 @@ let archivos = fs.readdirSync("./Meu Cabrinha😍/").filter((f) => f.endsWith('.
 
 for(var archi of archivos){ 
 let comando = require('./Meu Cabrinha😍/'+archi)
-client.commands.set(comando.name, comando)
+client.commands.set(comando.nombre, comando)
 }
 
 
@@ -67,6 +66,6 @@ try {
 });
 
 
-client.login(config.token);
-console.log(`Numero de comandos: ${client.commands.size}`)
+client.login(config.token)
+console.log(`Listo en ${client.ws.ping}`)
  

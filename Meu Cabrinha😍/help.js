@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 const client = new Discord.Client();
 
 module.exports = {
-  name: "help",
+  nombre: "help",
   alias: [],
   descripcion: "Comando de información",
   run: async (client, message, args) => {
