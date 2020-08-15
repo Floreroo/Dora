@@ -1,6 +1,6 @@
 {
   "729502369020117052": {
-    "texto": "Hola {user}",
+    "texto": "Hola",
     "canal": {
       "type": "text",
       "deleted": false,

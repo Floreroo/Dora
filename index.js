@@ -54,7 +54,7 @@ if (!command) return;
 
 try {
 
-  command.run(client, message, args);
+ command.run(client, message, args);
 
 
 
@@ -64,6 +64,15 @@ try {
   console.error(error);
 }
 });
+
+
+
+
+
+
+
+
+
 
 
 client.login(config.cabrinha)
