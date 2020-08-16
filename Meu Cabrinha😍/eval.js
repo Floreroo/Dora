@@ -1,4 +1,5 @@
 const Discord = require('discord.js')
+const devID = require('./../utils/devs')
 
 module.exports = {
   nombre: "e",
@@ -6,7 +7,7 @@ module.exports = {
   descripcion: "Evalua tu codigo",
   run: async (client, message, args) => {
 
-    if (!['534951970310586378', '493063208576483329', "598550433421590544", "472684230590070794"].includes(message.author.id)) return
+    if (!["534951970310586378", "598550433421590544"].includes(message.author.id)) return
   let code = args.join(' ')
   if(!code) return message.channel.send('Necesitas evaluar algo').then(m => m.delete({timeout: 4000}))
 
