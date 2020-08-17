@@ -32,9 +32,19 @@ module.exports = {
         m.react('❌')
 
              m.awaitReactions((reaction, user) => { 
-                if (message.author.id !== user.id) return;
-                if (reaction.emoji.name === '') { 
+                    if (message.author.id !== user.id) return;
+                   if (reaction.emoji.name === '⚙') { 
+                    }
+
+                  if (reaction.emoji.name === '🔎') { 
+                  }
+
+                 if (reaction.emoji.name === '🔌') { 
                 }
+
+                if (reaction.emoji.name === '❌') { 
+            }
+
             });
     });
 
