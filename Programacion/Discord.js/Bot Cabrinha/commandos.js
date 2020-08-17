@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const devID = require('./../utils/devs')
 
 module.exports = {
     nombre: "comandos",

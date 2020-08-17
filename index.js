@@ -14,11 +14,11 @@ console.log(msg.member.user.tag +": " + msg.content)
 
 client.commands = new Discord.Collection();
 
-let archivos = fs.readdirSync("./Meu Cabrinha😍/").filter((f) => f.endsWith('.js'));
+let archivos = fs.readdirSync("./Programacion/Discord.js/Bot Cabrinha/").filter((f) => f.endsWith('.js'));
 
 
 for(var archi of archivos){ 
-let comando = require('./Meu Cabrinha😍/'+archi)
+let comando = require('./Programacion/Discord.js/Bot Cabrinha/'+archi)
 client.commands.set(comando.nombre, comando)
 }
 
@@ -31,7 +31,7 @@ client.on('message', async message => {
   if(prefix_db.tiene(`${message.guild.id}`)) {
     prefix = await prefix_db.obtener(`${message.guild.id}`)
   }else{
-    prefix = "<@!687102753763229892>"
+    prefix = "c!"
   }
   
   if(!message.content.startsWith(prefix)) return;

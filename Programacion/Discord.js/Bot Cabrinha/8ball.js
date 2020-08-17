@@ -8,6 +8,6 @@ const Discord = require('discord.js');
 
        let m = ["Si", "No", "Probablemente", "No voy a responder a eso", "No estoy seguro"]
        let aleatorio = (Math.floor(Math.random()) * m.length)
-       message.channel.send("🎱" + "**" + message.member.displayName + "**," + " " + m[aleatorio])
+       message.channel.send("🎱" + "**" + message.member.displayName + "**," + " " + (m[aleatorio]))
    }
   }
