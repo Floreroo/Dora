@@ -34,15 +34,27 @@ module.exports = {
              m.awaitReactions((reaction, user) => { 
                     if (message.author.id !== user.id) return;
                    if (reaction.emoji.name === '⚙') { 
+                    reaction.remove(user)
+                    let embed3 = new Discord.MessageEmbed()
+                    
+                    m.edit(embed3)
                     }
 
                   if (reaction.emoji.name === '🔎') { 
+                    reaction.remove(user)
+                    let embed4 = new Discord.MessageEmbed()
+                    m.edit(embed4)  
                   }
 
                  if (reaction.emoji.name === '🔌') { 
+                    reaction.remove(user)
+                     let embed5 = new Discord.MessageEmbed()
+                     m.edit(embed5)
                 }
 
-                if (reaction.emoji.name === '❌') { 
+                if (reaction.emoji.name === '❌') {
+                    
+                    m.delete()
             }
 
             });

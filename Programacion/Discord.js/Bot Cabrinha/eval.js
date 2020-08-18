@@ -1,4 +1,6 @@
 const Discord = require('discord.js')
+const { Kasake, Melphi } = require('../../../util/devs')
+const { DevReturn } = require('../../../util/Perms')
 
 module.exports = {
   nombre: "e",
@@ -6,16 +8,37 @@ module.exports = {
   descripcion: "Evalua tu codigo",
   run: async (client, message, args) => {
 
-    if (!["534951970310586378", "598550433421590544"].includes(message.author.id)) return
+
+
+ //embed de token falso xd//
+const tokenfalso = new Discord.MessageEmbed()
+ .setTitle(`Evaluado en ` + client.ws.ping +"ms")
+ .addField("Tipo", `\`\`\`js\n${'Trolieado'}\`\`\``)
+ .addField("Entrada", `\`\`\`js\n${'client.token'}\`\`\``)
+ .addField("Salida", `\`\`\`js\n${'NzQ1MDAwNjMzNzgxOTc3MTcw.XzrZ6A.hYi1QCLzfOGGwXkVcTbOeX0FZzY :D'}\`\`\``)
+ .setTimestamp()
+ .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
+ .setColor('RANDOM')
+
+
+    //embed de token falso xd//
+
+
+    if (![Kasake, Melphi].includes(message.author.id)) return
+ 
+     
   let code = args.join(' ')
   if(!code) return message.channel.send('Necesitas evaluar algo').then(m => m.delete({timeout: 4000}))
 
 
   try{
-    if(args.join(' ').toLowerCase().includes("token")){
-    return;
-  }
+    if(args.join(' ').toLowerCase().includes('token')){
+     return message.channel.send(tokenfalso)
+        }
  
+  
+   
+  
   
 
   let evaluado = await eval(code);
@@ -23,10 +46,10 @@ module.exports = {
   let resultado = require("util").inspect(evaluado, { depth: 0 });
 
 const embed1 = new Discord.MessageEmbed()
-.setTitle(` 📡Evaluado en` + client.ws.ping + "ms")
+.setTitle(`Evaluado en ` + client.ws.ping +"ms")
+.addField("Tipo", `\`\`\`js\n${tipo}\`\`\``)
 .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
 .addField("Salida", `\`\`\`js\n${resultado.slice(0, 1024)}\`\`\``)
-.addField("Tipo", `\`\`\`js\n${tipo}\`\`\``)
 .setTimestamp()
 .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
 .setColor('RANDOM')
@@ -35,8 +58,10 @@ message.channel.send(embed1)
   } catch(err) {
     const embed2 = new Discord.MessageEmbed()
      .setTitle('Error')
+     .setTimestamp()
         .setColor('ff0000')
         .addField("Codigo", `\`\`\`js\n${code}\`\`\``)
+        .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
     .addField("Error", `\`\`\`js\n${err}\`\`\``)
     message.channel.send(embed2)
     
