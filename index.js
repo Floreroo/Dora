@@ -13,7 +13,6 @@ app.listen(port, () => console.log(`Local host => http://localhost:${port}`))
 const { Client, Collection, MessageEmbed } = require('discord.js')
 
 const client = new Client()
-require('dotenv').config()
 
 
 const db = require('megadb');
@@ -57,7 +56,7 @@ let prefix;
 if(prefix_db.tiene(`${message.guild.id}`)) {
   prefix = await prefix_db.obtener(`${message.guild.id}`)
 }else{
-  prefix = "c!"
+  prefix = "m!"
 }
 
 if(!message.content.startsWith(prefix)) return;
@@ -93,6 +92,6 @@ try {
 
 
 
-client.login(config.muffin)
+client.login(process.env.TOKEN)
 
  
