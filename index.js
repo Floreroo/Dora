@@ -1,28 +1,34 @@
 const express = require('express');
 const app = express(); 
-const port = 3004;
+const port = 7000;
 
 app.get('/', (req, res) => res.send('24/7'));
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+app.listen(port, () => console.log(`Local host => http://localhost:${port}`))
 
 
 
 
 //Index.js//
+const { Client, Collection, MessageEmbed } = require('discord.js')
 
-const Discord = require('discord.js')
-const client = new Discord.Client();
-const config = require('./config.json')
+const client = new Client()
+require('dotenv').config()
+
+
 const db = require('megadb');
 const fs = require('fs');
 let prefix_db = new db.crearDB('prefixes')
 
 client.on('ready', () => {
+  let puta = ["🤡🤡🤡"];
+  setInterval (() => {
 client.user.setPresence({
-  activity: { name: "???", type: "WATCHING" },
-  status: "idle"
-  });
+  activity: { name: puta[Math.floor(Math.random()* puta.length)], type: "WATCHING"  },
+  status: "dnd",
+  url: "https://www.twitch.tv/auronplay"
+})
+  }, 4000);
 });
 
 
@@ -31,16 +37,18 @@ client.on('message', msg => {
 console.log(msg.member.user.tag +": " + msg.content)
 })
 
+
+
 //Command hendler//
 
 client.on('message', async message => {
 client.commands = new Discord.Collection();
 
-let archivos = fs.readdirSync("./Programacion/Discord.js/Bot Cabrinha/").filter((f) => f.endsWith('.js'));
+let archivos = fs.readdirSync("./Programacion/Discord.js/Bot Muffin/").filter((f) => f.endsWith('.js'));
 
 
 for(var archi of archivos){ 
-let comando = require('./Programacion/Discord.js/Bot Cabrinha/'+archi)
+let comando = require('./Programacion/Discord.js/Bot Muffin/'+archi)
 client.commands.set(comando.nombre, comando)
 }
 
