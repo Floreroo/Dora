@@ -85,13 +85,3 @@ try {
 
 
 
-
-
-
-
-
-
-
-client.login(process.env.TOKEN)
-
- 
