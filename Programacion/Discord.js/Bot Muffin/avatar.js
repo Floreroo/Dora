@@ -1,10 +1,11 @@
 const Discord = require('discord.js');
-const { format } = require('path');
+
 
 
 module.exports = {
     nombre: "avatar",
     alias: [],
+    cooldown: 2,
     run: (client, message, args) => {
     
  
