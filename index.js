@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express(); 
-const port = 3000;
+const port = 7000;
 
 app.get('/', (req, res) => res.send('24/7'));
 
@@ -13,7 +13,7 @@ app.listen(port, () => console.log(`Local host => http://localhost:${port}`))
 const Discord = require('discord.js')
 
 const client = new Discord.Client()
-const config = require('./config.json')
+require('dotenv').config()
 
 const db = require('megadb');
 const fs = require('fs');
@@ -44,23 +44,22 @@ if(BlackList.includes(msg.author.id)) return
 
 
 
-//Otras Variables//
+
+
+
+
+
 client.commands = new Discord.Collection();
-client.mongosee = require()
 const cooldowns = new Discord.Collection()
 
 
-
-
 //Command hendler//
-
 client.on('message', async message => {
-
-let archivos = fs.readdirSync("./Programacion/Discord.js/Bot Muffin/").filter((f) => f.endsWith('.js'));
+let archivos = fs.readdirSync("./Programacion/Discord.js/General/").filter((f) => f.endsWith('.js'));
 
 
 for(var archi of archivos){ 
-let comando = require('./Programacion/Discord.js/Bot Muffin/'+archi)
+let comando = require('./Programacion/Discord.js/General/'+archi)
 client.commands.set(comando.nombre, comando)
 }
 
@@ -78,7 +77,6 @@ if(!message.content.startsWith(prefix)) return;
 
 const args = message.content.slice(prefix.length).trim().split(/ +/);
 const commandName = args.shift().toLowerCase();
-
 const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.alias && cmd.alias.includes(commandName));
 if (!command) return;
 
@@ -121,4 +119,4 @@ try {
 
 
 
-client.login(config.muffin)
+client.login(process.env.DISCORD_TOKEN)
