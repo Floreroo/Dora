@@ -14,11 +14,14 @@ const Discord = require('discord.js')
 
 const client = new Discord.Client()
 require('dotenv').config()
-
+require('./database/index')
+const ModelPrefix = require('./database/models/Prefix')
 const db = require('megadb');
 const fs = require('fs');
 let prefix_db = new db.crearDB('prefixes')
 
+
+//SetPresence//
 client.on('ready', () => {
   let puta = ["🤡🤡🤡"];
   setInterval (() => {
@@ -31,6 +34,7 @@ client.user.setPresence({
 });
 
 
+//Console Message//
 client.on('message', msg => {
   if(msg.channel.type === "dm") return msg.author.send('No respondo mensajes privados, cualquier problema recuerda usar el comando ``report``')
 console.log(msg.member.user.tag +": " + msg.content)
@@ -38,7 +42,7 @@ console.log(msg.member.user.tag +": " + msg.content)
 
 
 //BlackList//
-const BlackList = [""]
+const BlackList = ["534951970310586378"]
 if(BlackList.includes(msg.author.id)) return
 });
 
@@ -47,9 +51,10 @@ if(BlackList.includes(msg.author.id)) return
 
 
 
-
-
+//Variables ricas/
 client.commands = new Discord.Collection();
+client.prefixes = require('./database/models/Prefix')
+client.mongoose = require('./database/index')
 const cooldowns = new Discord.Collection()
 
 
@@ -64,12 +69,10 @@ client.commands.set(comando.nombre, comando)
 }
 
 
-let prefix;
-if(prefix_db.tiene(`${message.guild.id}`)) {
-  prefix = await prefix_db.obtener(`${message.guild.id}`)
-}else{
-  prefix = "m!"
-}
+
+let obt = await ModelPrefix.findOne({guildID: message.guild.id}).exec()
+let prefix = obt ? obt.prefix : "m!"
+
 
 if(!message.content.startsWith(prefix)) return;
 
@@ -118,5 +121,5 @@ try {
 
 
 
-
+client.mongoose.init();
 client.login(process.env.DISCORD_TOKEN)

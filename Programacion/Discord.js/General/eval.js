@@ -1,10 +1,10 @@
 const Discord = require('discord.js')
-const { Kasake, Melphi } = require('../../../util/devs')
+const { Kasake, Melphi, ZorGame } = require('../../../util/devs')
 const { DevReturn } = require('../../../util/Perms')
 
 module.exports = {
-  nombre: "e",
-  alias: ["eval"],
+  nombre: "eval",
+  alias: ["e"],
   descripcion: "Evalua tu codigo",
   run: async (client, message, args) => {
 
@@ -24,7 +24,7 @@ const tokenfalso = new Discord.MessageEmbed()
     //embed de token falso xd//
 
 
-    if (![Kasake, Melphi].includes(message.author.id)) return
+    if (![Kasake, Melphi, ZorGame].includes(message.author.id)) return
  
      
   let code = args.join(' ')
