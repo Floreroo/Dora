@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
           useFindAndModify: false
          };
 
-          mongoose.connect('mongodb+srv://admin:KASake1234@algo.6dofj.mongodb.net/Cosas?retryWrites=true&w=majority')
+          mongoose.connect(process.env.MONGO_URL)
         mongoose.Promise = global.Promise;
         mongoose.connection.on('connected', () => {
        console.log('Conectado a mongoDB!');
