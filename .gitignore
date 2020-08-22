@@ -1,4 +1,4 @@
-
+.gitnore
 .env
 node_modules
 util
