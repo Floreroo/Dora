@@ -1,7 +1,7 @@
 
 //Models//
-const ModelPrefix = require('./database/models/Prefix')
-const ModelWelcome = require('./database/models/bienvenidas')
+const ModelPrefix = require('./src/database/models/Prefix')
+const ModelWelcome = require('./src/database/models/bienvenidas')
 
 //Variables//
 const Discord = require('discord.js')
@@ -111,18 +111,18 @@ client.on('guildMemberAdd', async (member) => {
 
 //Variables ricas/
 client.commands = new Discord.Collection();
-client.prefixes = require('./database/models/Prefix')
-client.mongoose = require('./database/index')
+client.prefixes = require('./src/database/models/Prefix')
+client.mongoose = require('./src/database/index')
 const cooldowns = new Discord.Collection()
 
 
 //Command hendler//
 client.on('message', async message => {
-let archivos = fs.readdirSync("./Programacion/Discord.js/General/").filter((f) => f.endsWith('.js'));
+let archivos = fs.readdirSync('./src/General').filter((f) => f.endsWith('.js'));
 
 
 for(var archi of archivos){ 
-let comando = require('./Programacion/Discord.js/General/'+archi)
+let comando = require('./src/General'+archi)
 client.commands.set(comando.nombre, comando)
 }
 
