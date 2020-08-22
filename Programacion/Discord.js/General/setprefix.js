@@ -9,7 +9,7 @@ const Discord = require('discord.js');
     const { MessageEmbed } = require('discord.js')
     
     if(!message.member.hasPermission("MANAGE_GUILD")){
-        message.channel.send('No tienes permisos para usar este Comando.\n`Gestionar Servidor`')
+       return message.channel.send('No tienes permisos para usar este Comando.\n`Gestionar Servidor`')
     }
     
     if(!args[0]) return message.channel.send('Hmm... Debes escribir un prefijo, **'+message.author.username+'**')

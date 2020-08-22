@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const { Kasake, Melphi, ZorGame } = require('../../../util/devs')
+const { Kasake, Melphi, ZorGame, ANTHO } = require('../../../util/devs')
 const { DevReturn } = require('../../../util/Perms')
 
 module.exports = {
@@ -24,9 +24,9 @@ const tokenfalso = new Discord.MessageEmbed()
     //embed de token falso xd//
 
 
-    if (![Kasake, Melphi, ZorGame].includes(message.author.id)) return
- 
-     
+   if(![Kasake, Melphi, ZorGame, ANTHO].includes(message.author.id)) return message.channel.send('No tienes permisos para usar este comando')
+  
+
   let code = args.join(' ')
   if(!code) return message.channel.send('Necesitas evaluar algo').then(m => m.delete({timeout: 4000}))
 
@@ -49,7 +49,7 @@ const embed1 = new Discord.MessageEmbed()
 .setTitle(`Evaluado en ` + client.ws.ping +"ms")
 .addField("Tipo", `\`\`\`js\n${tipo}\`\`\``)
 .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
-.addField("Salida", `\`\`\`js\n${resultado.slice(0, 1024)}\`\`\``)
+.addField("Salida", `\`\`\`js\n${resultado.slice(0, 1050)}\`\`\``)
 .setTimestamp()
 .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
 .setColor('RANDOM')
