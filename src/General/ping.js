@@ -6,14 +6,14 @@ const Discord = require('discord.js');
   run: (client, message, args) => {
 
   
-    if(message.author.bot) return;
-   message.channel.send('> Espere un momentito...').then(m => {
-   setTimeout(() => {
-   m.edit(`> Mi ping es de ${client.ws.ping}ms`)
-
-   }, 2000) 
- })
-}
- }
+    message.channel.send('🏓 Pong!').then(m => {
+      let embed = new Discord.MessageEmbed()
+    .setDescription(`Envio de mensajes: \*\*${m.createdTimestamp - message.createdTimestamp} ms\*\*\nDiscordAPI: \*\*${client.ws.ping}ms\*\*`)
+    .setColor('RANDOM')
+  message.channel.send(embed)
+  
   
 
+    })
+}
+ }

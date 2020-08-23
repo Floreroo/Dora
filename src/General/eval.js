@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const { Kasake, Melphi, ZorGame, ANTHO } = require('../../util/devs')
+const { Kasake, Melphi, ZorGame} = require('../../util/devs')
 
 
 module.exports = {
@@ -24,7 +24,7 @@ const tokenfalso = new Discord.MessageEmbed()
     //embed de token falso xd//
 
 
-   if(![Kasake, Melphi, ZorGame, ANTHO].includes(message.author.id)) return message.channel.send('No tienes permisos para usar este comando')
+   if(![Kasake, Melphi, ZorGame].includes(message.author.id)) return message.channel.send('No tienes permisos para usar este comando')
   
 
   let code = args.join(' ')

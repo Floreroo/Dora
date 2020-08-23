@@ -19,7 +19,7 @@ client.user.setPresence({
   status: "dnd",
   url: "https://www.twitch.tv/auronplay"
 })
-  }, 2000);
+  }, 4000);
 });
 
 
