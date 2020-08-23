@@ -5,14 +5,14 @@ const Discord = require('discord.js');
    alias: ["prefix"],
    run: async (client, message, args) => {
 
-    const ModelPrefix = require('../../../database/models/Prefix')
+    const ModelPrefix = require('../../src/database/models/Prefix')
     const { MessageEmbed } = require('discord.js')
     
     if(!message.member.hasPermission("MANAGE_GUILD")){
-       return message.channel.send('No tienes permisos para usar este Comando.\n`Gestionar Servidor`')
+       return message.channel.send('> No tienes permisos para usar este Comando.> \n`Gestionar Servidor`')
     }
     
-    if(!args[0]) return message.channel.send('Hmm... Debes escribir un prefijo, **'+message.author.username+'**')
+    if(!args[0]) return message.channel.send('> Necesitas poner un prefix **'+message.author.username+'**')
     
     let NewPrefix = await ModelPrefix.findOne({guildID: message.guild.id}).exec()
     if(NewPrefix){
@@ -20,7 +20,7 @@ const Discord = require('discord.js');
     await NewPrefix.updateOne({guildID: message.guild.id, prefix: args[0], guildName: message.guild.name})
     
     let embed = new MessageEmbed()
-    .setDescription(`Genial, ahora mi Prefix es **${args[0]}**`)
+    .setDescription("> El prefix se ha establecido a " + "``" + args[0] + "``")
     .setColor('RANDOM')
     message.channel.send(embed)
     
@@ -30,7 +30,7 @@ const Discord = require('discord.js');
     await NewPrefix2.save()
     
     let embed2 = new MessageEmbed()
-    .setDescription(`Genial, ahora mi Prefix es **${args[0]}**`)
+     .setDescription("> El prefix se ha establecido a " + "``" + args[0] + "``")
     .setColor('RANDOM')
     message.channel.send(embed2)
     

@@ -7,21 +7,19 @@ const ModelWelcome = require('./src/database/models/bienvenidas')
 const Discord = require('discord.js')
 const client = new Discord.Client()
 require('dotenv').config()
-require('./database/index')
+require('./src/database/index')
 const fs = require('fs');
-
-
 
 //SetPresence//
 client.on('ready', () => {
-  let puta = ["🤡🤡🤡"];
+  let puta = ["Actualizando 0.3.1", "Nuevos comandos!"];
   setInterval (() => {
 client.user.setPresence({
   activity: { name: puta[Math.floor(Math.random()* puta.length)], type: "WATCHING"  },
   status: "dnd",
   url: "https://www.twitch.tv/auronplay"
 })
-  }, 4000);
+  }, 2000);
 });
 
 
@@ -51,6 +49,7 @@ client.on('guildMemberAdd', async (member) => {
   if(!i) return;
   const channel = member.guild.channels.cache.get(i.channelID)
   if(!channel) return;
+	
   const {createCanvas, loadImage } = require('canvas');
   const canvas = createCanvas(500, 200);
   const ctx = canvas.getContext('2d');
@@ -73,14 +72,14 @@ client.on('guildMemberAdd', async (member) => {
   var Bienvenida = "Bienvenid@"
   
    do{
-       ctx.font = `${size1 -= 5}px sans-serif;`
+       ctx.font = `${size1 -= 5}px Berlin Sans FB`
    } while(ctx.measureText(Bienvenida).whith > canvas.width - 225);
      ctx.fillText(Bienvenida, 200, 65)
      ctx.fillStyle = '#FF4200'
    
   var usuario =  `${member.user.tag}`
   do{
-      ctx.font = `${size2 -= 5}px sans-serif;`
+      ctx.font = `${size2 -= 5}px Berlin Sans FB`
   } while(ctx.measureText(usuario).whith > canvas.width - 225);
   ctx.fillText(usuario, 200, 110)
   ctx.fillStyle = 'FF4200'
@@ -88,7 +87,7 @@ client.on('guildMemberAdd', async (member) => {
   var joined = `Bienvenid@ a ${member.guild.name}`;
   
    do{   
-       ctx.font = `${size3 -= 5}px sans-serif;`
+       ctx.font = `${size3 -= 5}px Berlin Sans FB`
    } while(ctx.measureText(joined).whith > canvas.width - 225);
    ctx.fillText(joined, 200, 145)
    ctx.fillStyle = '#FFE800'
@@ -118,11 +117,11 @@ const cooldowns = new Discord.Collection()
 
 //Command hendler//
 client.on('message', async message => {
-let archivos = fs.readdirSync('./src/General').filter((f) => f.endsWith('.js'));
+let archivos = fs.readdirSync('./src/General/').filter((f) => f.endsWith('.js'));
 
 
 for(var archi of archivos){ 
-let comando = require('./src/General'+archi)
+let comando = require('./src/General/'+archi)
 client.commands.set(comando.nombre, comando)
 }
 

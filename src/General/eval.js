@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const { Kasake, Melphi, ZorGame, ANTHO } = require('../../util/devs')
-const { DevReturn } = require('../../util/Perms')
+
 
 module.exports = {
   nombre: "eval",

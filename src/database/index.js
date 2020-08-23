@@ -13,4 +13,4 @@ module.exports = mongoose.connect(process.env.MONGO_URL, {
 }
 
 console.log(`Conectado correctamente a MongoDB`)
-})
+});

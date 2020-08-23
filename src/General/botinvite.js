@@ -7,11 +7,12 @@ module.exports = {
     run: (client, message, args) => {
 
 
-        const u = client.users.resolve(args[0]);
+
+        const u = message.mentions.users.first() ||client.users.resolve(args[0]);
         if(u.bot){
         if(args[0]){
         const embed = new Discord.MessageEmbed()
-        .addField(`Invitar a ${u.tag}`, `¡Su [invitacion](https://discord.com/api/oauth2/authorize?client_id=${u.id}&permissions=8&scope=bot) recien salida del horno, cuidado que quema!`)
+        .addField(`Invitar a ${u.tag}`, `¡La [invitacion](https://discord.com/api/oauth2/authorize?client_id=${u.id}&permissions=8&scope=bot) de **${u.username}** recien salida del horno, cuidado que quema!`)
         .setImage(u.displayAvatarURL({format: "png", size: 2048, dynamic: true}))
         .setColor('RANDOM')
         .setFooter(" Pedido por: " + message.member.user.tag, message.author.displayAvatarURL())
