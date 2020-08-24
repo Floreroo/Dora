@@ -5,19 +5,19 @@ const ModelWelcome = require('./src/database/models/bienvenidas')
 
 //Variables//
 const Discord = require('discord.js')
-const client = new Discord.Client()
+const client = new Discord.Client({ $browser: "Discord Android" })
 require('dotenv').config()
 require('./src/database/index')
 const fs = require('fs');
 
-//SetPresence//
+//Presence//
 client.on('ready', () => {
   let puta = ["Actualizando 0.3.1", "Nuevos comandos!"];
   setInterval (() => {
 client.user.setPresence({
   activity: { name: puta[Math.floor(Math.random()* puta.length)], type: "WATCHING"  },
-  status: "dnd",
-  url: "https://www.twitch.tv/auronplay"
+  status: "online",
+  $browser: "Discord Android" 
 })
   }, 4000);
 });
@@ -25,7 +25,7 @@ client.user.setPresence({
 
 //Console Message//
 client.on('message', msg => {
-  if(msg.channel.type === "dm") return msg.author.send('No respondo mensajes privados, cualquier problema recuerda usar el comando ``report``')
+  if(msg.channel.type === "dm" || msg.author.bot) return
 console.log(msg.author.tag + ": " + msg.content)
 
 
@@ -112,6 +112,7 @@ client.on('guildMemberAdd', async (member) => {
 client.commands = new Discord.Collection();
 client.prefixes = require('./src/database/models/Prefix')
 client.mongoose = require('./src/database/index')
+client.devs = require('./util/devs')
 const cooldowns = new Discord.Collection()
 
 

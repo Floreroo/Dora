@@ -6,9 +6,9 @@ module.exports = {
     run: (client, message, args) => {
 
         const inv = new Discord.MessageEmbed()
-        .addField('> Uy? Alguien me va a invitaar!', '[INVITAME!!](https://discord.com/api/oauth2/authorize?client_id=687102753763229892&permissions=2147483639&scope=bot)', true)
+        .addField('> Me vas a...', '[Invitaaaar??](https://discord.com/api/oauth2/authorize?client_id=687102753763229892&permissions=2147483639&scope=bot)', true)
         .setColor('RANDOM')
-        .setImage('https://media.tenor.co/videos/2da01072df0ea138658b3630017c51be/mp4')
+        .setImage(client.user.displayAvatarURL({size: 2048, dynamic: true }))
         .setFooter(client.user.username, client.user.displayAvatarURL())
         message.channel.send(inv)
         
