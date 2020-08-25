@@ -2,10 +2,10 @@ const Discord = require('discord.js');
 
   module.exports = {
       name: "server",
-      alias: ["s-i"],
+      alias: [],
       run: async (client, message, args) => {
 
-    let  region = {
+    let region = {
           europe: "Europa :flag_eu:",
           brazil: "Brasil :flag_br: ",
           hongkong: "Hong Kong :flag_hk:",
@@ -25,6 +25,7 @@ const Discord = require('discord.js');
           amsterdam: "Amsterdam :flag_nl:",
           india: "India :flag_in:"
         }
+
         const server = message.guild
         let roles = message.guild.roles.cache.map(x => x.toString()).join(" | ")
         let embed = new Discord.MessageEmbed()
