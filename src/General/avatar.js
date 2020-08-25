@@ -11,10 +11,10 @@ module.exports = {
  
     let u = message.mentions.members.first() || client.users.resolve(args[0])|| message.author
     let embed = new Discord.MessageEmbed()
-    .setTitle(`Avatar de ${u.tag}`)
+    .setTitle(`Avatar de ${u.username}`)
     .addField('Links', `[Webp](https://cdn.discordapp.com/avatars/${u.id}/${u.avatar}.webp?size=1024)` + " | " + `[Jpg](https://cdn.discordapp.com/avatars/${u.id}/${u.avatar}.jpg?size=1024)` + " | " + `[Png](https://cdn.discordapp.com/avatars/${u.id}/${u.avatar}.png?size=1024)`)
     .setColor('RANDOM')
-    .setImage(u.user.displayAvatarURL({ size: 2048, dynamic: true }))
+    .setImage(u.displayAvatarURL({ size: 2048, dynamic: true }))
     .setFooter(" Pedido por: " + message.member.user.tag, message.author.displayAvatarURL())
      message.channel.send(embed)
 
