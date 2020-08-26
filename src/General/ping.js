@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
  module.exports = {
   nombre: "ping",
-  alias: ["p"],
+  alias: [],
   descripcion: "Te dice el ping",
   run: (client, message, args) => {
 

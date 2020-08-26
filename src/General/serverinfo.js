@@ -1,9 +1,9 @@
 const Discord = require('discord.js');
 
   module.exports = {
-      name: "server",
-      alias: [],
-      run: async (client, message, args) => {
+      nombre: "serverinfo",
+      alias: ["s-i"],
+      run: (client, message, args) => {
 
     let region = {
           europe: "Europa :flag_eu:",
@@ -44,8 +44,8 @@ const Discord = require('discord.js');
         embed.addField("Canal de sistema", server.systemChannel.toString(), true)
         }
         embed.addField('Creado el', server.createdAt.toDateString(), true)
-        .addField('Status', `<a:online:733410559965265921>online:${server.members.cache.filter(c => c.presence.status === 'online').size}\n<a:idle:733410335091851327>idle: ${server.members.cache.filter(c => c.presence.status === 'idle').size}\n<a:dnd:733410068367671360>dnd: ${server.members.cache.filter(c => c.presence.status === 'dnd').size}\n<a:offline:733410777599442964>offline: ${server.members.cache.filter(c => c.presence.status === 'offline').size}` , true)
+        .addField('Status', `<a:online:733410559965265921>online: ${server.members.cache.filter(c => c.presence.status === 'online').size}\n<a:idle:733410335091851327>idle: ${server.members.cache.filter(c => c.presence.status === 'idle').size}\n<a:dnd:733410068367671360>dnd: ${server.members.cache.filter(c => c.presence.status === 'dnd').size}\n<a:offline:733410777599442964>offline: ${server.members.cache.filter(c => c.presence.status === 'offline').size}` , true)
         .addField("Roles", roles.length > 1000 ? roles.slice(0, 1000)  + "\n Y muchos mas" : roles)
-      await message.channel.send(embed)
+      message.channel.send(embed)
       }
   }

@@ -141,7 +141,7 @@ const commandName = args.shift().toLowerCase();
 const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.alias && cmd.alias.includes(commandName));
 if (!command) return;
 
-if(command == 'emit'){
+if(commandName == 'emit'){
   client.emit('guildMemberAdd', message.member)
 }
 //COSas/

@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     nombre: "botinvite",
-    alias: [],
+    alias: ["b-i"],
     descripcion: "Los comandos del bot",
     run: (client, message, args) => {
 

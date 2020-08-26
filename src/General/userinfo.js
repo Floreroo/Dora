@@ -36,23 +36,16 @@ const Discord = require('discord.js')
     const server = message.guild
     const miembro = await message.guild.members.fetch(owo);
 
-    
-     if (owo.flags) {
-      if (owo.flags.toArray()) {
-        if (owo.flags.toArray().join(" | ")) {
-         flagtext = owo.flags.toArray().join(" | ");
-        }
-      }
-    }
+ 
     const uo = new Discord.MessageEmbed()
-    .setAuthor(owo.tag, owo.displayAvatarURL({dynamic: true}))
+    uo.setAuthor(owo.tag, owo.displayAvatarURL({dynamic: true}))
     .addField('Ping', "\n" + owo.toString() ,true)
     .addField('ID', owo.id, true)
     .addField('Apodo', miembro.nickame ? `${miembro.nickame}` : "No tiene", true)
     .addField('Bot?', owo.bot ? "Si" : "No", true)
     .addField(`Status`,` ${presencestatus[owo.presence.status]}`, true)
-    .addField('Insignias', `${badges[flagtext]}` ? `${badges[flagtext]}` : "No tiene" , true)
-    .addField(`Ha entrado en ${server.name}`, miembro.joinedAt, true)
+    uo.addField('Insignias', `${owo.flags.toArray().length < 1 ? `No tiene` : owo.flags.toArray().map(e => badges[e]).join(' ')}`, true)
+    uo.addField(`Ha entrado en ${server.name}`, miembro.joinedAt, true)
     .addField('Se ha logineado en discord', owo.createdAt)
     .addField('Roles', `${miembro.roles.cache.map(c => c.toString()).join(' | ')}`, true)
     .setThumbnail(owo.displayAvatarURL({dynamic: true}))

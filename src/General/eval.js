@@ -24,7 +24,7 @@ const tokenfalso = new Discord.MessageEmbed()
     //embed de token falso xd//
 
 
-   if(![Kasake, Melphi, ZorGame].includes(message.author.id)) return message.channel.send('No tienes permisos para usar este comando')
+   if(![Kasake, Melphi, ZorGame].includes(message.author.id)) return
   
 
   let code = args.join(' ')

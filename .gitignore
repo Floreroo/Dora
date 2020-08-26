@@ -1,5 +1,0 @@
-.gitnore
-.env
-node_modules
-util
-package-lock.json

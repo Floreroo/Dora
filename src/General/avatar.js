@@ -1,7 +1,4 @@
 const Discord = require('discord.js');
-
-
-
 module.exports = {
     nombre: "avatar",
     alias: [],

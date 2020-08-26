@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 
 module.exports = {
     nombre: "invite",
-    alias: ["inv"],
+    alias: [],
     run: (client, message, args) => {
 
         const inv = new Discord.MessageEmbed()
