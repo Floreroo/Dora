@@ -2,8 +2,8 @@
 const Discord = require('discord.js');
 
 module.exports = {
-      nombre: "icon",
-      alias: [],
+      nombre: "servericon",
+      alias: ["s-ic"],
       descripcion: "Muestra el icono del servidor",
       run: (client, message, args) => {
      

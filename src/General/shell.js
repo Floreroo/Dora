@@ -1,14 +1,14 @@
 const { Kasake, Melphi, ZorGame} = require('../../util/devs')
 module.exports = {
     nombre: "shell",
-    alias: "sh",
+    alias: ["s"],
     run: async (client, message, args) => {
 
         
  const Discord = require('discord.js');
  const { exec } = require('child_process')
 
-        if(![Kasake, Melphi, ZorGame].includes(message.author.id)) return message.channel.send('No tienes permisos para usar este comando porque es de la categoria ``DEVELOPER``')
+        if(![Kasake, Melphi, ZorGame].includes(message.author.id)) return
 
         let code = args.join(' ')
 if(!code) return;
