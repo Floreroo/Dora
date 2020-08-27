@@ -27,7 +27,7 @@ const Discord = require('discord.js');
         }
 
         const server = message.guild
-        let roles = message.guild.roles.cache.map(x => x.toString()).join(" | ")
+       let roles = message.guild.roles.cache.filter(x => !x.managed).map(x => x).sort((a, b) => b.position - a.position || parseInt(a.id.slice(0, -10)) - parseInt(b.id.slice(0, -10)) || parseInt(a.id.slice(10)) - parseInt(b.id.slice(10)).first(2)[1]).join(" | ")
         let embed = new Discord.MessageEmbed()
         .setColor('RANDOM')
         .setThumbnail(server.iconURL())

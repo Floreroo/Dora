@@ -2,16 +2,16 @@ const Discord = require('discord.js');
 
 module.exports = {
     nombre: "comandos",
-    alias: ["commands"],
+    alias: ["help"],
     descripcion: "Los comandos del bot",
     run: (client, message, args) => {
     
         if (!["534951970310586378", "598550433421590544"].includes(message.author.id)) return
         let embed2 = new Discord.MessageEmbed()
         .setFooter("COMANDOS", client.user.displayAvatarURL())    
-        .addField('⚙', "Configuracion", true)
-        .addField('🔎', "Informativos", true)
-        .addField('🔌', "Utilidad", true)
+        .addField(':gear:', "Configuracion", true)
+        .addField('', "Informativos", true)
+        .addField('', "Utilidad", true)
         .setColor('RANDOM')
 
 

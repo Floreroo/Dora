@@ -1,3 +1,11 @@
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => res.send('24/7'));
+
+app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+
 
 //Models//
 const ModelPrefix = require('./src/database/models/Prefix')
@@ -25,7 +33,7 @@ client.user.setPresence({
 
 //Console Message//
 client.on('message', msg => {
-  if(msg.channel.type === "dm" || msg.author.bot) return
+  if(msg.channel.type === "dm") return
 console.log(msg.author.tag + ": " + msg.content)
 
 
@@ -49,7 +57,7 @@ client.on('guildMemberAdd', async (member) => {
   if(!i) return;
   const channel = member.guild.channels.cache.get(i.channelID)
   if(!channel) return;
-	
+	channel.send(`Bienvenido ${member} a ${member.guild.name}`)
   const {createCanvas, loadImage } = require('canvas');
   const canvas = createCanvas(500, 200);
   const ctx = canvas.getContext('2d');
@@ -92,11 +100,12 @@ client.on('guildMemberAdd', async (member) => {
    ctx.fillText(joined, 200, 145)
    ctx.fillStyle = '#FFE800'
 
-      ctx.beginPath();
-      ctx.arc(100, 100, 75, 0, Math.PI * 2, true)
-      ctx.closePath();
-      ctx.clip();
-  
+   ctx.beginPath();
+   ctx.arc(100, 100, 75, 0, Math.PI * 2, true)
+   ctx.textAlign = "center"
+   ctx.closePath();
+   ctx.clip();
+
       const avatar = await loadImage(member.user.displayAvatarURL({format: "jpg", dynamic: true}));
    ctx.drawImage(avatar, 25, 25, 150, 150)
   

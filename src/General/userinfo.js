@@ -34,15 +34,15 @@ const Discord = require('discord.js')
     
     const owo = message.mentions.users.first() || client.users.cache.get(args[0]) ||message.author;
     const server = message.guild
-    const miembro = await message.guild.members.fetch(owo);
 
- 
+const miembro = await message.guild.members.fetch(owo);
     const uo = new Discord.MessageEmbed()
     uo.setAuthor(owo.tag, owo.displayAvatarURL({dynamic: true}))
     .addField('Ping', "\n" + owo.toString() ,true)
     .addField('ID', owo.id, true)
-    .addField('Apodo', miembro.nickame ? `${miembro.nickame}` : "No tiene", true)
+    .addField("Apodo", message.guild.member(owo).nickname != null ? message.guild.member(owo).nickname : "No tiene.", true)
     .addField('Bot?', owo.bot ? "Si" : "No", true)
+    .addField('Role destacado', message.guild.member(owo).roles.highest.toString(), true)
     .addField(`Status`,` ${presencestatus[owo.presence.status]}`, true)
     uo.addField('Insignias', `${owo.flags.toArray().length < 1 ? `No tiene` : owo.flags.toArray().map(e => badges[e]).join(' ')}`, true)
     uo.addField(`Ha entrado en ${server.name}`, miembro.joinedAt, true)
@@ -52,5 +52,6 @@ const Discord = require('discord.js')
     .setColor('RANDOM')
   message.channel.send(uo)
 
-    } 
+     
+     }
   }
