@@ -107,11 +107,11 @@ const cooldowns = new Discord.Collection()
 client.on('message', async message => {
 
 
-let archivos = fs.readdirSync('./src/General/').filter((f) => f.endsWith('.js'));
+let archivos = fs.readdirSync('./src/CMDS/').filter((f) => f.endsWith('.js'));
 
 
 for(var archi of archivos){ 
-let comando = require('./src/General/'+archi)
+let comando = require('./src/CMDS/'+archi)
 client.commands.set(comando.nombre, comando)
 }
 

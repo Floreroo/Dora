@@ -5,7 +5,7 @@ module.exports = {
     nombre: "setwelcome",
     alias:  ["s-w"],
     run: async (client, message, args) => {
-        let Bienvenida = require('../../src/database/models/bienvenidas')
+        let Bienvenida = require('../../database/models/bienvenidas')
 
 if(!message.member.hasPermission("MANAGE_GUILD")){
     message.channel.send('No tienes permisos para usar este Comando.\n`Gestionar Servidor`') 

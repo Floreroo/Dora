@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const { Kasake, Melphi, ZorGame} = require('../../util/devs')
+const { Kasake, Melphi, ZorGame} = require('../../../util/devs')
 
 
 module.exports = {
