@@ -9,9 +9,10 @@ module.exports = {
         if (!["534951970310586378", "598550433421590544"].includes(message.author.id)) return
         let embed2 = new Discord.MessageEmbed()
         .setFooter("COMANDOS", client.user.displayAvatarURL())    
-        .addField(':gear:', "Configuracion", true)
-        .addField('', "Informativos", true)
-        .addField('', "Utilidad", true)
+        .addField(':gear:' + "Configuracion" )
+        .addField(':joy:' + "Divertidos" )
+        .addField(':auto_rickshaw:' + "Utilidad")
+        .addField(':railway_track:' + "Imagen")
         .setColor('RANDOM')
 
 
@@ -26,9 +27,10 @@ module.exports = {
         
            
 
-        m.react('⚙')
-        m.react('🔎')
-        m.react('🔌')
+        m.react(':gear:')
+        m.react(':joy:')
+        m.react(':auto_rickshaw:')
+        m.react(':railway_track:')
         m.react('❌')
 
              m.awaitReactions(

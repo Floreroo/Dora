@@ -11,6 +11,8 @@ app.listen(port, () => console.log(`Example app listening at http://localhost:${
 const ModelPrefix = require('./src/database/models/Prefix')
 const ModelWelcome = require('./src/database/models/bienvenidas')
 
+
+
 //Variables//
 const Discord = require('discord.js')
 const client = new Discord.Client({ $browser: "Discord Android" })
@@ -35,16 +37,6 @@ client.user.setPresence({
 client.on('message', msg => {
   if(msg.channel.type === "dm") return
 console.log(msg.author.tag + ": " + msg.content)
-
-
-
-
-//BlackList//
-const BlackList = ["534951970310586378"]
-if(BlackList.includes(msg.author.id)) return
-});
-
-
 
 
 
@@ -115,8 +107,6 @@ client.on('guildMemberAdd', async (member) => {
 
 
 
-
-
 //Variables ricas/
 client.commands = new Discord.Collection();
 client.prefixes = require('./src/database/models/Prefix')
@@ -127,6 +117,8 @@ const cooldowns = new Discord.Collection()
 
 //Command hendler//
 client.on('message', async message => {
+
+
 let archivos = fs.readdirSync('./src/General/').filter((f) => f.endsWith('.js'));
 
 
@@ -136,9 +128,16 @@ client.commands.set(comando.nombre, comando)
 }
 
 
-
+//PREFIX
 let obt = await ModelPrefix.findOne({guildID: message.guild.id}).exec()
 let prefix = obt ? obt.prefix : "m!"
+
+
+  //MENCION
+let RegMention = new RegExp(`^<@!?${client.user.id}>( |)$`);
+if (message.content.match(RegMention)) {
+  message.channel.send(`Mi prefix en este servidor es \`${prefix}\` cualquier problema acuda a  \`${prefix}report\``);
+}  
 
 
 if(!message.content.startsWith(prefix)) return;
@@ -150,9 +149,7 @@ const commandName = args.shift().toLowerCase();
 const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.alias && cmd.alias.includes(commandName));
 if (!command) return;
 
-if(message.content.startsWith('.test')){
-  
-}
+
 //COSas/
 try {
 
@@ -166,6 +163,7 @@ try {
   console.error(error);
 }
 });
+});
 
 
 
@@ -174,4 +172,5 @@ try {
 client.login(process.env.DISCORD_TOKEN).then (() => {
   console.log('Stamo activo papi')
 });
+
  

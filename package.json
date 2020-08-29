@@ -13,6 +13,7 @@
     "@vitalets/google-translate-api": "^3.0.0",
     "a": "^2.1.2",
     "amo": "0.0.7",
+    "ascii-table": "0.0.9",
     "canvas": "^2.6.1",
     "child_process": "^1.0.2",
     "discord.js": "^12.3.1",
