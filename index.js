@@ -8,7 +8,6 @@ app.listen(port, () => console.log(`Example app listening at http://localhost:${
 
 
 //Models//
-const ModelPrefix = require('./src/database/models/Prefix')
 const ModelWelcome = require('./src/database/models/bienvenidas')
 
 
@@ -25,7 +24,7 @@ const fs = require('fs');
 
 //Console Message//
 client.on('message', msg => {
-  if(msg.channel.type === "dm") return
+  if(msg.channel.type === "dm" || msg.author.bot) return
 console.log(msg.author.tag + ": " + msg.content)
 
 
@@ -96,64 +95,25 @@ client.on('guildMemberAdd', async (member) => {
 
 
 //Variables ricas/
-client.commands = new Discord.Collection();
+client.cosas = { Boolean }
 client.prefixes = require('./src/database/models/Prefix')
 client.mongoose = require('./src/database/index')
 client.devs = require('./util/devs')
 const cooldowns = new Discord.Collection()
 
 
-//Command hendler//
+
 client.on('message', async message => {
 
-
-let archivos = fs.readdirSync('./src/CMDS/').filter((f) => f.endsWith('.js'));
-
-
-for(var archi of archivos){ 
-let comando = require('./src/CMDS/'+archi)
-client.commands.set(comando.nombre, comando)
-}
-
-
-//PREFIX
-let obt = await ModelPrefix.findOne({guildID: message.guild.id}).exec()
-let prefix = obt ? obt.prefix : "m!"
-
-
+  ['cmds'].forEach(x => require(`./src/hendler/${x}`))
 
 //MENCION
 let RegMention = new RegExp(`^<@!?${client.user.id}>( |)$`);
 if (message.content.match(RegMention)) {
-  message.channel.send(`Mi prefix en este servidor es \`${prefix}\` cualquier problema acuda a  \`${prefix}report\``);
-}  
-
-
-if(!message.content.startsWith(prefix)) return;
-
-
-//Hendler
-const args = message.content.slice(prefix.length).trim().split(/ +/);
-const commandName = args.shift().toLowerCase();
-const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.alias && cmd.alias.includes(commandName));
-if (!command) return;
-
-
-//COSas/
-try {
-
- command.run(client, message, args);
-
-
-
-} catch (error) {
-
-
-  console.error(error);
-}
-});
-});
-
+  message.channel.send(`Mi prefix en este servidor es ${prefix}`);
+      }   
+    });
+  });
 
 
 
