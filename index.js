@@ -20,17 +20,7 @@ require('dotenv').config()
 require('./src/database/index')
 const fs = require('fs');
 
-//Presence//
-client.on('ready', () => {
-  let puta = ["Actualizando 0.3.1", "Nuevos comandos!"];
-  setInterval (() => {
-client.user.setPresence({
-  activity: { name: puta[Math.floor(Math.random()* puta.length)], type: "WATCHING"  },
-  status: "online",
-  $browser: "Discord Android" 
-})
-  }, 4000);
-});
+
 
 
 //Console Message//
@@ -40,10 +30,8 @@ console.log(msg.author.tag + ": " + msg.content)
 
 
 
-//GuildMemberAdd//
-  
 
-
+//Guild member add//
 client.on('guildMemberAdd', async (member) => {
   let i = await ModelWelcome.findOne({ guildID: member.guild.id })
   if(!i) return;
@@ -133,7 +121,8 @@ let obt = await ModelPrefix.findOne({guildID: message.guild.id}).exec()
 let prefix = obt ? obt.prefix : "m!"
 
 
-  //MENCION
+
+//MENCION
 let RegMention = new RegExp(`^<@!?${client.user.id}>( |)$`);
 if (message.content.match(RegMention)) {
   message.channel.send(`Mi prefix en este servidor es \`${prefix}\` cualquier problema acuda a  \`${prefix}report\``);
@@ -143,7 +132,7 @@ if (message.content.match(RegMention)) {
 if(!message.content.startsWith(prefix)) return;
 
 
-
+//Hendler
 const args = message.content.slice(prefix.length).trim().split(/ +/);
 const commandName = args.shift().toLowerCase();
 const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.alias && cmd.alias.includes(commandName));
