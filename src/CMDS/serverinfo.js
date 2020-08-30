@@ -27,14 +27,14 @@ const Discord = require('discord.js');
         }
 
         const server = message.guild
-       let roles = message.guild.roles.cache.filter(x => !x.managed).map(x => x).sort((a, b) => b.position - a.position || parseInt(a.id.slice(0, -10)) - parseInt(b.id.slice(0, -10)) || parseInt(a.id.slice(10)) - parseInt(b.id.slice(10)).first(2)[1]).join("\n")
+       let roles = message.guild.roles.cache.filter(x => !x.managed).map(x => x).sort((a, b) => b.position - a.position || parseInt(a.id.slice(0, -10)) - parseInt(b.id.slice(0, -10)) || parseInt(a.id.slice(10)) - parseInt(b.id.slice(10)).first(2)[1]).join(" | ")
         let embed = new Discord.MessageEmbed()
         .setColor('RANDOM')
         .setThumbnail(server.iconURL())
         .setAuthor(server.name, server.iconURL())
         .addField('ID', server.id, true)
         .addField('Owner', server.owner.user.tag, true)
-        .addField('Canales',  server.channels.cache.filter(m => m.type === 'text').size + "/" + server.channels.cache.filter(c => c.type === 'voice').size, true)
+        .addField('Canales',  server.channels.cache.filter(m => m.type === 'text').size + " texto" + " / " + server.channels.cache.filter(c => c.type === 'voice').size + " voz", true)
         .addField('Miembros', server.memberCount, true)
         if(server.emojis){
         embed.addField('Emojis', server.emojis.cache.size, true)
