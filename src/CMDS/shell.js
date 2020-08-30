@@ -1,4 +1,4 @@
-const { Kasake, Melphi, ZorGame} = require('../../../util/devs')
+const { Kasake, Melphi, ZorGame} = require('../../util/devs')
 module.exports = {
     nombre: "shell",
     alias: ["s"],

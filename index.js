@@ -9,6 +9,7 @@ app.listen(port, () => console.log(`Example app listening at http://localhost:${
 
 //Models//
 const ModelWelcome = require('./src/database/models/bienvenidas')
+const ModelPrefix = require('./src/database/models/Prefix')
 
 
 
@@ -21,12 +22,27 @@ const fs = require('fs');
 
 
 
+//Presence//
+client.on('ready', () => {
+  let puta = ["NO TE PONGAS LA MASCARILLA", "NOS ESTAN MANIPULANDO LAS ELITES"];
+  setInterval (() => {
+client.user.setPresence({
+  activity: { name: puta[Math.floor(Math.random()* puta.length)], type: "WATCHING"  },
+  status: "idle",
+})
+  }, 10000);
+});
+
+
+
+
+
 
 //Console Message//
 client.on('message', msg => {
   if(msg.channel.type === "dm" || msg.author.bot) return
 console.log(msg.author.tag + ": " + msg.content)
-
+});
 
 
 
@@ -95,28 +111,58 @@ client.on('guildMemberAdd', async (member) => {
 
 
 //Variables ricas/
-client.cosas = { Boolean }
+client.cosas = { Boolean } 
+client.pornhub = { String }
+client.commands = new Discord.Collection();
 client.prefixes = require('./src/database/models/Prefix')
 client.mongoose = require('./src/database/index')
 client.devs = require('./util/devs')
-const cooldowns = new Discord.Collection()
+
 
 
 
 client.on('message', async message => {
-
-  ['cmds'].forEach(x => require(`./src/hendler/${x}`))
-
-//MENCION
-let RegMention = new RegExp(`^<@!?${client.user.id}>( |)$`);
-if (message.content.match(RegMention)) {
-  message.channel.send(`Mi prefix en este servidor es ${prefix}`);
-      }   
-    });
-  });
-
-
-
+  let archivos = fs.readdirSync('./src/CMDS/').filter((f) => f.endsWith('.js'));
+  
+  
+  for(var archi of archivos){ 
+  let comando = require('./src/CMDS/'+archi)
+  client.commands.set(comando.nombre, comando)
+  }
+  
+  
+  
+  let obt = await ModelPrefix.findOne({guildID: message.guild.id}).exec()
+  let prefix = obt ? obt.prefix : "m!"
+  
+  
+  if(!message.content.startsWith(prefix)) return;
+  
+  
+  
+  const args = message.content.slice(prefix.length).trim().split(/ +/);
+  const commandName = args.shift().toLowerCase();
+  const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.alias && cmd.alias.includes(commandName));
+  if (!command) return;
+  
+  if(message.content.startsWith('.test')){
+    
+  }
+  //COSas/
+  try {
+  
+   command.run(client, message, args);
+  
+  
+  
+  } catch (error) {
+  
+  
+    console.error(error);
+  }
+});  
+  
+  
 
 client.login(process.env.DISCORD_TOKEN).then (() => {
   console.log('Stamo activo papi')

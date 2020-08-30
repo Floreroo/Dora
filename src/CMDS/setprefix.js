@@ -5,7 +5,7 @@ const Discord = require('discord.js');
    alias: ["s-p"],
    run: async (client, message, args) => {
 
-    const ModelPrefix = require('../../database/models/Prefix')
+    const ModelPrefix = require('../database/models/Prefix')
     const { MessageEmbed } = require('discord.js')
     
     if(!message.member.hasPermission("MANAGE_GUILD")){

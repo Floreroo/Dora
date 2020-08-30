@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 
   module.exports = {
-      nombre: "serverinfo",
+      nombre: "server",
       alias: ["s-i"],
       run: (client, message, args) => {
 
@@ -27,7 +27,7 @@ const Discord = require('discord.js');
         }
 
         const server = message.guild
-       let roles = message.guild.roles.cache.filter(x => !x.managed).map(x => x).sort((a, b) => b.position - a.position || parseInt(a.id.slice(0, -10)) - parseInt(b.id.slice(0, -10)) || parseInt(a.id.slice(10)) - parseInt(b.id.slice(10)).first(2)[1]).join(" | ")
+       let roles = message.guild.roles.cache.filter(x => !x.managed).map(x => x).sort((a, b) => b.position - a.position || parseInt(a.id.slice(0, -10)) - parseInt(b.id.slice(0, -10)) || parseInt(a.id.slice(10)) - parseInt(b.id.slice(10)).first(2)[1]).join("\n")
         let embed = new Discord.MessageEmbed()
         .setColor('RANDOM')
         .setThumbnail(server.iconURL())
@@ -36,15 +36,17 @@ const Discord = require('discord.js');
         .addField('Owner', server.owner.user.tag, true)
         .addField('Canales',  server.channels.cache.filter(m => m.type === 'text').size + "/" + server.channels.cache.filter(c => c.type === 'voice').size, true)
         .addField('Miembros', server.memberCount, true)
-        .addField('Emojis', server.emojis.cache.size, true)
-        .addField('Canales(Total)', server.channels.cache.size, true)
+        if(server.emojis){
+        embed.addField('Emojis', server.emojis.cache.size, true)
+        }
+        embed.addField('Canales(Total)', server.channels.cache.size, true)
         .addField('Region', `${region[server.region]}`, true)
         .addField('Nivel de verificación',  server.verificationLevel, true)
         if (server.systemChannel) {
         embed.addField("Canal de sistema", server.systemChannel.toString(), true)
         }
-        embed.addField('Creado el', server.createdAt.toDateString(), true)
-        .addField('Status', `<a:online:733410559965265921>online: ${server.members.cache.filter(c => c.presence.status === 'online').size}\n<a:idle:733410335091851327>idle: ${server.members.cache.filter(c => c.presence.status === 'idle').size}\n<a:dnd:733410068367671360>dnd: ${server.members.cache.filter(c => c.presence.status === 'dnd').size}\n<a:offline:733410777599442964>offline: ${server.members.cache.filter(c => c.presence.status === 'offline').size}` , true)
+        embed.addField('Creado el', server.createdAt.toString(), true)
+        .addField('Status', `<a:online:733410559965265921> ${server.members.cache.filter(c => c.presence.status === 'online').size} | <a:idle:733410335091851327> ${server.members.cache.filter(c => c.presence.status === 'idle').size} | <a:dnd:733410068367671360>  ${server.members.cache.filter(c => c.presence.status === 'dnd').size} | <a:offline:733410777599442964> ${server.members.cache.filter(c => c.presence.status === 'offline').size} | <a:streaming:733411025118036009> ${server.members.cache.filter(c => c.presence.status === 'streaming').size} ` , true)
         .addField("Roles", roles.length > 1000 ? roles.slice(0, 1000)  + "\n Y muchos mas" : roles)
       message.channel.send(embed)
       }
