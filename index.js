@@ -145,9 +145,7 @@ client.on('message', async message => {
   const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.alias && cmd.alias.includes(commandName));
   if (!command) return;
   
-  if(message.content.startsWith('.test')){
-    
-  }
+  
   //COSas/
   try {
   
