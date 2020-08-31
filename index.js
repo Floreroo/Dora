@@ -35,13 +35,6 @@ client.user.setPresence({
 
 
 
-//WebHook Github//
-
-const hook = new Discord.WebhookClient('https://discordapp.com/api/webhooks/750100408646500433/HV8oxegG4S7A_G65h6v8_6rSH-eBczk090F2etXZndHCvjaIVmpb7D7CyewTpIFoMo7l');
-
-// Send a message using the webhook
-
-
 
 //Console Message//
 client.on('message', msg => {
@@ -165,7 +158,7 @@ const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
 
 if (now < expirationTime) {
 const timeLeft = (expirationTime - now) / 1000;
-return message.reply(`${message.author.username}, Debes esperar ${timeLeft.toFixed(1)}sec`).then(m => {
+return message.reply(`debes esperar ${timeLeft.toFixed(1)}sec`).then(m => {
 setTimeout(() => {  
 m.delete()
 }, 10000);
