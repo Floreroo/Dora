@@ -111,17 +111,18 @@ client.on('guildMemberAdd', async (member) => {
 
 
 //Variables ricas/
-client.cosas = { Boolean } 
-client.pornhub = { String }
 client.commands = new Discord.Collection();
 client.prefixes = require('./src/database/models/Prefix')
 client.mongoose = require('./src/database/index')
 client.devs = require('./util/devs')
-
+client.cosas = { Boolean } 
+client.pornhub = { String }
+const cooldowns = new Discord.Collection()
 
 
 
 client.on('message', async message => {
+
   let archivos = fs.readdirSync('./src/CMDS/').filter((f) => f.endsWith('.js'));
   
   
@@ -135,9 +136,11 @@ client.on('message', async message => {
   let obt = await ModelPrefix.findOne({guildID: message.guild.id}).exec()
   let prefix = obt ? obt.prefix : "m!"
   
-  
+  if (message.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))) {
+    message.channel.send(`Mi Prefix en este servidor es \`${prefix}\``)}
+
+    
   if(!message.content.startsWith(prefix)) return;
-  
   
   
   const args = message.content.slice(prefix.length).trim().split(/ +/);
@@ -145,7 +148,28 @@ client.on('message', async message => {
   const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.alias && cmd.alias.includes(commandName));
   if (!command) return;
   
-  
+  if (!cooldowns.has(command.nombre)) {
+    cooldowns.set(command.nombre, new Discord.Collection());
+}
+
+const now = Date.now();
+const timestamps = cooldowns.get(command.nombre);
+const cooldownAmount = (command.cooldown || 2) * 2500;
+if (timestamps.has(message.author.id)) {
+const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+
+if (now < expirationTime) {
+const timeLeft = (expirationTime - now) / 1000;
+return message.reply(`${message.author.username}, Debes esperar ${timeLeft.toFixed(1)}sec`).then(m => {
+setTimeout(() => {  
+m.delete()
+}, 10000);
+})
+}
+}
+
+timestamps.set(message.author.id, now);
+setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
   //COSas/
   try {
   

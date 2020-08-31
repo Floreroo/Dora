@@ -3,6 +3,7 @@ const Discord = require('discord.js');
   module.exports = {
       nombre: "server",
       alias: ["s-i"],
+      cooldown: 5,
       run: (client, message, args) => {
 
     let region = {

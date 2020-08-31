@@ -3,14 +3,15 @@ const Discord = require('discord.js')
   module.exports = {
     name: "userinfo",
     alias: ["u-i"],
+    cooldown: 5,
     run: async (client, message, args) => {
 
  
     let presencestatus = {
-        online: "Online <a:online:733410559965265921>",
-        idle: "Idle <a:idle:733410335091851327>",
-        dnd: "Dnd <a:dnd:733410068367671360>",
-        offline: "Offline <a:offline:733410777599442964>"
+        online: "online <a:online:733410559965265921>",
+        idle: "idle <a:idle:733410335091851327>",
+        dnd: "dnd <a:dnd:733410068367671360>",
+        offline: "offline <a:offline:733410777599442964>"
     }
  
  

@@ -4,6 +4,7 @@ const { Discord, MessageEmbed} = require('discord.js')
 module.exports = {
     nombre: "setwelcome",
     alias:  ["s-w"],
+    cooldown: 5,
     run: async (client, message, args) => {
         let Bienvenida = require('../database/models/bienvenidas')
 

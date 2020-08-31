@@ -3,6 +3,7 @@ const Discord = require('discord.js');
  module.exports = {
    nombre: "setprefix",
    alias: ["s-p"],
+   cooldown: 20,
    run: async (client, message, args) => {
 
     const ModelPrefix = require('../database/models/Prefix')
