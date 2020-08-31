@@ -35,6 +35,11 @@ client.user.setPresence({
 
 
 
+//WebHook Github//
+
+const hook = new Discord.WebhookClient('https://discordapp.com/api/webhooks/750100408646500433/HV8oxegG4S7A_G65h6v8_6rSH-eBczk090F2etXZndHCvjaIVmpb7D7CyewTpIFoMo7l');
+
+// Send a message using the webhook
 
 
 
