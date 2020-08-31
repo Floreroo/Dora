@@ -6,17 +6,19 @@ module.exports = {
     descripcion: "Los comandos del bot",
     run: (client, message, args) => {
     
-        if (!["534951970310586378", "598550433421590544"].includes(message.author.id)) return
+
         let embed2 = new Discord.MessageEmbed()
-        .setFooter("COMANDOS", client.user.displayAvatarURL())    
-        .addField('⚙',  "Configuracion", true)
-        .addField('🤣', "Divertidos", true )
-        .addField('🚗' + "Utilidad")
+        .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
+        .setFooter("COMANDOS", message.guild.iconURL())    
+        .addField('⚙',  "\nConfiguracion", true)
+        .addField('🤣', "\nDivertidos", true )
+        .addField('🔋', "\nUtilidad", true )
         .setColor('RANDOM')
 
 
         let embed1 = new Discord.MessageEmbed()
-        .setFooter("COMANDOS", client.user.displayAvatarURL())  
+        .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
+        .setFooter("COMANDOS", message.guild.iconURL())   
         .setDescription('Espere un segundito...') 
         .setColor('RANDOM')
         message.channel.send(embed1).then(m => {
@@ -28,7 +30,6 @@ module.exports = {
 
         m.react('⚙')
         m.react('🤣')
-        m.react('ℹ')
         m.react('🚗')
         m.react('❌')
 
@@ -49,13 +50,6 @@ module.exports = {
                     .setTitle('Comandos de diversion')
                     .setColor('BLUE')
                     m.edit(embed4)  
-                  }
-  
-                  if (reaction.emoji.name === 'ℹ') {
-                    let embed5 = new Discord.MessageEmbed()
-                    .setTitle('Comandos de Informacion')
-                   .setColor('BLUE')
-                    m.edit(embed5) 
                   }
 
 

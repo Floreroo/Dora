@@ -27,6 +27,7 @@ const Discord = require('discord.js');
           india: "India :flag_in:"
         }
 
+
         const server = message.guild
        let roles = message.guild.roles.cache.filter(x => !x.managed).map(x => x).sort((a, b) => b.position - a.position || parseInt(a.id.slice(0, -10)) - parseInt(b.id.slice(0, -10)) || parseInt(a.id.slice(10)) - parseInt(b.id.slice(10)).first(2)[1]).join(" | ")
         let embed = new Discord.MessageEmbed()

@@ -24,13 +24,13 @@ const fs = require('fs');
 
 //Presence//
 client.on('ready', () => {
-  let puta = ["NO TE PONGAS LA MASCARILLA", "NOS ESTAN MANIPULANDO LAS ELITES"];
+  let puta = ["Dora Dora Dora la exploradora!! Si!! ", "a botas"];
   setInterval (() => {
 client.user.setPresence({
   activity: { name: puta[Math.floor(Math.random()* puta.length)], type: "WATCHING"  },
   status: "idle",
 })
-  }, 10000);
+  }, 20000);
 });
 
 
