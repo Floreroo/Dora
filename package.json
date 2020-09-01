@@ -22,6 +22,7 @@
     "kasake": "^1.0.0",
     "megadb": "^3.4.0",
     "melphi": "^1.0.7",
+    "melphis": "0.0.5",
     "moment": "^2.27.0",
     "moment-duration-format": "^2.3.2",
     "mongodb": "^3.6.0",
