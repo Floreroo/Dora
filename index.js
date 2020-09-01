@@ -34,8 +34,6 @@ client.user.setPresence({
 });
 
 
-
-
 //Console Message//
 client.on('message', msg => {
   if(msg.channel.type === "dm" || msg.author.bot) return

@@ -1,17 +1,17 @@
 const Discord = require('discord.js')
 
   module.exports = {
-    name: "userinfo",
+    nombre: "userinfo",
     alias: ["u-i"],
     cooldown: 5,
     run: async (client, message, args) => {
 
  
     let presencestatus = {
-        online: "online <a:online:733410559965265921>",
-        idle: "idle <a:idle:733410335091851327>",
-        dnd: "dnd <a:dnd:733410068367671360>",
-        offline: "offline <a:offline:733410777599442964>"
+      "online":" <a:online:733410559965265921> | En linea",
+      "idle":"<a:idle:733410335091851327> | Ausente",
+      "dnd":"<a:dnd:733410068367671360> | No Molestar",
+      "invisible":"<a:offline:733410777599442964> | Invisible/Desconectado",
     }
  
  
@@ -28,7 +28,7 @@ const Discord = require('discord.js')
       "VERIFIED_DEVELOPER":"<:VerifiedBotDeveloper:730664032591413299>",
       "HOUSE_BALANCE": " <:HypeSquadBalance:730664031937101921>",
       "TEAM_USER":"<:Team_User:740667003479785534>",
-      "VERIFIED_BOT":"<:Bot:741007909990694962>"
+      "VERIFIED_BOT":"<:Bot:750347018106306590>"
       
   }
 
@@ -47,7 +47,7 @@ const miembro = await message.guild.members.fetch(owo);
     .addField(`Status`,` ${presencestatus[owo.presence.status]}`, true)
     uo.addField('Insignias', `${owo.flags.toArray().length < 1 ? `No tiene` : owo.flags.toArray().map(e => badges[e]).join(' ')}`, true)
     uo.addField(`Ha entrado en ${server.name}`, miembro.joinedAt, true)
-    .addField('Se ha logineado en discord', owo.createdAt)
+    .addField('Se ha logeado en discord', owo.createdAt)
     .addField('Roles', `${miembro.roles.cache.map(c => c.toString()).join(' | ')}`, true)
     .setThumbnail(owo.displayAvatarURL({dynamic: true}))
     .setColor('RANDOM')
