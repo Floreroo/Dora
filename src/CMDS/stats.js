@@ -24,7 +24,7 @@ const p = promisify(cpuStat.usagePercent);
         .addField("CANALES", client.channels.cache.size, true)
         .addField("VERSION", client.version, true)
         .addField("CPU",  `\`\`\`md\n${os.cpus().map(i => `${i.model}`)[0]}\`\`\`` )
-        .setFooter(client.user.username + "stats")
+        .setFooter(message.member.user.tag, message.author.displayAvatarURL())
         .setColor('RANDOM')
         message.channel.send(embed)
 

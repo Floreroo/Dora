@@ -21,7 +21,7 @@ module.exports = {
 
     },
 
-    nombre: "apagar",
-    alias: [""]
+    nombre: "client-stop",
+    alias: ["c-s"]
 
 }
