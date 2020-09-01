@@ -14,11 +14,17 @@ const p = promisify(cpuStat.usagePercent);
 
         let percent = await p();
         const embed = new Discord.MessageEmbed()
+        .setAuthor(client.user.tag, client.user.displayAvatarURL())
         .addField("RAM", `${memory(os.totalmem() - os.freemem(), false)} / ${memory(os.totalmem())}`, true)
         .addField("UPTIME", `${moment.duration(Date.now() - client.readyTimestamp, "ms").format("d [days], h [hours], m [minutes]")}`, true)
         .addField("NODE.JS", `${process.version}`, true)
         .addField("DISCORD.JS", `${Discord.version}`, true)
-        .addField("CPU", )
+        .addField("USUARIOS", client.users.cache.size, true)
+        .addField("SERVIDORES", client.guilds.cache.size, true)
+        .addField("CANALES", client.channels.cache.size, true)
+        .addField("VERSION", client.version, true)
+        .addField("CPU",  `\`\`\`md\n${os.cpus().map(i => `${i.model}`)[0]}\`\`\`` )
+        .setFooter(client.user.username + "stats")
         .setColor('RANDOM')
         message.channel.send(embed)
 

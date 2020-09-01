@@ -111,6 +111,7 @@ client.commands = new Discord.Collection();
 client.prefixes = require('./src/database/models/Prefix')
 client.mongoose = require('./src/database/index')
 client.devs = require('./util/devs')
+client.version = "0.5.9"
 client.cosas = { Boolean } 
 client.pornhub = { String }
 const cooldowns = new Discord.Collection()
