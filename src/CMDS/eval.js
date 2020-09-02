@@ -39,16 +39,17 @@ const tokenfalso = new Discord.MessageEmbed()
   
   
         try {
-          let evaluated = await eval(args.slice(1).join(" "));
+          let evaluated = await eval(code);
+          let tipo = typeof(evaluated)
           if (typeof evaluated !== "string") evaluated = require("util").inspect(evaluated, { depth: 0 });
-          const arr = Discord.Util.splitMessage(evaluated, { maxLength: 1950 });
-          message.channel.send(arr[0], { code: "js" });
+           evaluated = Discord.Util.splitMessage(evaluated, { maxLength: 1950 });
+
        
 const embed1 = new Discord.MessageEmbed()
 .setTitle(`Evaluado en ` + client.ws.ping +"ms")
 .addField("Tipo", `\`\`\`js\n${tipo}\`\`\``)
 .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
-.addField("Salida", `\`\`\`js\n${arr}\`\`\``)
+.addField("Salida", `\`\`\`js\n${evaluated.slice(0, 1010)}\`\`\``)
 .setTimestamp()
 .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
 .setColor('RANDOM')

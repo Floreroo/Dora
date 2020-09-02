@@ -8,13 +8,18 @@ module.exports = {
     
 
         let embed2 = new Discord.MessageEmbed()
-        .setAuthor(message.member.user.tag, message.author.displayAvatarURL())  
-        .addField('Comandos', "⚙Configuracion" + "\n 😂Diversion" + "\n 🔋Utilidad", true)
+        .setAuthor('INFORMACION', message.guild.iconURL())
+        .setFooter(message.member.user.tag, message.author.displayAvatarURL())  
+        .addField('Escoje uno \n \n \n \n', "⚙ Configuracion\n" + "\n 😂 Diversion\n" + "\n 🔋 Utilidad", true)
         .setColor('RANDOM')
 
-
-       
-        message.channel.send("Cargando emojis...").then(m => {
+        
+       let c = new Discord.MessageEmbed()
+       .setAuthor('INFORMACION', message.guild.iconURL())
+       .setFooter(message.member.user.tag, message.author.displayAvatarURL())
+       .setDescription('Espere un segundito...')  
+       .setColor("RANDOM")
+        message.channel.send(c).then(m => {
         setTimeout(() => {
         m.edit(embed2)
     }, 4000)
@@ -22,7 +27,7 @@ module.exports = {
            
 
         m.react('⚙')
-        m.react('🤣')
+        m.react('😂')
         m.react('🔋')
         m.react('❌')
 
@@ -33,14 +38,14 @@ module.exports = {
                     if (message.author.id !== user.id) return;
                    if (reaction.emoji.name === '⚙') { 
                     let embed3 = new Discord.MessageEmbed()
-                    .addField("Comandos de configuracion", "`setprefix`, `setwelcome`")
+                    .addField("Configuracion", "`setprefix`, `setwelcome`")
                     .setColor('RANDOM')
                     m.edit(embed3)
                     }
 
                   if (reaction.emoji.name === '😂') { 
                     let embed4 = new Discord.MessageEmbed()
-                    .setTitle('Comandos de diversion')
+                    .addField("Diversion", "`8ball`, `say` `sayimage`")
                     .setColor('RANDOM')
                     m.edit(embed4)  
                   }
@@ -48,10 +53,11 @@ module.exports = {
 
                  if (reaction.emoji.name === '🔋') { 
                      let embed5 = new Discord.MessageEmbed()
-                     .addField("Comandos de utilidad", "`setprefix`, `setlang`, `clear`, `afk`, `invite`, `say`, `esay`")
+                    .addField("Utilidad",  "`avatar`  `botinvite`  `ping`  `server`  `user`  `rolelist`  `stats`")
                     .setColor('RANDOM')
                      m.edit(embed5)
                 }
+
 
                 if (reaction.emoji.name === '❌') { 
                     m.delete()
