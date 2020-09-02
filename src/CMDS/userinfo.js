@@ -35,7 +35,9 @@ const Discord = require('discord.js')
 
     const owo = message.mentions.users.first() || client.users.cache.get(args[0]) ||message.author;
     const server = message.guild
+    let estados = owo.presence.activities.map(m => m.type == 'CUSTOM_STATUS')
 const miembro = await message.guild.members.fetch(owo);
+
     const uo = new Discord.MessageEmbed()
     uo.setAuthor(owo.tag, owo.displayAvatarURL({dynamic: true}))
 
@@ -51,7 +53,7 @@ const miembro = await message.guild.members.fetch(owo);
 
     .addField("Jugando a:",  owo.presence.activities[0].name || 'Nada.', true)
 
-    if( owo.presence.activities[0].state){
+    if(estados){
     uo.addField("Custom status:", owo.presence.activities[0] != null ? owo.presence.activities[0].state : 'No tiene.', true)
     }
 
