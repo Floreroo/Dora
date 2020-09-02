@@ -1,12 +1,3 @@
-const express = require('express');
-const app = express();
-const port = 3500;
-
-app.get('/', (req, res) => res.send('24/7'));
-
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
-
-
 //Models//
 const ModelWelcome = require('./src/database/models/bienvenidas')
 const ModelPrefix = require('./src/database/models/Prefix')
@@ -16,6 +7,7 @@ const ModelPrefix = require('./src/database/models/Prefix')
 //Variables//
 const Discord = require('discord.js')
 const client = new Discord.Client({ $browser: "Discord Android" })
+const Canvas = require('canvas')
 require('dotenv').config()
 require('./src/database/index')
 const fs = require('fs');
@@ -42,68 +34,57 @@ console.log(msg.author.tag + ": " + msg.content)
 
 
 
-//Guild member add//
+//Guild member add/
+
+
 client.on('guildMemberAdd', async (member) => {
   let i = await ModelWelcome.findOne({ guildID: member.guild.id })
   if(!i) return;
   const channel = member.guild.channels.cache.get(i.channelID)
   if(!channel) return;
-	channel.send(`Bienvenido ${member} a ${member.guild.name}`)
-  const {createCanvas, loadImage } = require('canvas');
-  const canvas = createCanvas(500, 200);
-  const ctx = canvas.getContext('2d');
-  
-  
-  
-  const background = await loadImage('https://becauseofthesethings.files.wordpress.com/2013/11/lazerhawkferrari.jpg')
-  ctx.drawImage(background, 0 , 0, canvas.width, canvas.height);
-  
-  
-  ctx.strokeStyle = '#FF4200'
-  ctx.strokeRect(0, 0, canvas.width, canvas.height)
-  
-  
-  ctx.fillStyle = '#FF4200'
-  var size1 = 40;
-  var size2 = 30;
-  var size3 = 23;
-  
-  var Bienvenida = "Bienvenid@"
-  
-   do{
-       ctx.font = `${size1 -= 5}px Berlin Sans FB`
-   } while(ctx.measureText(Bienvenida).whith > canvas.width - 225);
-     ctx.fillText(Bienvenida, 200, 65)
-     ctx.fillStyle = '#FF4200'
-   
-  var usuario =  `${member.user.tag}`
-  do{
-      ctx.font = `${size2 -= 5}px Berlin Sans FB`
-  } while(ctx.measureText(usuario).whith > canvas.width - 225);
-  ctx.fillText(usuario, 200, 110)
-  ctx.fillStyle = 'FF4200'
+	channel.send(`Bienvenid@ ${member} a ${member.guild.name}`)
 
-  var joined = `Bienvenid@ a ${member.guild.name}`;
+  let fontSize = 70;
   
-   do{   
-       ctx.font = `${size3 -= 5}px Berlin Sans FB`
-   } while(ctx.measureText(joined).whith > canvas.width - 225);
-   ctx.fillText(joined, 200, 145)
-   ctx.fillStyle = '#FFE800'
+  const imagen = Canvas.createCanvas(700, 250); 
+  const ctx = imagen.getContext('2d')
 
-   ctx.beginPath();
-   ctx.arc(100, 100, 75, 0, Math.PI * 2, true)
-   ctx.textAlign = "center"
-   ctx.closePath();
-   ctx.clip();
 
-      const avatar = await loadImage(member.user.displayAvatarURL({format: "jpg", dynamic: true}));
-   ctx.drawImage(avatar, 25, 25, 150, 150)
+
+
+
+
+  const background = await Canvas.loadImage('https://bangbranding.com/blog/wp-content/uploads/2016/11/700x511_SliderInterior.jpg');
+  ctx.drawImage(background, 0, 0, imagen.width, imagen.height);
   
-  const Attachment = new Discord.MessageAttachment(canvas.toBuffer(), "canvas.jpg");
-  channel.send(Attachment)  
-});
+  ctx.strokeStyle = '#74037b';
+  ctx.strokeRect(0, 0, imagen.width, imagen.height);
+    
 
+
+  
+    ctx.font = '28px sans-serif';
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(`Bienvenido ${member}`, imagen.width / 2.5, imagen.height / 3.5);
+  
+    ctx.font = (imagen, `${member.displayName}!`);
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(`${member.displayName}!`, imagen.width / 2.5, imagen.height / 1.8);
+    
+  
+    ctx.beginPath();
+    ctx.arc(125, 125, 100, 0, Math.PI * 2, true);
+    ctx.closePath();
+    ctx.clip();
+    
+  const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg', size: 2048, dynamic: true }));
+  ctx.drawImage(avatar, 25, 25, 200, 200);
+
+  const attachment = new Discord.MessageAttachment(imagen.toBuffer(), 'bienvenida.png');
+  channel.send(attachment)
+
+})
+  
 
 
 //Variables ricas/

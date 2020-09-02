@@ -8,20 +8,13 @@ module.exports = {
     
 
         let embed2 = new Discord.MessageEmbed()
-        .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
-        .setFooter("COMANDOS", message.guild.iconURL())    
-        .addField('⚙',  "\nConfiguracion", true)
-        .addField('🤣', "\nDivertidos", true )
-        .addField('🔋', "\nUtilidad", true )
+        .setAuthor(message.member.user.tag, message.author.displayAvatarURL())  
+        .addField('Comandos', "⚙Configuracion" + "\n 😂Diversion" + "\n 🔋Utilidad", true)
         .setColor('RANDOM')
 
 
-        let embed1 = new Discord.MessageEmbed()
-        .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
-        .setFooter("COMANDOS", message.guild.iconURL())   
-        .setDescription('Espere un segundito...') 
-        .setColor('RANDOM')
-        message.channel.send(embed1).then(m => {
+       
+        message.channel.send("Cargando emojis...").then(m => {
         setTimeout(() => {
         m.edit(embed2)
     }, 4000)
@@ -30,7 +23,7 @@ module.exports = {
 
         m.react('⚙')
         m.react('🤣')
-        m.react('🚗')
+        m.react('🔋')
         m.react('❌')
 
              m.awaitReactions(
@@ -40,23 +33,23 @@ module.exports = {
                     if (message.author.id !== user.id) return;
                    if (reaction.emoji.name === '⚙') { 
                     let embed3 = new Discord.MessageEmbed()
-                    .setTitle('Comandos de configuracion')
-                    .setColor('BLUE')
+                    .addField("Comandos de configuracion", "`setprefix`, `setwelcome`")
+                    .setColor('RANDOM')
                     m.edit(embed3)
                     }
 
-                  if (reaction.emoji.name === '🤣') { 
+                  if (reaction.emoji.name === '😂') { 
                     let embed4 = new Discord.MessageEmbed()
                     .setTitle('Comandos de diversion')
-                    .setColor('BLUE')
+                    .setColor('RANDOM')
                     m.edit(embed4)  
                   }
 
 
-                 if (reaction.emoji.name === '🚗') { 
+                 if (reaction.emoji.name === '🔋') { 
                      let embed5 = new Discord.MessageEmbed()
-                     .setTitle('Comandos de utilidad')
-                    .setColor('BLUE')
+                     .addField("Comandos de utilidad", "`setprefix`, `setlang`, `clear`, `afk`, `invite`, `say`, `esay`")
+                    .setColor('RANDOM')
                      m.edit(embed5)
                 }
 
