@@ -63,7 +63,7 @@ const miembro = await message.guild.members.fetch(owo);
 
     .addField('Se ha logeado en discord', owo.createdAt, true)
 
-    .addField('Roles', `${miembro.roles.cache.map(c => c.toString()).join(' | ')}`, true)
+    .addField('Roles', `${miembro.roles.cache.map(c => c.toString()).join(' | ')}`)
 
     .setThumbnail(owo.displayAvatarURL({dynamic: true}))
 
