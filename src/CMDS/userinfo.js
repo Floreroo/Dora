@@ -32,36 +32,45 @@ const Discord = require('discord.js')
       
   }
 
-    try{
-      if(args.join(" ").toLowerCase().includes("efdnnwrkrf,ejwnrfke")){
-    }
+
     const owo = message.mentions.users.first() || client.users.cache.get(args[0]) ||message.author;
     const server = message.guild
-    let estados = owo.presence.activities.map(m => m.type == 'CUSTOM_STATUS')
 const miembro = await message.guild.members.fetch(owo);
     const uo = new Discord.MessageEmbed()
     uo.setAuthor(owo.tag, owo.displayAvatarURL({dynamic: true}))
+
     .addField('Ping', "\n" + owo.toString() ,true)
+
     .addField('ID', owo.id, true)
+
     .addField("Apodo", message.guild.member(owo).nickname != null ? message.guild.member(owo).nickname : "No tiene.", true)
+
     .addField('Bot?', owo.bot ? "Si" : "No", true)
+
     .addField('Role destacado', message.guild.member(owo).roles.highest.toString(), true)
+
     .addField("Jugando a:",  owo.presence.activities[0].name || 'Nada.', true)
-    .addField("Custom status:", owo.presence.activities[0] ? owo.presence.activities[0].state : 'No tiene.', true)
-    uo.addField(`Status`,` ${presencestatus[owo.presence.status]}`, true)
-    if(owo.flags){
-    uo.addField('Insignias', `${owo.flags.toArray().length < 1 ? `No tiene` : owo.flags.toArray().map(e => badges[e]).join(' ')}`, true)
+
+    if( owo.presence.activities[0].state){
+    uo.addField("Custom status:", owo.presence.activities[0] != null ? owo.presence.activities[0].state : 'No tiene.', true)
     }
+
+    uo.addField(`Status`,` ${presencestatus[owo.presence.status]}`, true)
+
+    uo.addField('Insignias', `${owo.flags.toArray().length < 1 ? `No tiene` : owo.flags.toArray().map(e => badges[e]).join(' ')}`, true)
+    
     uo.addField(`Ha entrado en ${server.name}`, miembro.joinedAt, true)
-    .addField('Se ha logeado en discord', owo.createdAt)
+
+    .addField('Se ha logeado en discord', owo.createdAt, true)
+
     .addField('Roles', `${miembro.roles.cache.map(c => c.toString()).join(' | ')}`, true)
+
     .setThumbnail(owo.displayAvatarURL({dynamic: true}))
+
     .setColor('RANDOM')
+
   message.channel.send(uo)
   
-} catch(err) {
-  message.channel.send("Error: " + `\`\`\`js\n${err}\`\`\``)
-}
 
      
      }
