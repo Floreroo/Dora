@@ -1,14 +1,25 @@
 const Discord = require('discord.js');
 
-module.exports = {
-    nombre: "botinvite",
-    alias: ["b-i"],
-    descripcion: "Los comandos del bot",
-    run: (client, message, args) => {
+const Base = require('../../base/Commands')
 
+class botinvite extends Base {
+    constructor(client){
+        super(client, {
+            name: 'botinvite',
+            description: 'Invita a un bot.',
+            usage: 'botinvite <Mencion/Id>',
+            category: 'Utilidad',
+            cooldown: 2000,
+            alias: ["b-i"],
+            permLevel: 0,
+            permission: "READ_MESSAGES"
 
+        })
+    }
+    
+run(message, args) {
 
-        const u = message.mentions.users.first() || client.users.resolve(args[0]);
+        const u = message.mentions.users.first() || this.client.users.resolve(args[0]);
         if(!args[0]) return  message.channel.send('Debes poner la id del bot al que quieras invitar')
          if(!u.bot) return message.channel.send('Solo puedes invitar a los bots')
         const embed = new Discord.MessageEmbed()
@@ -26,3 +37,6 @@ module.exports = {
     
      }
     }
+
+
+ module.exports = botinvite

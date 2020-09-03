@@ -1,14 +1,29 @@
 const Discord = require('discord.js')
 
 
- module.exports = {
-     nombre: "rolelist",
-     alias: ["r-l"],
-     run: (client, message, args) => {
+const Base = require('../../base/Commands')
 
-        let roles =  message.guild.roles.cache.filter(x => !x.managed).map(x => x).sort((a, b) => b.position - a.position || parseInt(a.id.slice(0, -10)) - parseInt(b.id.slice(0, -10)) || parseInt(a.id.slice(10)) - parseInt(b.id.slice(10)).first(2)[1]).join("\n")
+class rolelist extends Base {
+    constructor(client){
+        super(client, {
+            name: 'rolelist',
+            description: 'Muestra los roles del servidor',
+            usage: '',
+            category: 'Utilidad',
+            cooldown: 2000,
+            alias: ["r-l"],
+            permLevel: 0,
+            permission: "READ_MESSAGES"
+
+        })
+    }
+    
+run(message, args) {
+
+    let pene = this.client.guilds.resolve(args[0])
+        let roles =  pene.roles.cache.filter(x => !x.managed).map(x => x).sort((a, b) => b.position - a.position || parseInt(a.id.slice(0, -10)) - parseInt(b.id.slice(0, -10)) || parseInt(a.id.slice(10)) - parseInt(b.id.slice(10)).first(2)[1]).join("\n")
     const embed = new Discord.MessageEmbed()
-    .setAuthor(message.guild.name, message.guild.iconURL())
+    .setAuthor(pene.name, pene.iconURL())
     .addField("Roles", roles.length > 1000 ? roles.slice(0, 1000)  + "\n Y muchos mas" : roles)
     .setTimestamp()
     .setColor('RANDOM')
@@ -16,3 +31,5 @@ const Discord = require('discord.js')
     message.channel.send(embed)
      }
  }
+
+ module.exports = rolelist

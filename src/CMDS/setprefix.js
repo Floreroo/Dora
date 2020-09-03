@@ -1,10 +1,23 @@
 const Discord = require('discord.js');
 
- module.exports = {
-   nombre: "setprefix",
-   alias: ["s-p"],
-   cooldown: 20,
-   run: async (client, message, args) => {
+const Base = require('../../base/Commands')
+
+class setprefix extends Base {
+    constructor(client){
+        super(client, {
+            name: 'setprefix',
+            description: 'Establece el prefix en un servidor',
+            usage: 'setprefix <prefix>',
+            category: 'Configuracion',
+            cooldown: 2000,
+            alias: ["s-p"],
+            permLevel: 0,
+            permission: "READ_MESSAGES"
+
+        })
+    }
+    
+async run(message, args) {
 
     const ModelPrefix = require('../database/models/Prefix')
     const { MessageEmbed } = require('discord.js')
@@ -36,3 +49,5 @@ const Discord = require('discord.js');
     message.channel.send(embed2)
     
     }}}
+
+    module.exports = setprefix

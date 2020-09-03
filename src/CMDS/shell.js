@@ -1,9 +1,22 @@
 const { Kasake, Melphi, ZorGame} = require('../../util/devs')
-module.exports = {
-    nombre: "shell",
-    alias: ["s"],
-    run: async (client, message, args) => {
+const Base = require('../../base/Commands')
 
+class shell extends Base {
+    constructor(client){
+        super(client, {
+            name: 'shell',
+            description: 'npm',
+            usage: 'shell',
+            category: 'Dev',
+            cooldown: 2000,
+            alias: ["sh"],
+            permLevel: 0,
+            permission: "READ_MESSAGES"
+
+        })
+    }
+    
+run(message, args) {
         
  const Discord = require('discord.js');
  const { exec } = require('child_process')
@@ -27,3 +40,5 @@ message.channel.send(enved)
 
     }
 }
+
+module.exports = shell

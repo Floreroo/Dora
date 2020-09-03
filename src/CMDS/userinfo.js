@@ -1,13 +1,26 @@
-const Discord = require('discord.js')
+const Discord = require('discord.js');
+const { userInfo } = require('os');
 
-  module.exports = {
-    nombre: "userinfo",
-    alias: ["u-i"],
-    cooldown: 5,
-    run: async (client, message, args) => {
+const Base = require('../../base/Commands')
 
- //Variables//
+class UsErInFo extends Base {
+    constructor(client){
+        super(client, {
+            name: 'user',
+            description: 'Muestra la informacion de un usuario',
+            usage: 'userinfo <mencion/id/tu>',
+            category: 'Informacion',
+            cooldown: 2000,
+            alias: ["u-i"],
+            permLevel: 0,
+            permission: "READ_MESSAGES"
+
+        })
+    }
+    
+async run(message, args) {
  
+
  const owo = message.mentions.users.first() || client.users.cache.get(args[0]) ||message.author;
  const server = message.guild
 
@@ -106,3 +119,6 @@ const miembro = await message.guild.members.fetch(owo);
      
      }
   }
+
+
+  module.exports = UsErInFo

@@ -1,13 +1,25 @@
 const Discord = require('discord.js')
 const { Kasake, Melphi, ZorGame} = require('../../util/devs')
 
+const Base = require('../../base/Commands')
 
-module.exports = {
-  nombre: "eval",
-  alias: ["e"],
-  descripcion: "Evalua tu codigo",
-  run: async (client, message, args) => {
+class Eval extends Base {
 
+    constructor(client){
+        super(client, {
+            name: 'eval',
+            description: 'Evalua el codigo',
+            usage: 'eval <code>',
+            category: 'Dev',
+            cooldown: 2000,
+            alias: ["e"],
+            permLevel: 0,
+            permission: "READ_MESSAGES"
+
+        })
+    }
+    
+async run (message, args) {
 
 
  //embed de token falso xd//
@@ -30,26 +42,52 @@ const tokenfalso = new Discord.MessageEmbed()
   let code = args.join(' ')
   if(!code) return message.channel.send('Necesitas evaluar algo').then(m => m.delete({timeout: 4000}))
 
-
-    if(args.join(' ').toLowerCase().includes('token')){
-     return message.channel.send(tokenfalso)
-    }
+  const util = require('util');
+        
+  function clean(text) {
+  if (typeof text === 'string')
+  return text
+  .replace(/`/g, '`' + String.fromCharCode(8203))
+  .replace(/@/g, '@' + String.fromCharCode(8203))
+  else return text
+          
+  }
+          
   
-   
+  try {
+          
+  let output = clean(await eval(code));
+  let type = typeof output;
+  if (typeof output !== 'string') {
+  output = util.inspect(output, { depth: 0 });
+          
+  }
+          
+  if (output.length >= 1020) {
+  console.log(output)
+  let long = new Discord.MessageEmbed()
+  .setDescription(`\`\`\`fix\nLímites del Embed excedidos: verifique la consola. (${output.length} caracteres)\n\`\`\``)
+  .setColor('RANDOM')
+  message.channel.send(long)
+  }
+          
+  while (true) {
+          
+  if (!output.toLowerCase().includes("token")) {
   
-  
-        try {
-          let evaluated = await eval(code);
-          let tipo = typeof(evaluated)
-          if (typeof evaluated !== "string") evaluated = require("util").inspect(evaluated, { depth: 0 });
-           evaluated = Discord.Util.splitMessage(evaluated, { maxLength: 1950 });
-
+  break
+          
+  }
+          
+  output = output.replace(process.env.DISCORD_TOKEN, "A alguien que le gusta chupar pingo quiere ver mi token.")
+          
+  }
        
 const embed1 = new Discord.MessageEmbed()
-.setTitle(`Evaluado en ` + client.ws.ping +"ms")
-.addField("Tipo", `\`\`\`js\n${tipo}\`\`\``)
+.setTitle(`Evaluado en ` + this.client.ws.ping +"ms")
+.addField("Tipo", `\`\`\`prolog\n${type.substring(0, 1).toUpperCase() + type.substring(1)}\`\`\``)
 .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
-.addField("Salida", `\`\`\`js\n${evaluated.slice(0, 1010)}\`\`\``)
+.addField("Salida", `\`\`\`js\n${output}\`\`\``)
 .setTimestamp()
 .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
 .setColor('RANDOM')
@@ -60,11 +98,14 @@ message.channel.send(embed1)
      .setTitle('Error')
      .setTimestamp()
         .setColor('ff0000')
+        .addField("Tipo", `\`\`\`js\n${err.name}\`\`\``)
         .addField("Codigo", `\`\`\`js\n${code}\`\`\``)
         .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
-    .addField("Error", `\`\`\`js\n${err}\`\`\``)
+    .addField("Error", `\`\`\`js\n${err.message}\`\`\``)
     message.channel.send(embed2)
     
      }
 }};
 
+
+module.exports = Eval

@@ -1,11 +1,25 @@
 const { Discord, MessageEmbed} = require('discord.js')
 
+const Base = require('../../base/Commands')
 
-module.exports = {
-    nombre: "setwelcome",
-    alias:  ["s-w"],
-    cooldown: 5,
-    run: async (client, message, args) => {
+class setwelcome extends Base {
+    constructor(client){
+        super(client, {
+            name: 'setwelcome',
+            description: 'Establecer',
+            usage: 'Configuracion',
+            category: '',
+            cooldown: 2000,
+            alias: [],
+            permLevel: 0,
+            permission: "READ_MESSAGES"
+
+        })
+    }
+    
+async run(message, args) {
+
+
         let Bienvenida = require('../database/models/bienvenidas')
 
 if(!message.member.hasPermission("MANAGE_GUILD")){
@@ -37,3 +51,5 @@ let embed2 = new MessageEmbed()
 message.channel.send(embed2)}
     }
 }
+
+module.exports = setwelcome

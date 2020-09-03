@@ -1,11 +1,24 @@
 const Discord = require('discord.js');
 
-module.exports = {
-    nombre: "help",
-    alias: ["comandos"],
-    descripcion: "Los comandos del bot",
-    run: (client, message, args) => {
+const Base = require('../../base/Commands')
+
+class help extends Base {
+    constructor(client){
+        super(client, {
+            name: 'help',
+            description: 'Comando de informacion',
+            usage: 'help',
+            category: 'Informacion',
+            cooldown: 2000,
+            alias: ["comandos"],
+            permLevel: 0,
+            permission: "READ_MESSAGES"
+
+        })
+    }
     
+run(message, args) {
+      
 
         let embed2 = new Discord.MessageEmbed()
         .setAuthor('INFORMACION', message.guild.iconURL())
@@ -68,3 +81,5 @@ module.exports = {
 
     } 
 }
+
+   module.exports = help

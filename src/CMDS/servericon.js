@@ -1,13 +1,24 @@
 
 const Discord = require('discord.js');
+const Base = require('../../base/Commands');
 
-module.exports = {
-      nombre: "servericon",
-      alias: ["s-ic"],
-      cooldown: 5,
-      descripcion: "Muestra el icono del servidor",
-      run: (client, message, args) => {
-     
+
+class servericon extends Base {
+    constructor(client){
+        super(client, {
+            name: 'icon',
+            description: 'Muestra el avatar del servidor.',
+            usage: '',
+            category: 'Utilidad',
+            cooldown: 2000,
+            alias: ["s-ic"],
+            permLevel: 0,
+            permission: "READ_MESSAGES"
+
+        })
+    }
+    
+run(message, args) {
 
          let server = message.guild
            let embed = new Discord.MessageEmbed()
@@ -18,3 +29,5 @@ module.exports = {
            message.channel.send(embed)
             }
       }
+
+      module.exports = servericon

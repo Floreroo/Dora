@@ -1,10 +1,22 @@
 const Discord = require('discord.js');
+const Base = require('../../base/Commands')
 
-  module.exports = {
-      nombre: "server",
-      alias: ["s-i"],
-      cooldown: 5,
-      run: (client, message, args) => {
+class serverinfo extends Base {
+    constructor(client){
+        super(client, {
+            name: 'server',
+            description: 'Muestra la informacion del servidor',
+            usage: 'server <server>',
+            category: 'Informacion',
+            cooldown: 2000,
+            alias: ["s-i"],
+            permLevel: 0,
+            permission: "READ_MESSAGES"
+
+        })
+    }
+    
+run(message, args) {
 
     let region = {
           europe: "Europa :flag_eu:",
@@ -28,8 +40,8 @@ const Discord = require('discord.js');
         }
 
 
-        const server = message.guild
-       let roles = message.guild.roles.cache.filter(x => !x.managed).map(x => x).sort((a, b) => b.position - a.position || parseInt(a.id.slice(0, -10)) - parseInt(b.id.slice(0, -10)) || parseInt(a.id.slice(10)) - parseInt(b.id.slice(10)).first(2)[1]).join(" | ")
+        const server = this.client.guilds.resolve(args[0]) || message.guild
+       let roles = server.roles.cache.filter(x => !x.managed).map(x => x).sort((a, b) => b.position - a.position || parseInt(a.id.slice(0, -10)) - parseInt(b.id.slice(0, -10)) || parseInt(a.id.slice(10)) - parseInt(b.id.slice(10)).first(2)[1]).join(" | ")
         let embed = new Discord.MessageEmbed()
         .setColor('RANDOM')
         .setThumbnail(server.iconURL())
@@ -53,3 +65,5 @@ const Discord = require('discord.js');
       message.channel.send(embed)
       }
   }
+
+  module.exports = serverinfo

@@ -5,12 +5,24 @@ const moment = require("moment")
 require("moment-duration-format");
 const { promisify } = require("util");
 const p = promisify(cpuStat.usagePercent);
+const Base = require('../../base/Commands')
 
-  module.exports = {
-      nombre: "stats",
-      alias: ["botstats"],
-      cooldown: 2,
-      run: async (client, message, args) => {
+class stats extends Base {
+    constructor(client){
+        super(client, {
+            name: 'stats',
+            description: 'Muesta los stats del bot',
+            usage: '',
+            category: 'Informacion',
+            cooldown: 2000,
+            alias: ["botstats"],
+            permLevel: 0,
+            permission: "READ_MESSAGES"
+
+        })
+    }
+    
+async run(message, args) {
 
         let percent = await p();
         const embed = new Discord.MessageEmbed()
@@ -18,6 +30,8 @@ const p = promisify(cpuStat.usagePercent);
         .addField("RAM", `${memory(os.totalmem() - os.freemem(), false)} / ${memory(os.totalmem())}`, true)
         .addField("UPTIME", `${moment.duration(Date.now() - client.readyTimestamp, "ms").format("d [days], h [hours], m [minutes]")}`, true)
         .addField("NODE.JS", `${process.version}`, true)
+        .addField("COMANDOS", client.commands.size, true)
+        .addField("CATEGORIAS", "4", true)
         .addField("DISCORD.JS", `${Discord.version}`, true)
         .addField("USUARIOS", client.users.cache.size, true)
         .addField("SERVIDORES", client.guilds.cache.size, true)
@@ -50,3 +64,5 @@ function memory(bytes = 0, r = true){
   
   return `${bytes.toFixed(2)} ${r ? "B" : ""}`;
 }
+
+module.exports = stats
