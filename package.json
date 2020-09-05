@@ -20,6 +20,8 @@
     "discord.js": "^12.3.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "init": "^0.1.2",
     "kasake": "^1.0.0",
     "megadb": "^3.4.0",
     "melphi": "^1.0.7",
@@ -33,9 +35,11 @@
     "node": "^14.8.0",
     "os": "^0.1.1",
     "pene": "^1.0.0",
+    "pornhub": "0.0.5",
     "reborn": "0.0.0",
     "vscode": "^1.1.37",
-    "weez": "^1.6.1"
+    "weez": "^1.6.1",
+    "yarn": "^1.22.5"
   },
   "devDependencies": {},
   "repository": {

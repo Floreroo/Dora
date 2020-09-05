@@ -28,14 +28,14 @@ class Command {
                permLevel: options.permLevel || 0,
                permission: options.permission || "SEND_MESSAGES",
                cooldown: options.cooldown || 1000,
-               aliases: options.aliases || [],
+               alias: options.alias || [],
                allowDMs: options.allowDMs || false
            };
            /**
             * A set of the IDs of the users on cooldown
             * @type {Set}
             */
-           this.cooldown = new Set();
+           this.cooldowns = new Set();
        }
    
        /**

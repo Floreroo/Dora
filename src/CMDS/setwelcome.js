@@ -6,11 +6,11 @@ class setwelcome extends Base {
     constructor(client){
         super(client, {
             name: 'setwelcome',
-            description: 'Establecer',
+            description: 'Establece el canal de bienvenidas',
             usage: 'Configuracion',
             category: '',
             cooldown: 2000,
-            alias: [],
+            alias: ["s-w"],
             permLevel: 0,
             permission: "READ_MESSAGES"
 
@@ -34,7 +34,7 @@ if(NewWelcome){
 await NewWelcome.updateOne({guildID: message.guild.id, channelID: canal.id, guildName: message.guild.name})
 
 let embed = new MessageEmbed()
-.setDescription(`El canal de Bienvenidas es **${canal.name}**`)
+.setDescription(`> El canal se bienvenidas se ha establecido en **${canal.name}**`)
 .setColor('RANDOM')
 .setFooter(message.guild.name, message.guild.iconURL({size: 2048, dynamic: true}))
 message.channel.send(embed)
@@ -45,7 +45,7 @@ let NewBienvenida2 = new Bienvenida({guildID: message.guild.id, channelID: canal
 await NewBienvenida2.save()
 
 let embed2 = new MessageEmbed()
-.setDescription(`El canal de Bienvenidas es **${canal.name}**`)
+.setDescription(`> El canal se bienvenidas se ha establecido en **${canal.name}**`)
 .setColor('RANDOM')
 .setFooter(message.guild.name, message.guild.iconURL({size: 2048, dynamic: true}))
 message.channel.send(embed2)}

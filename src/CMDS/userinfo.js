@@ -21,7 +21,7 @@ class UsErInFo extends Base {
 async run(message, args) {
  
 
- const owo = message.mentions.users.first() || client.users.cache.get(args[0]) ||message.author;
+ const owo = message.mentions.users.first() || this.client.users.cache.get(args[0]) ||message.author;
  const server = message.guild
 
     let presencestatus = {

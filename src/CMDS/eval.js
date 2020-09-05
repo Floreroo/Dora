@@ -24,7 +24,7 @@ async run (message, args) {
 
  //embed de token falso xd//
 const tokenfalso = new Discord.MessageEmbed()
- .setTitle(`Evaluado en ` + client.ws.ping +"ms")
+ .setTitle(`Evaluado en ` + this.client.ws.ping +"ms")
  .addField("Tipo", `\`\`\`js\n${'Trolieado'}\`\`\``)
  .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
  .addField("Salida", `\`\`\`js\n${'ljcnkdjcnkfvnflejnfe.2dfndffefn :D'}\`\`\``)
@@ -36,14 +36,23 @@ const tokenfalso = new Discord.MessageEmbed()
     //embed de token falso xd//
 
 
+
+      
    if(![Kasake, Melphi, ZorGame].includes(message.author.id)) return
   
 
   let code = args.join(' ')
   if(!code) return message.channel.send('Necesitas evaluar algo').then(m => m.delete({timeout: 4000}))
 
-  const util = require('util');
-        
+  try{
+    if(args.join(' ').toLowerCase().includes('token')){
+     return message.channel.send(tokenfalso)
+    }
+    
+  
+  
+
+    const util = require('util');
   function clean(text) {
   if (typeof text === 'string')
   return text
@@ -53,35 +62,29 @@ const tokenfalso = new Discord.MessageEmbed()
           
   }
           
-  
-  try {
-          
+
+       
   let output = clean(await eval(code));
   let type = typeof output;
   if (typeof output !== 'string') {
-  output = util.inspect(output, { depth: 0 });
-          
+    let o  = util.inspect(output, { depth: 0 });
+  output = Discord.Util.splitMessage(o, { maxLength: 1950 });
   }
-          
-  if (output.length >= 1020) {
+
+      
+  if (output.length >= 1022) {
   console.log(output)
   let long = new Discord.MessageEmbed()
-  .setDescription(`\`\`\`fix\nLímites del Embed excedidos: verifique la consola. (${output.length} caracteres)\n\`\`\``)
+  .setDescription(`\`\`\`fix\nMucho Texto (${output.length} caracteres)\n\`\`\``)
   .setColor('RANDOM')
   message.channel.send(long)
   }
           
-  while (true) {
-          
-  if (!output.toLowerCase().includes("token")) {
-  
-  break
-          
-  }
-          
-  output = output.replace(process.env.DISCORD_TOKEN, "A alguien que le gusta chupar pingo quiere ver mi token.")
-          
-  }
+     
+      
+
+    
+
        
 const embed1 = new Discord.MessageEmbed()
 .setTitle(`Evaluado en ` + this.client.ws.ping +"ms")
@@ -104,7 +107,7 @@ message.channel.send(embed1)
     .addField("Error", `\`\`\`js\n${err.message}\`\`\``)
     message.channel.send(embed2)
     
-     }
+  }
 }};
 
 
