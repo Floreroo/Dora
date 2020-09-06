@@ -1,8 +1,2 @@
 .gitingore
-.env
-src
-util
 node_modules
-Procfile
-package-lock.json
-index.json
