@@ -10,16 +10,6 @@ async run(message) {
        const { MessageEmbed, Collection } = require('discord.js')
        const Prefix = require('../database/models/Prefix')
        const cooldowns = new Collection()
-
-        if(message.channel.type === "dm" || message.author.bot) return
-        console.log(message.author.tag + ": " + message.content)
-
-        let obt = await Prefix.findOne({guildID: message.guild.id}).exec()
-        let prefix = obt ? obt.prefix : "d!"
-  
-        if (message.content.match(new RegExp(`^<@!?${this.client.user.id}>( |)$`))) {
-        message.channel.send(`Mi Prefix en este servidor es \`${prefix}\``)
-        }
     
 
   
@@ -33,8 +23,7 @@ async run(message) {
   const command = this.client.commands.get(commandName) || this.client.commands.find(cmd => cmd.alias && cmd.alias.includes(commandName));
   if(!command) return;
   
-//Esto no me va :( (los alias xd)
-        
+
   if (!cooldowns.has(command.name)) {
       cooldowns.set(command.name, new Discord.Collection());
 }

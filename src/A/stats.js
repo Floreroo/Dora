@@ -5,24 +5,13 @@ const moment = require("moment")
 require("moment-duration-format");
 const { promisify } = require("util");
 const p = promisify(cpuStat.usagePercent);
-const Base = require('../../base/Commands')
 
-class stats extends Base {
-    constructor(client){
-        super(client, {
+
+module.exports = {
             name: 'stats',
             description: 'Muesta los stats del bot',
-            usage: '',
-            category: 'Informacion',
-            cooldown: 2000,
             alias: ["botstats"],
-            permLevel: 0,
-            permission: "READ_MESSAGES"
-
-        })
-    }
-    
-async run(message, args) {
+            async run (client, message, args) {
 
         let percent = await p();
         const embed = new Discord.MessageEmbed()
@@ -65,4 +54,3 @@ function memory(bytes = 0, r = true){
   return `${bytes.toFixed(2)} ${r ? "B" : ""}`;
 }
 
-module.exports = stats

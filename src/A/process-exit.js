@@ -1,26 +1,11 @@
 const { Kasake, Melphi, ZorGame } = require('../../util/devs')
 
-
-require('../../util/devs')
-
-const Base = require('../../base/Commands')
-
-class Processexit extends Base {
-    constructor(client){
-        super(client, {
+module.exports = {
             name: 'process-exit',
             description: 'Anula en funcionamiento del bot',
-            usage: 'process-exit',
-            category: 'Dev',
-            cooldown: 2000,
-            alias: ["p-e"],
-            permLevel: 0,
-            permission: "READ_MESSAGES"
+            alias: [],
+            async run (client, message, args) {
 
-        })
-    }
-    
-async run(message, args) {
         if(![Kasake, Melphi, ZorGame].includes(message.author.id)) return
 
         try{
@@ -36,5 +21,3 @@ async run(message, args) {
     }
   }
 }
-
-module.exports = Processexit

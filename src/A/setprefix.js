@@ -1,29 +1,19 @@
-const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
+const { Kasake, Melphi, ZorGame } = require('../../util/devs');
 
-const Base = require('../../base/Commands')
 
-class setprefix extends Base {
-    constructor(client){
-        super(client, {
+
+module.exports = {
             name: 'setprefix',
             description: 'Establece el prefix en un servidor',
-            usage: 'setprefix <prefix>',
-            category: 'Configuracion',
-            cooldown: 2000,
             alias: ["s-p"],
-            permLevel: 0,
-            permission: "READ_MESSAGES"
-
-        })
-    }
-    
-async run(message, args) {
+        async run(client, message, args) {
 
     const ModelPrefix = require('../database/models/Prefix')
     const { MessageEmbed } = require('discord.js')
     
-    if(!message.member.hasPermission("MANAGE_GUILD")){
-       return message.channel.send('> No tienes permisos para usar este Comando.> \n`Gestionar Servidor`')
+    if(!message.member.hasPermission("MANAGE_GUILD") || ![Kasake, Melphi, ZorGame].includes(message.author.id)){
+       return message.channel.send('> No tienes permisos para usar este Comando.\n`Gestionar Servidor`')
     }
     
     if(!args[0]) return message.channel.send('> Necesitas poner un prefix **'+message.author.username+'**')
@@ -50,4 +40,4 @@ async run(message, args) {
     
     }}}
 
-    module.exports = setprefix
+    

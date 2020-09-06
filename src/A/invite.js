@@ -1,23 +1,11 @@
 const Discord = require('discord.js')
 
-const Base = require('../../base/Commands')
-
-class InViTe extends Base {
-    constructor(client){
-        super(client, {
+module.exports = {
             name: 'invite',
             description: 'Invitacion al bot/servidor',
-            usage: '',
-            category: 'Utilidad',
-            cooldown: 2000,
             alias: [],
-            permLevel: 0,
-            permission: "READ_MESSAGES"
+            async run (client, message, args) {
 
-        })
-    }
-    
-async run(message, args) {
 
         const inv = new Discord.MessageEmbed()
         .addField('> Invitaciones', '[Dora La Exploradora](https://discord.com/api/oauth2/authorize?client_id=687102753763229892&permissions=2147483639&scope=bot) ' + ' [Server](https://discord.gg)', true)
@@ -29,4 +17,3 @@ async run(message, args) {
     }
 }
 
-module.exports = InViTe

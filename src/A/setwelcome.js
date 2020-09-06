@@ -1,24 +1,12 @@
 const { Discord, MessageEmbed} = require('discord.js')
 
-const Base = require('../../base/Commands')
-
-class setwelcome extends Base {
-    constructor(client){
-        super(client, {
-            name: 'setwelcome',
-            description: 'Establece el canal de bienvenidas',
-            usage: 'Configuracion',
-            category: '',
-            cooldown: 2000,
-            alias: ["s-w"],
-            permLevel: 0,
-            permission: "READ_MESSAGES"
-
-        })
-    }
-    
-async run(message, args) {
-
+  
+  module.exports = {
+  name: "setwelcome",
+  descripcion: "Estalece el canal de bienvenidas en un servidor",
+  alias: [],
+  async run (client, message, args) {
+  
 
         let Bienvenida = require('../database/models/bienvenidas')
 
@@ -52,4 +40,3 @@ message.channel.send(embed2)}
     }
 }
 
-module.exports = setwelcome

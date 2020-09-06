@@ -1,34 +1,23 @@
 const Discord = require('discord.js');
-const { userInfo } = require('os');
 
-const Base = require('../../base/Commands')
 
-class UsErInFo extends Base {
-    constructor(client){
-        super(client, {
+
+module.exports = {
             name: 'user',
             description: 'Muestra la informacion de un usuario',
-            usage: 'userinfo <mencion/id/tu>',
-            category: 'Informacion',
-            cooldown: 2000,
             alias: ["u-i"],
-            permLevel: 0,
-            permission: "READ_MESSAGES"
+           async run (client, message, args) {
 
-        })
-    }
-    
-async run(message, args) {
  
 
- const owo = message.mentions.users.first() || this.client.users.cache.get(args[0]) ||message.author;
+ const owo = message.mentions.users.first() || client.users.cache.get(args[0]) ||message.author;
  const server = message.guild
 
     let presencestatus = {
-      "online":" <a:online:733410559965265921> | En linea",
+      "online":"<a:online:751961662470357083> | En linea",
       "idle":"<a:idle:733410335091851327> | Ausente",
-      "dnd":"<a:dnd:733410068367671360> | No Molestar",
-      "invisible":"<a:offline:733410777599442964> | Invisible/Desconectado",
+      "dnd": "<a:idle:751961722318749737> | No Molestar",
+      "invisible":"<a:offline:751961827033874512> | Invisible/Desconectado",
     }
  
     const ptype = {
@@ -96,7 +85,7 @@ const miembro = await message.guild.members.fetch(owo);
 
     .addField('Role destacado', message.guild.member(owo).roles.highest.toString(), true)
 
-    .addField("Presencia",  owo.presence.activities[0].name || 'Nada.', true)
+    .addField("Presencia",  ptext || 'Nada.', true)
 
  
     uo.addField(`Status`,` ${presencestatus[owo.presence.status]}`, true)
@@ -121,4 +110,4 @@ const miembro = await message.guild.members.fetch(owo);
   }
 
 
-  module.exports = UsErInFo
+  

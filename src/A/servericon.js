@@ -1,24 +1,12 @@
 
 const Discord = require('discord.js');
-const Base = require('../../base/Commands');
 
-
-class servericon extends Base {
-    constructor(client){
-        super(client, {
+   module.exports = {
             name: 'icon',
             description: 'Muestra el avatar del servidor.',
-            usage: '',
-            category: 'Utilidad',
-            cooldown: 2000,
             alias: ["s-ic"],
-            permLevel: 0,
-            permission: "READ_MESSAGES"
+            run: (client, message, args) => {
 
-        })
-    }
-    
-run(message, args) {
 
          let server = message.guild
            let embed = new Discord.MessageEmbed()
@@ -30,4 +18,4 @@ run(message, args) {
             }
       }
 
-      module.exports = servericon
+      

@@ -1,22 +1,11 @@
 const Discord = require('discord.js');
-const Base = require('../../base/Commands')
 
-class serverinfo extends Base {
-    constructor(client){
-        super(client, {
+
+module.exports = {
             name: 'server',
             description: 'Muestra la informacion del servidor',
-            usage: 'server <server>',
-            category: 'Informacion',
-            cooldown: 2000,
-            alias: ["s-i"],
-            permLevel: 0,
-            permission: "READ_MESSAGES"
+            run: (client, message, args) => {
 
-        })
-    }
-    
-run(message, args) {
 
     let region = {
           europe: "Europa :flag_eu:",
@@ -66,4 +55,4 @@ run(message, args) {
       }
   }
 
-  module.exports = serverinfo
+  

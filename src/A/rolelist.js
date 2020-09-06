@@ -1,24 +1,12 @@
 const Discord = require('discord.js')
 
 
-const Base = require('../../base/Commands')
-
-class rolelist extends Base {
-    constructor(client){
-        super(client, {
+ module.exports = {
             name: 'rolelist',
             description: 'Muestra los roles del servidor',
-            usage: '',
-            category: 'Utilidad',
-            cooldown: 2000,
             alias: ["r-l"],
-            permLevel: 0,
-            permission: "READ_MESSAGES"
+            run: (client, message, args) => {
 
-        })
-    }
-    
-run(message, args) {
 
     let pene = this.client.guilds.resolve(args[0])
         let roles =  pene.roles.cache.filter(x => !x.managed).map(x => x).sort((a, b) => b.position - a.position || parseInt(a.id.slice(0, -10)) - parseInt(b.id.slice(0, -10)) || parseInt(a.id.slice(10)) - parseInt(b.id.slice(10)).first(2)[1]).join("\n")
@@ -31,5 +19,3 @@ run(message, args) {
     message.channel.send(embed)
      }
  }
-
- module.exports = rolelist
