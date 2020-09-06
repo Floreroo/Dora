@@ -1,11 +1,4 @@
 node_modules
 .env
-src
-util
-node_modules
-Procfile
+.gitignore
 package-lock.json
-index.js
-
-
- #Que se creian pvtos? XD
