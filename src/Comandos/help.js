@@ -9,7 +9,7 @@ module.exports = {
         let embed2 = new Discord.MessageEmbed()
         .setFooter('INFORMACION', message.guild.iconURL())
         .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
-        .setDescription(`Hola **${message.author.username}**, soy *Dora La Exploradora* un bot multifuncional. \nPara mas informacion/ayuda puedes unirte a mi Servidor De [Soporte](https://discord.gg/DNSzKHH)  `)  
+        .setDescription(`Hola **${message.author.username}**, soy *Dora La Exploradora* un bot multifuncional. \nPara mas informacion/ayuda puedes unirte a mi Servidor De [Soporte](https://discord.gg/EXyn6yU)  `)  
         .addField("__**Configuracion**__", `${prefix}help config`, true)
         .addField("__**Diversion**__", `${prefix}help fun`, true)
         .addField("__**Utilidad**__", `${prefix}help util`, true)

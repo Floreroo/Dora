@@ -19,6 +19,7 @@ function getDirectories() {
 }
 
 
+
 let commandFiles = readdirSync('./src/Comandos').filter(f => f.endsWith(".js"))
 
 for(const folder of getDirectories()) {
