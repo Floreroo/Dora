@@ -8,7 +8,7 @@ const { Discord, MessageEmbed} = require('discord.js')
   async run (client, message, args) {
   
 
-        let Bienvenida = require('../database/models/bienvenidas')
+        let Bienvenida = require('../../database/models/bienvenidas')
 
 if(!message.member.hasPermission("MANAGE_GUILD")){
    return message.channel.send('No tienes permisos para usar este Comando.\n`Gestionar Servidor`') 

@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const { Kasake, Melphi, ZorGame} = require('../../util/devs')
+const { Kasake, Melphi, ZorGame} = require('../../../util/devs')
 module.exports = {
             name: 'eval',
             alias: ["e"],
@@ -49,13 +49,13 @@ const tokenfalso = new Discord.MessageEmbed()
           
 
        
-  let output = clean(await eval(code));
+  let output =  await eval(code);
   let type = typeof output;
   if (typeof output !== 'string') {
-    output  = util.inspect(output, { depth: 0 });
+    output  = util.inspect(output, { depth: 0, maxStringLength: 1950});
   }
 
-      
+    
   if (output.length >= 1022) {
   console.log(output)
   let long = new Discord.MessageEmbed()
@@ -63,7 +63,7 @@ const tokenfalso = new Discord.MessageEmbed()
   .setColor('RANDOM')
   message.channel.send(long)
   }
-          
+      
      
       
 
@@ -72,7 +72,7 @@ const embed1 = new Discord.MessageEmbed()
 .setTitle(`Evaluado en ` + client.ws.ping +"ms")
 .addField("Tipo", `\`\`\`prolog\n${type.substring(0, 1).toUpperCase() + type.substring(1)}\`\`\``)
 .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
-.addField("Salida", `\`\`\`js\n${output.slice(0, 1010)}\`\`\``)
+.addField("Salida", `\`\`\`js\n${output.length > 1024 ? output.slice(0, 1010) : output.substring(0, 10)}\`\`\``)
 .setTimestamp()
 .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
 .setColor('RANDOM')

@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const { readdirSync, statSync } = require("fs")
 const { Collection } = require('discord.js')
-const client = new Discord.Client({ config: './config.json',  disableMentions: 'everyone'})
+const client = new Discord.Client({ config: './config.json',  disableMentions: 'everyone', partials: ["MESSAGE", "CHANNEL", "REACTION"]});
 require('dotenv').config()
 require('./src/database/index')
 
@@ -36,7 +36,7 @@ for(const file of commandFiles) {
     command = require(`./src/Comandos/${file}`)
   }
   client.commands.set(command.name, command)
-}
+} 
 
 for(const file of readdirSync('./src/Eventos/')) {
   if(file.endsWith('.js')) {

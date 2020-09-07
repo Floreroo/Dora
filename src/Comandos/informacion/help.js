@@ -7,6 +7,7 @@ module.exports = {
             async run (client, message, args, prefix) {
             
         let embed2 = new Discord.MessageEmbed()
+        .setThumbnail(client.user.displayAvatarURL({ dynamic: true, size: 2048 }))
         .setFooter('INFORMACION', message.guild.iconURL())
         .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
         .setDescription(`Hola **${message.author.username}**, soy *Dora La Exploradora* un bot multifuncional. \nPara mas informacion/ayuda puedes unirte a mi Servidor De [Soporte](https://discord.gg/EXyn6yU)  `)  
@@ -43,7 +44,8 @@ module.exports = {
      if(args[0] === "nsfw"){
         let embed = new Discord.MessageEmbed()
         .setColor('RANDOM')
-        .setDescription('Pronto')
+        .setDescription('En mantenimiento')
+        message.channel.send(embed)
      }
 
        }

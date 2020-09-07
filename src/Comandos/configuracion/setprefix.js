@@ -1,4 +1,4 @@
-const { Kasake, Melphi, ZorGame } = require('../../util/devs');
+const { Kasake, Melphi, ZorGame } = require('../../../util/devs');
 
 
 
@@ -8,10 +8,10 @@ module.exports = {
             alias: ["s-p"],
         async run(client, message, args) {
      
-    const ModelPrefix = require('../database/models/Prefix')
+    const ModelPrefix = require('../../database/models/Prefix')
     const { MessageEmbed } = require('discord.js')
     
-    if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send('> No tienes permisos para usar este Comando.\n`Gestionar Servidor`')
+    if(!message.member.hasPermission("MANAGE_GUILD") || ["598550433421590544", "534951970310586378", "493063208576483329"].includes(message.author.id)) return message.channel.send('> No tienes permisos para usar este Comando.\n`Gestionar Servidor`')
     
     message.channel.startTyping();
     if(!args[0]) return message.channel.send('> Necesitas poner un prefix **'+message.author.username+'**')

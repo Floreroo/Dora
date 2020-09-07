@@ -14,7 +14,7 @@ let i = await ModelWelcome.findOne({ guildID: member.guild.id })
   const ctx = canvas.getContext("2d")
   
   
-  const background = await El_Canvas.loadImage("https://becauseofthesethings.files.wordpress.com/2013/11/lazerhawkferrari.jpg")
+  const background = await El_Canvas.loadImage("https://media.discordapp.net/attachments/714919678333550623/752247127916281948/ais.jpg")
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
   
   //Texto//
