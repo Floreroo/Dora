@@ -17,16 +17,13 @@ module.exports = async (client, message) => {
        let obt = await ModelPrefix.findOne({guildID: message.guild.id, guildName: message.guild.name}).exec()
        let prefix = obt ? obt.prefix : "d!"
       
-      
+
+  
+       if(message.content.match(new RegExp(`^<@!?${client.user.id}>( |)`))) { message.channel.send(`Mi Prefix en este servidor es ${prefix}, usa ${prefix}help para mas ayuda`)}
+
        if (message.author.bot) return;
 
        if(!message.content.startsWith(prefix)) return;
-      
-       if (message.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))) {
-       message.channel.send(`Mi Prefix en este servidor es \`${prefix}\``)
-       }
-
-
 
        const args = message.content.slice(prefix.length).trim().split(/ +/g)
        const command = args.shift().toLowerCase()
@@ -35,3 +32,5 @@ module.exports = async (client, message) => {
        if(cmd) { return cmd.run(client, message, args, prefix) }
      
         }
+
+       

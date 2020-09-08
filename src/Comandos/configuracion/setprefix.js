@@ -11,7 +11,7 @@ module.exports = {
     const ModelPrefix = require('../../database/models/Prefix')
     const { MessageEmbed } = require('discord.js')
     
-    if(!message.member.hasPermission("MANAGE_GUILD") || ["598550433421590544", "534951970310586378", "493063208576483329"].includes(message.author.id)) return message.channel.send('> No tienes permisos para usar este Comando.\n`Gestionar Servidor`')
+    if(!message.member.hasPermission("MANAGE_GUILD") || !"598550433421590544", "534951970310586378", "493063208576483329".includes(message.author.id)) return message.channel.send('> No tienes permisos para usar este Comando.\n`Gestionar Servidor`')
     
     message.channel.startTyping();
     if(!args[0]) return message.channel.send('> Necesitas poner un prefix **'+message.author.username+'**')
@@ -26,7 +26,7 @@ module.exports = {
     .setColor('RANDOM')
     message.channel.send(embed).then (() => {
 message.channel.stopTyping(true)
-    })
+    });
     
 
 } else {

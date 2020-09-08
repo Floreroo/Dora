@@ -1,11 +1,48 @@
 const Discord = require('discord.js');
 
 module.exports = {
-            name: 'help',
-            description: 'Comando de informacion',
-            alias: ["comandos"],
-            async run (client, message, args, prefix) {
-            
+  name: 'help',
+  description: 'Comando de informacion',
+  alias: ["comandos"],
+  async run (client, message, args, prefix) {
+    if(args[0]){
+      if(args[0] == "config"){
+        let embed3 = new Discord.MessageEmbed()
+        .addField("Configuracion", `${prefix}setprefix \n${prefix}setwelcome`)
+        .setColor('RANDOM')
+        .setDescription(`**${message.member.user.username}** recuerda que puedes unirte a mi Servidor De [Soporte](https://discord.gg/EXyn6yU)`)
+        .setFooter('INFORMACION', message.guild.iconURL())
+        .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
+        return message.channel.send(embed3)
+      }
+      if(args[0] == "fun"){
+        let embed4 = new Discord.MessageEmbed()
+        .addField("Diversion", `${prefix}8ball \n${prefix}say \n${prefix}sayimage`)
+        .setColor('RANDOM')
+        .setDescription(`**${message.member.user.username}** recuerda que puedes unirte a mi Servidor De [Soporte](https://discord.gg/EXyn6yU)`)
+        .setFooter('INFORMACION', message.guild.iconURL())
+        .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
+        return message.channel.send(embed4)
+      }
+      if(args[0] == "util"){
+        let embed5 = new Discord.MessageEmbed()
+        .addField("Utilidad",  `${prefix}avatar \n${prefix}botinvite \n${prefix}ping  \n${prefix}server \n${prefix}user \n${prefix}channelinfo \n${prefix}roleinfo \n${prefix}rolelist  \n${prefix}stats`)
+        .setColor('RANDOM')
+        .setDescription(`**${message.member.user.username}** recuerda que puedes unirte a mi Servidor De [Soporte](https://discord.gg/EXyn6yU)`)
+        .setFooter('INFORMACION', message.guild.iconURL())
+        .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
+        return message.channel.send(embed5)
+      }
+       if(args[0] == "nsfw") {
+        let embed = new Discord.MessageEmbed()
+        .setColor('RANDOM')
+        .addField("¡Estamos en mantenimiento!", "¡Solo es cuestion de dias para que los comandos de nsfw vuelvan!")
+        .setDescription(`**${message.member.user.username}** recuerda que puedes unirte a mi Servidor De [Soporte](https://discord.gg/EXyn6yU)`)
+        .setFooter('INFORMACION', message.guild.iconURL())
+        .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
+        return message.channel.send(embed)
+      }
+    } 
         let embed2 = new Discord.MessageEmbed()
         .setThumbnail(client.user.displayAvatarURL({ dynamic: true, size: 2048 }))
         .setFooter('INFORMACION', message.guild.iconURL())
@@ -16,38 +53,6 @@ module.exports = {
         .addField("__**Utilidad**__", `${prefix}help util`, true)
         .addField("__**Nsfw**__", `${prefix}help nsfw`)
         .setColor('RANDOM')
-      message.channel.send(embed2)
-
-       if(args[0]){
-
-       if(args[0] === "config"){
-        let embed3 = new Discord.MessageEmbed()
-        .addField("Configuracion", "`setprefix`, `\nsetwelcome`")
-        .setColor('RANDOM')
-        message.channel.send(embed3)
-       }
-
-     if(args[0] === "fun"){
-        let embed4 = new Discord.MessageEmbed()
-        .addField("Diversion", `${prefix}8ball \n${prefix}say \n${prefix}sayimage`)
-        .setColor('RANDOM')
-        message.channel.send(embed4)
-     }
-
-     if(args[0] === "util"){
-        let embed5 = new Discord.MessageEmbed()
-        .addField("Utilidad",  `${prefix}avatar \n${prefix}botinvite \n${prefix}ping  \n${prefix}server \n${prefix}user \n${prefix}rolelist  \n${prefix}stats`)
-        .setColor('RANDOM')
-        message.channel.send(embed5)
-     }
-
-     if(args[0] === "nsfw"){
-        let embed = new Discord.MessageEmbed()
-        .setColor('RANDOM')
-        .setDescription('En mantenimiento')
-        message.channel.send(embed)
-     }
-
-       }
-            }
-        }
+        message.channel.send(embed2)
+}
+}

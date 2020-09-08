@@ -14,11 +14,11 @@ let i = await ModelWelcome.findOne({ guildID: member.guild.id })
   const ctx = canvas.getContext("2d")
   
   
-  const background = await El_Canvas.loadImage("https://media.discordapp.net/attachments/714919678333550623/752247127916281948/ais.jpg")
+  const background = await El_Canvas.loadImage("https://media.discordapp.net/attachments/751794288790339666/752334726936658030/canvas_welcome.jpg?width=721&height=406")
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
   
   //Texto//
-  ctx.font = "55px Arial"
+  ctx.font = "35px Arial"
   ctx.fillStyle = "#ed4b11"
   ctx.textAlign = "center"
   ctx.textBaselin = "hanging"
@@ -27,7 +27,7 @@ let i = await ModelWelcome.findOne({ guildID: member.guild.id })
 
 
   //Avatar//
-  const y= 120, radio= 100, x=canvas.width/2-radio
+  const y= 115, radio= 95, x=canvas.width/2-radio
   
   ctx.beginPath()
   ctx.arc(x+radio, y+radio, radio +5, 0, Math.PI * 2, true)
@@ -47,4 +47,9 @@ let i = await ModelWelcome.findOne({ guildID: member.guild.id })
   
   const atta = new Discord.MessageAttachment(canvas.toBuffer(), "welcome.png")
  channel.send(atta)
+
+ if(member.guild.id === "729502369020117052"){
+   member.roles.add("752338317462470666")
  }
+ }
+ 
