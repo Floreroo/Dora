@@ -35,7 +35,7 @@ module.exports = async (client, server) => {
     .setThumbnail(server.iconURL())
     .addField('ID', server.id, true)
     .addField('Owner', server.owner.user.tag, true)     
-    .setFooter("Invitacion", a, true)
+    .setFooter("Invitacion", `https://discord.gg/${a}`, true)
     embed.addField('Canales(Total)', server.channels.cache.size, true)
     .addField('Region', `${region[server.region]}`, true)
     .addField("Server Count", client.guilds.cache.size, true)

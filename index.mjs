@@ -5,10 +5,12 @@ const { require } = commons(import.meta.url);
 
 const { Collection, Client } = require('discord.js')
 const { readdirSync, statSync } = require("fs")
-export const client = new Client({ version: "0.6.4", devs: require('./util/devs'), config: "./config.json", disableMentions: 'everyone', partials: ["MESSAGE", "CHANNEL", "REACTION"],  ws: { properties: { $browser: "Discord Android" }}})
+export const client = new Client({ config: "./config.json", disableMentions: 'everyone', partials: ["MESSAGE", "CHANNEL", "REACTION"],  ws: { properties: { $browser: "Discord Android" }}})
 export const database = require('./src/database/index')
 
 client.commands = new Collection()
+client.version = "0.6.4", 
+client.devs = require('./util/devs')
 
 function getDirectories() {
   return readdirSync('./src/Comandos').filter(function subFolder(file) {
