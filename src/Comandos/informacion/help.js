@@ -6,6 +6,7 @@ module.exports = {
   alias: ["comandos"],
   async run (client, message, args, prefix) {
     if(args[0]){
+
       if(args[0] == "config"){
         let embed3 = new Discord.MessageEmbed()
         .addField("Configuracion", `${prefix}setprefix \n${prefix}setwelcome`)
@@ -24,14 +25,23 @@ module.exports = {
         .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
         return message.channel.send(embed4)
       }
+     if(args[0] === "info"){
+     let embed5 = new Discord.MessageEmbed()
+     .addField("Informacion", `${prefix}help \n${prefix}invite \n${prefix}ping \n${prefix}stats`, true)
+     .setColor('RANDOM')
+     .setDescription(`**${message.member.user.username}** recuerda que puedes unirte a mi Servidor De [Soporte](https://discord.gg/EXyn6yU)`)
+     .setFooter('INFORMACION', message.guild.iconURL())
+     .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
+    return message.channel.send(embed5)
+     }
       if(args[0] == "util"){
-        let embed5 = new Discord.MessageEmbed()
+        let embed6 = new Discord.MessageEmbed()
         .addField("Utilidad",  `${prefix}avatar \n${prefix}botinvite \n${prefix}ping  \n${prefix}server \n${prefix}user \n${prefix}channelinfo \n${prefix}roleinfo \n${prefix}rolelist  \n${prefix}stats`)
         .setColor('RANDOM')
         .setDescription(`**${message.member.user.username}** recuerda que puedes unirte a mi Servidor De [Soporte](https://discord.gg/EXyn6yU)`)
         .setFooter('INFORMACION', message.guild.iconURL())
         .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
-        return message.channel.send(embed5)
+        return message.channel.send(embed6)
       }
        if(args[0] == "nsfw") {
         let embed = new Discord.MessageEmbed()

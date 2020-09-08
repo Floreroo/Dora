@@ -49,7 +49,7 @@ const tokenfalso = new Discord.MessageEmbed()
           
 
        
-  let output =  await eval(code);
+  let output =  await clean(eval(code));
   let type = typeof output;
   if (typeof output !== 'string') {
     output  = util.inspect(output, { depth: 0, maxStringLength: 1950});
