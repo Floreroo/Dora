@@ -61,6 +61,7 @@ module.exports = {
         .addField("__**Configuracion**__", `${prefix}help config`, true)
         .addField("__**Diversion**__", `${prefix}help fun`, true)
         .addField("__**Utilidad**__", `${prefix}help util`, true)
+        .addField("__**Informacion**__", `${prefix}help info`, true)
         .addField("__**Nsfw**__", `${prefix}help nsfw`)
         .setColor('RANDOM')
         message.channel.send(embed2)

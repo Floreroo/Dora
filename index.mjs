@@ -3,26 +3,18 @@ dotenv.config();
 import commons from './util/commons.mjs';
 const { require } = commons(import.meta.url);
 
-const { Collection, Client }= require('discord.js')
+const { Collection, Client } = require('discord.js')
 const { readdirSync, statSync } = require("fs")
-import puppeteer from "puppeteer";
-export const client = new Client({disableMentions: 'everyone', partials: ["MESSAGE", "CHANNEL", "REACTION"],  ws: { properties: { $browser: "Discord Android" }}})
+export const client = new Client({ version: "0.6.4", devs: require('./util/devs'), config: "./config.json", disableMentions: 'everyone', partials: ["MESSAGE", "CHANNEL", "REACTION"],  ws: { properties: { $browser: "Discord Android" }}})
 export const database = require('./src/database/index')
 
 client.commands = new Collection()
-client.devs = require('./util/devs.js')
-client.version = "0.6.4"
-client.cosas = { Boolean } 
-
-
 
 function getDirectories() {
   return readdirSync('./src/Comandos').filter(function subFolder(file) {
     return statSync('./src/Comandos/'+file).isDirectory()
   })
 }
-
-
 
 let commandFiles = readdirSync('./src/Comandos').filter(f => f.endsWith(".js"))
 

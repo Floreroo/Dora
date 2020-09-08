@@ -8,7 +8,7 @@ let i = await ModelWelcome.findOne({ guildID: member.guild.id })
   const channel = member.guild.channels.cache.get(i.channelID)
   if(!channel) return;
 
-  channel.send(`Bienvenid@ ${member} a ${member.guild.name}`)
+
    
   const canvas = El_Canvas.createCanvas(800,360)
   const ctx = canvas.getContext("2d")
@@ -22,7 +22,7 @@ let i = await ModelWelcome.findOne({ guildID: member.guild.id })
   ctx.fillStyle = "#ed4b11"
   ctx.textAlign = "center"
   ctx.textBaselin = "hanging"
-  ctx.fillText(`Bienvenid@ ${member.user.tag}!`, canvas.width/2, 85)
+  ctx.fillText(`Bienvenid@ ${member.user.tag} a ${member.guild.name}!`, canvas.width/2, 85)
   
 
 
@@ -48,8 +48,5 @@ let i = await ModelWelcome.findOne({ guildID: member.guild.id })
   const atta = new Discord.MessageAttachment(canvas.toBuffer(), "welcome.png")
  channel.send(atta)
 
- if(member.guild.id === "729502369020117052"){
-   member.roles.add("752338317462470666")
- }
  }
  
