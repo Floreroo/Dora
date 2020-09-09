@@ -6,7 +6,7 @@ module.exports = {
        async run (client, message, args) {
 
 
- //embed de token falso xd//
+ //embeds//
 const tokenfalso = new Discord.MessageEmbed()
  .setTitle(`Evaluado en ` + client.ws.ping +"ms")
  .addField("Tipo", `\`\`\`js\n${'Trolieado'}\`\`\``)
@@ -16,37 +16,56 @@ const tokenfalso = new Discord.MessageEmbed()
  .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
  .setColor('RANDOM')
 
+ const dirnamefalso = new Discord.MessageEmbed()
+ .setTitle(`Evaluado en __dirname ` + "__dirname" +"___dirname")
+ .addField("Tipo", `\`\`\`js\n${'__dirname'}\`\`\``)
+ .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
+ .addField("Salida", `\`\`\`js\n${'__dirname'}\`\`\``)
+ .setTimestamp()
+ .setFooter("__dirname",  message.author.displayAvatarURL())
+ .setColor('RANDOM')
 
-    //embed de token falso xd//
+ const filenamefalso = new Discord.MessageEmbed()
+ .setTitle(`Evaluado en __filename ` + "__filename" +"__filename")
+ .addField("Tipo", `\`\`\`js\n${'__filename'}\`\`\``)
+ .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
+ .addField("Salida", `\`\`\`js\n${'__filename'}\`\`\``)
+ .setTimestamp()
+ .setFooter("__filename",  message.author.displayAvatarURL())
+ .setColor('RANDOM')
 
 
 
+ //Eval
 
     const devs = require('../../../util/JSON/devs.json').devs
     if (!devs.id.includes(message.author.id)) return;
   
-
+try {
   let code = args.join(' ')
   if(!code) return message.channel.send('Necesitas evaluar algo').then(m => m.delete({timeout: 4000}))
 
-  try{
-    if(args.join(' ').toLowerCase().includes('token')){
-     return message.channel.send(tokenfalso)
-    }
-    
   
+    if(args.join(' ').toLowerCase().includes('token')) return message.channel.send(tokenfalso)
+  
+    if(args.join(' ').toLowerCase().includes('dirname')) return message.channel.send(dirnamefalso)
+    
+    if(args.join(' ').toLowerCase().includes('filename')) return message.channel.send(filenamefalso)
+
   
 
     const util = require('util');
     const { clean }  = require('../../../util/JS/clean')
   
 
-       
+     
   let output =  clean(await eval(code));
   let type = typeof output;
   if (typeof output !== 'string') {
     output  = util.inspect(output, { depth: 0, maxStringLength: 1950});
+    
   }
+
 
     /*
   if (output.length >= 1022) {
@@ -72,17 +91,17 @@ const embed1 = new Discord.MessageEmbed()
 .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
 .setColor('RANDOM')
 message.channel.send(embed1)
-
+    
   } catch(err) {
     const embed2 = new Discord.MessageEmbed()
      .setTitle('Error')
      .setTimestamp()
         .setColor('ff0000')
         .addField("Tipo", `\`\`\`js\n${err.name}\`\`\``)
-        .addField("Codigo", `\`\`\`js\n${code}\`\`\``)
+        .addField("Codigo", `\`\`\`js\n${args.join(" ")}\`\`\``)
         .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
     .addField("Error", `\`\`\`js\n${err.message}\`\`\``)
     message.channel.send(embed2)
-    
+  
   } 
 }}

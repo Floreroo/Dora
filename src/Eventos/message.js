@@ -7,22 +7,19 @@ module.exports = async (client, message) => {
        const ModelPrefix = require("../database/models/Prefix")
        const cooldowns = new Collection()
     
+      
 
-
-       if(message.channel.type === "dm" || message.author.bot) return
+       if(message.channel.type === "dm");
        console.log(message.author.tag + ": " + message.content)
-      
-      
-      
+
        let obt = await ModelPrefix.findOne({guildID: message.guild.id, guildName: message.guild.name}).exec()
-       let prefix = obt ? obt.prefix : "d! "
-      
-
+       let prefix = obt ? obt.prefix : "d!"
   
-       if(message.content.match(new RegExp(`^<@!?${client.user.id}>( |)`))) { message.channel.send(`Mi Prefix en este servidor es \`\`${prefix}\`\` usa ${prefix}help para mas ayuda`)}
-
        if (message.author.bot) return;
 
+       if(message.content.match(new RegExp(`^<@!?${client.user.id}>( |)`))) { message.channel.send(`Mi Prefix en este servidor es \`\`${prefix}\`\` usa ${prefix}help para mas ayuda`)}
+
+     
        if(!message.content.startsWith(prefix)) return;
 
        const args = message.content.slice(prefix.length).trim().split(/ +/g)
