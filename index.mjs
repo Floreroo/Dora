@@ -8,17 +8,17 @@ const { readdirSync, statSync } = require("fs")
 export const client = new Client({ config: "./config.json", disableMentions: 'everyone', partials: ["MESSAGE", "CHANNEL", "REACTION"],  ws: { properties: { $browser: "Discord Android" }}})
 export const database = require('./src/database/index')
 
-client.snipes = new Map
+
 client.commands = new Collection()
 client.version = "0.6.5", 
 client.devs = require('./util/JSON/devs.json')
+client.snipes = new Map
 
-function getDirectories() {
+function getDirectories(){
   return readdirSync('./src/Comandos').filter(function subFolder(file) {
     return statSync('./src/Comandos/'+file).isDirectory()
-  })
+  });
 }
-
 let commandFiles = readdirSync('./src/Comandos').filter(f => f.endsWith(".js"))
 
 for(const folder of getDirectories()) {

@@ -8,13 +8,12 @@ module.exports = {
 
     const channel = message.mentions.channels.first() || client.channels.resolve(args[0]) || message.channel;
     const snipe =  client.snipes.get(channel.id)
-if(!snipe) return message.chanel.send("Ultimamante no hay mensajes eliminados en"+channel.toString())
+if(!snipe) return message.channel.send("Ultimamante no hay mensajes eliminados en "+channel.toString())
     let embed = new MessageEmbed()
-    .setAuthor(snipe.member.tag, snipe.member.displayAvtarURL())
-    .addField("Miembro", snipe.member.toString(), true)
-    .addField("Canal", snipe.channel, true)
-    .addField("Mensaje", snipe.message, true)
-    .setColor(snipe.member.hexColor)
+    .addField("Miembro", snipe.member)
+    .addField("Canal", snipe.channel)
+    .addField("Mensaje", snipe.message)
+    .setColor("RANDOM")
     message.channel.send(embed)
 
 
