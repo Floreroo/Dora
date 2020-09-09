@@ -11,8 +11,9 @@ module.exports = {
         
         try{
         let embed = new MessageEmbed()
-        .addField("Id", emoji.id + ` \n` + `\`\`<:${emoji.name}:${emoji.id}>\`\``, true)
+        .addField("Id", emoji.id, true)
         .addField("Nombre", `\*\*${emoji.name}\*\*`, true)
+        .addField("Referencia",  `\`\`<:${emoji.name}:${emoji.id}>\`\``, true)
         .addField("Creado el", emoji.createdAt.toDateString(), true)
         .addField("URL", `[Emoji URL](${emoji.url})`, true)
         .setImage(emoji.url)
