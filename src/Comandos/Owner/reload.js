@@ -5,8 +5,8 @@ module.exports = {
 async run (client, message, args) {
   
 
-
-  if(![Kasake, Melphi, ZorGame].includes(message.author.id)) return
+  const devs = require('../../../util/JSON/devs.json').devs
+  if(!devs.id.includes(message.author.id)) return message.channel.send('¡No tienes permisos para usar este comando!')
 
   if(!args[0]) return message.channel.send('Ingrese el comando que quiera recargar')
 

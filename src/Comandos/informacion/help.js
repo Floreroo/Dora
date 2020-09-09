@@ -1,6 +1,4 @@
 const Discord = require('discord.js');
-const { Kasake, Melphi, ZorGame } = require('../../../util/devs');
-
 module.exports = {
   name: 'help',
   description: 'Comando de informacion',
@@ -54,7 +52,9 @@ module.exports = {
         return message.channel.send(embed)
       }
       if(args[0] == "owner"){
-        if(![Melphi, ZorGame].includes(message.author.id)) return message.channel.send("No eres suficientes permisos para utilizar esta categoria")
+       
+  const devs = require('../../../util/JSON/devs.json').devs
+  if(!devs.id.includes(message.author.id)) return message.channel.send('Debes ser owner del bot para utilizar este comando')
         let embed1000 = new Discord.MessageEmbed()
         .setColor('RANDOM')
         .addField("Owner", `${prefix}eval \n${prefix}reload \n${prefix}shell`)

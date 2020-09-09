@@ -1,12 +1,12 @@
-const { Kasake, Melphi, ZorGame } = require('../../../util/devs')
-
 module.exports = {
-            name: 'process-exit',
+            name: 'desconectar',
             description: 'Anula en funcionamiento del bot',
             alias: [],
             async run (client, message, args) {
 
-        if(![Kasake, Melphi, ZorGame].includes(message.author.id)) return
+    
+              const devs = require('../../../util/JSON/devs.json').devs
+              if(!devs.id.includes(message.author.id)) return message.channel.send('¡No tienes permisos para usar este comando!')
 
         try{
             await message.channel.send('`DESCONECTADO`').then (() => {

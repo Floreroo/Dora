@@ -1,5 +1,4 @@
 const Discord = require('discord.js')
-const { Kasake, Melphi, ZorGame} = require('../../../util/devs')
 module.exports = {
             name: 'eval',
             alias: ["e"],
@@ -22,8 +21,9 @@ const tokenfalso = new Discord.MessageEmbed()
 
 
 
-      
-   if(![Kasake, Melphi, ZorGame].includes(message.author.id)) return
+
+    const devs = require('../../../util/JSON/devs.json').devs
+    if (!devs.id.includes(message.author.id)) return;
   
 
   let code = args.join(' ')
@@ -38,15 +38,8 @@ const tokenfalso = new Discord.MessageEmbed()
   
 
     const util = require('util');
-  function clean(text) {
-  if (typeof text === 'string')
-  return text
-  .replace(/`/g, '`' + String.fromCharCode(8203))
-  .replace(/@/g, '@' + String.fromCharCode(8203))
-  else return text
-          
-  }
-          
+    const { clean }  = require('../../../util/JS/clean')
+  
 
        
   let output =  clean(await eval(code));

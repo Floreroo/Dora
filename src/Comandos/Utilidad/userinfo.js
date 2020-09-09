@@ -16,7 +16,7 @@ module.exports = {
     let presencestatus = {
       "online":"<a:online:751961662470357083> | En linea",
       "idle":"<a:idle:751961722318749737> | Ausente",
-      "dnd": "<a:dnd:751961774525251684> | No Molestar",
+      "dnd": "<a:dnd:751961774525251684>| No Molestar",
       "invisible":"<a:offline:751961827033874512> | Invisible/Desconectado",
     }
  
