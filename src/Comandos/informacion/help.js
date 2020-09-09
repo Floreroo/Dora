@@ -17,7 +17,7 @@ module.exports = {
       }
       if(args[0] == "fun"){
         let embed4 = new Discord.MessageEmbed()
-        .addField("Diversion", `${prefix}8ball \n${prefix}say \n${prefix}sayimage`)
+        .addField("Diversion", `${prefix}8ball \n${prefix}say \n${prefix}embedsay \n${prefix}sayimage \n${prefix}gay \n${prefix}reverse`)
         .setColor('RANDOM')
         .setDescription(`**${message.member.user.username}** recuerda que puedes unirte a mi Servidor De [Soporte](https://discord.gg/EXyn6yU)`)
         .setFooter('INFORMACION', message.guild.iconURL())

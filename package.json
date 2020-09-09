@@ -1,0 +1,57 @@
+{
+  "name": "algo",
+  "version": "1.0.0",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vitalets/google-translate-api": "^3.0.0",
+    "A": "0.0.1",
+    "a": "^2.1.2",
+    "amo": "0.0.7",
+    "ascii-table": "0.0.9",
+    "canvas": "^2.6.1",
+    "captainjs": "^1.0.4",
+    "child_process": "^1.0.2",
+    "cpu-stat": "^2.0.1",
+    "discord.js": "^12.3.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "init": "^0.1.2",
+    "kasake": "^1.0.0",
+    "megadb": "^3.4.0",
+    "melphi": "^1.0.7",
+    "melphis": "0.0.5",
+    "moment": "^2.27.0",
+    "moment-duration-format": "^2.3.2",
+    "mongodb": "^3.6.0",
+    "mongoose": "^5.10.0",
+    "narutoimage": "^1.1.0",
+    "nekos.life": "^2.0.7",
+    "node": "^14.8.0",
+    "ntx": "^0.1.2",
+    "os": "^0.1.1",
+    "pene": "^1.0.0",
+    "ping-monitor": "^0.5.0",
+    "pornhub": "0.0.5",
+    "reborn": "0.0.0",
+    "vscode": "^1.1.37",
+    "weez": "^1.6.1",
+    "yarn": "^1.22.5"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/locodediscord/algo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/locodediscord/algo/issues"
+  },
+  "homepage": "https://github.com/locodediscord/algo#readme",
+  "description": ""
+}
