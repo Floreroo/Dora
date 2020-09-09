@@ -15,11 +15,11 @@ module.exports = async (client, message) => {
       
       
        let obt = await ModelPrefix.findOne({guildID: message.guild.id, guildName: message.guild.name}).exec()
-       let prefix = obt ? obt.prefix : "d!"
+       let prefix = obt ? obt.prefix : "d! "
       
 
   
-       if(message.content.match(new RegExp(`^<@!?${client.user.id}>( |)`))) { message.channel.send(`Mi Prefix en este servidor es ${prefix}, usa ${prefix}help para mas ayuda`)}
+       if(message.content.match(new RegExp(`^<@!?${client.user.id}>( |)`))) { message.channel.send(`Mi Prefix en este servidor es \`\`${prefix}\`\` usa ${prefix}help para mas ayuda`)}
 
        if (message.author.bot) return;
 

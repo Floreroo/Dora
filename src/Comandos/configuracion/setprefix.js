@@ -6,7 +6,7 @@ module.exports = {
             name: 'setprefix',
             description: 'Establece el prefix en un servidor',
             alias: ["s-p"],
-        async run(client, message, args) {
+        async run(client, message, args, prefix) {
      
     const ModelPrefix = require('../../database/models/Prefix')
     const { MessageEmbed } = require('discord.js')
@@ -15,6 +15,8 @@ module.exports = {
     
     message.channel.startTyping();
     if(!args[0]) return message.channel.send('> Necesitas poner un prefix **'+message.author.username+'**')
+    if(args[0].length > 3) return message.channel.send('> El prefix no puede tener +3 caracteres')
+
     
     let NewPrefix = await ModelPrefix.findOne({guildID: message.guild.id}).exec()
     if(NewPrefix){

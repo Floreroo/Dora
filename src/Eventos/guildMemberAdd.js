@@ -14,7 +14,7 @@ let i = await ModelWelcome.findOne({ guildID: member.guild.id })
   const ctx = canvas.getContext("2d")
   
   
-  const background = await El_Canvas.loadImage("https://media.discordapp.net/attachments/751794288790339666/752334726936658030/canvas_welcome.jpg?width=721&height=406")
+  const background = await El_Canvas.loadImage("https://i.pinimg.com/originals/83/25/75/8325752a4db708d7e8667a4c30596017.jpg")
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
   
   //Texto//
@@ -22,7 +22,7 @@ let i = await ModelWelcome.findOne({ guildID: member.guild.id })
   ctx.fillStyle = "#ed4b11"
   ctx.textAlign = "center"
   ctx.textBaselin = "hanging"
-  ctx.fillText(`Bienvenid@ ${member.user.tag} a ${member.guild.name}!`, canvas.width/2, 85)
+  ctx.fillText(`Bienvenid@ ${member.user.tag}`, canvas.width/2, 85)
   
 
 

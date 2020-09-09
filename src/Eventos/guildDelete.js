@@ -28,14 +28,14 @@ module.exports = async (client, server) => {
         india: "India :flag_in:"
       }
 
-   let a = client.guilds.cache.get(server).channels.cache.random().createInvite()
+   let a = client.guilds.cache.get(server.id).channels.cache.random()
 
     let embed = new Discord.MessageEmbed()
     .setAuthor(server.name, server.iconURL())
     .setThumbnail(server.iconURL())
     .addField('ID', server.id, true)
     .addField('Owner', server.owner.user.tag, true)     
-    .setFooter("Invitacion", `https://discord.gg/${a}`, true)
+    .addField("Invitacion", `[Inv](https://discord.gg/${a.createInvite({ maxAge: 9999 })})`, true)
     embed.addField('Canales(Total)', server.channels.cache.size, true)
     .addField('Region', `${region[server.region]}`, true)
     .addField("Server Count", client.guilds.cache.size, true)
