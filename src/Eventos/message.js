@@ -9,8 +9,7 @@ module.exports = async (client, message) => {
     
       
 
-       if(message.channel.type === "dm");
-       console.log(message.author.tag + ": " + message.content)
+       if(message.channel.type === "dm") return
 
        let obt = await ModelPrefix.findOne({guildID: message.guild.id, guildName: message.guild.name}).exec()
        let prefix = obt ? obt.prefix : "d!"

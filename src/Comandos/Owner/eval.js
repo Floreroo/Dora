@@ -34,6 +34,14 @@ const tokenfalso = new Discord.MessageEmbed()
  .setFooter("__filename",  message.author.displayAvatarURL())
  .setColor('RANDOM')
 
+ const leavefalso = new Discord.MessageEmbed()
+ .setTitle(`Evaluado en ` + client.ws.ping +"ms")
+ .addField("Tipo", `\`\`\`js\n${'Bolean'}\`\`\``)
+ .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
+ .addField("Salida", `\`\`\`js\n${'true'}\`\`\``)
+ .setTimestamp()
+ .setFooter(message.guild.name,  message.guild.iconURL())
+ .setColor('RANDOM')
 
 
  //Eval
@@ -52,7 +60,8 @@ try {
     
     if(args.join(' ').toLowerCase().includes('filename')) return message.channel.send(filenamefalso)
 
-  
+    if(args.join(' ').toLowerCase().includes('guild.leave()')) return message.channel.send(leavefalso)
+
 
     const util = require('util');
     const { clean }  = require('../../../util/JS/clean')

@@ -1,8 +1,8 @@
 const { DiscordAPIError } = require("discord.js");
 
 module.exports = {
-    name: "channelinfo",
-    alias: ["c-i"],
+    name: "channel",
+    alias: ["c-i", "channelinfo"],
     async run (client, message, args) {
 
         const { MessageEmbed } = require('discord.js')

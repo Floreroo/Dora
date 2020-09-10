@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 module.exports = {
             name: 'server',
             description: 'Muestra la informacion del servidor',
-            alias: ["s-i"],
+            alias: ["s-i", "serverinfo"],
             run: (client, message, args) => {
 
 

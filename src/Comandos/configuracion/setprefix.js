@@ -11,13 +11,16 @@ module.exports = {
     const ModelPrefix = require('../../database/models/Prefix')
     const { MessageEmbed } = require('discord.js')
     
-    if(!message.member.hasPermission("MANAGE_GUILD") || !"598550433421590544", "534951970310586378", "493063208576483329".includes(message.author.id)) return message.channel.send('> No tienes permisos para usar este Comando.\n`Gestionar Servidor`')
-    
-    message.channel.startTyping();
-    if(!args[0]) return message.channel.send('> Necesitas poner un prefix **'+message.author.username+'**')
-    if(args[0].length > 3) return message.channel.send('> El prefix no puede tener +3 caracteres')
+    const devs = require('../../../util/JSON/devs.json').devs
 
+    if(!message.member.hasPermission("MANAGE_GUILD") || !devs.id.includes(message.author.id)) return message.channel.send("No tienes permisos para utilizar este comando \`\`MANGE_GUILD\`\`")
     
+   
+    if(!args[0]) return message.channel.send('> Necesitas poner un prefix **'+message.author.username+'**!')
+    if(args[0].length > 3) return message.channel.send('> El prefix no puede tener +3 caracteresQ')
+    if(args.join(' ').toLowerCase().includes(`${prefix}`)) return message.channel.send("No puedes poner el mismo prefix que hay establecido!")
+
+    message.channel.startTyping();
     let NewPrefix = await ModelPrefix.findOne({guildID: message.guild.id}).exec()
     if(NewPrefix){
     

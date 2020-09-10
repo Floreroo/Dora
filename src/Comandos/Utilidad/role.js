@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js")
 
 module.exports = {
-    name: "roleinfo",
+    name: "role",
     alias: ["r-i"],
     async run (client, message, args) {
 
@@ -19,12 +19,9 @@ if (permizos.indexOf('ADMINISTRATOR') === -1) {
   }
   
 
-       if(!a) return message.channel.send("Debes de mencionar o poner la id de un role")
-       if(message.guild.me.permissionsIn(a)) return message.channel.send('¡No tengo permisos para ver este canal!')
-
 
         let embed = new MessageEmbed()
-        .setDescription(`Esta es la informacion de \"\"${a.name}\"\"`)
+        .setDescription(`Esta es la informacion de \*\*${a.name}\*\*`)
         .addField("Id", a.id, true)
         .addField("Ping", a.toString(), true)
         .addField("Creado el", a.createdAt.toDateString(), true)

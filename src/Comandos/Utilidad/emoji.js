@@ -1,8 +1,8 @@
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-    name: "emojinfo",
-    alias: ["emoji", "jumbo"],
+    name: "emoji",
+    alias: ["emojiinfo", "jumbo"],
     async run (client, message, args) {
 
         if(!args[0]) return message.channel.send('Debes poner un emoji!')

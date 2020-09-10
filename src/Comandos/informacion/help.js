@@ -35,7 +35,7 @@ module.exports = {
      }
       if(args[0] == "util"){
         let embed6 = new Discord.MessageEmbed()
-        .addField("Utilidad",  `${prefix}avatar \n${prefix}botinvite \n${prefix}ping  \n${prefix}server \n${prefix}user \n${prefix}channelinfo \n${prefix}roleinfo \n${prefix}rolelist  \n${prefix}stats`)
+        .addField("Utilidad",  `${prefix}avatar \n${prefix}botinvite \n${prefix}ping  \n${prefix}server \n${prefix}user \n${prefix}channel \n${prefix}role \n${prefix}emoji \n${prefix}rolelist  \n${prefix}stats`)
         .setColor('RANDOM')
         .setDescription(`**${message.member.user.username}** recuerda que puedes unirte a mi Servidor De [Soporte](https://discord.gg/EXyn6yU)`)
         .setFooter('INFORMACION', message.guild.iconURL())
