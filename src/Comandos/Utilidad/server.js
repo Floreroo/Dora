@@ -31,7 +31,7 @@ module.exports = {
 
         let presencestatus = {
           "online":"<a:online:751961662470357083> | En linea",
-          "idle":"<a:idle:733410335091851327> | Ausente",
+          "idle":"<a:idle:751961722318749737> | Ausente",
           "dnd": "<a:dnd:751961774525251684> | No Molestar",
           "invisible":"<a:offline:751961827033874512> | Invisible/Desconectado",
         }
@@ -56,7 +56,7 @@ module.exports = {
         embed.addField("Canal de sistema", server.systemChannel.toString(), true)
         }
         embed.addField('Creado el', server.createdAt.toString(), true)
-        .addField('Status', ` <a:online:751961662470357083> ${[server.members.cache.filter(c => c.presence.status === 'online').size]} | <a:idle:733410335091851327> ${[server.members.cache.filter(c => c.presence.status === 'idle').size]} | <a:dnd:751961774525251684> ${[server.members.cache.filter(c => c.presence.status === 'dnd').size]} | <a:offline:751961827033874512> ${[server.members.cache.filter(c => c.presence.status === 'offline').size]} | <a:streaming:751961890946678924> ${[server.members.cache.filter(c => c.presence.status === 'streaming').size]} ` , true)
+        .addField('Status', ` <a:online:751961662470357083> ${[server.members.cache.filter(c => c.presence.status === 'online').size]} | <a:idle:751961722318749737> ${[server.members.cache.filter(c => c.presence.status === 'idle').size]} | <a:dnd:751961774525251684> ${[server.members.cache.filter(c => c.presence.status === 'dnd').size]} | <a:offline:751961827033874512> ${[server.members.cache.filter(c => c.presence.status === 'offline').size]} | <a:streaming:751961890946678924> ${[server.members.cache.filter(c => c.presence.status === 'streaming').size]} ` , true)
         .addField("Roles", roles.length > 1000 ? roles.slice(0, 1000)  + "\n Y muchos mas" : roles)
       message.channel.send(embed)
       }

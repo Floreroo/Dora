@@ -110,7 +110,19 @@ message.channel.send(embed1)
         .addField("Codigo", `\`\`\`js\n${args.join(" ")}\`\`\``)
         .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
     .addField("Error", `\`\`\`js\n${err.message}\`\`\``)
-    message.channel.send(embed2)
+    message.channel.send(embed2).then(m => {
+      m.react('❌')
+
+      m.awaitReactions(
+       async (reaction, user) => {
+         
+             if (message.author.id !== user.id) return;
+            if (reaction.emoji.name === '❌') { 
+              m.delete()
+            }
+          })
+    });
+
   
   } 
 }}
