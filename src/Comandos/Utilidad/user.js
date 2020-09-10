@@ -10,7 +10,7 @@ module.exports = {
 
  
 
- const owo = message.mentions.users.first() || client.users.cache.get(args[0]) ||message.author;
+ const owo = message.mentions.users.first() || client.users.cache.get(args[0]) || client.users.cache.find(x => x.tag === args[0]) ||message.author;
  const server = message.guild
 
     let presencestatus = {
