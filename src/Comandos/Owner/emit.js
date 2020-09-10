@@ -8,4 +8,5 @@ module.exports = {
 client.emit('guildMemberAdd', message.guild.members.resolve(args[0]) || message.mentions.users.first() || message.member)
 
   }
-}
+} 
+

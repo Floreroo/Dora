@@ -76,6 +76,7 @@ try {
   }
 
 
+
     /*
   if (output.length >= 1022) {
   console.log(output)
@@ -99,9 +100,21 @@ const embed1 = new Discord.MessageEmbed()
 .setTimestamp()
 .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
 .setColor('RANDOM')
-message.channel.send(embed1)
+message.channel.send(embed1).then(m => {
+  m.react('❌')
+
+  m.awaitReactions(
+   async (reaction, user) => {
+     
+         if (message.author.id !== user.id) return;
+        if (reaction.emoji.name === '❌') { 
+          m.delete()
+        }
+      })
+});
     
   } catch(err) {
+
     const embed2 = new Discord.MessageEmbed()
      .setTitle('Error')
      .setTimestamp()
