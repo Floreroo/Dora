@@ -11,7 +11,6 @@
   "dependencies": {
     "@vitalets/google-translate-api": "^3.0.0",
     "A": "0.0.1",
-    "a": "^2.1.2",
     "amo": "0.0.7",
     "ascii-table": "0.0.9",
     "canvas": "^2.6.1",
@@ -52,7 +51,7 @@
   },
   "engines": {
     "node": "12.x"
-},
+  },
   "bugs": {
     "url": "https://github.com/locodediscord/algo/issues"
   },
