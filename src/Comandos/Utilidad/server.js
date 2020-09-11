@@ -30,6 +30,7 @@ module.exports = {
         }
 
         const server = message.guild
+        let roles = server.roles.cache.filter(x => !x.managed).map(x => x).sort((a, b) => b.position - a.position || parseInt(a.id.slice(0, -10)) - parseInt(b.id.slice(0, -10)) || parseInt(a.id.slice(10)) - parseInt(b.id.slice(10)).first(2)[1]).join(" | ")
         let embed = new Discord.MessageEmbed()
         .setColor('RANDOM')
         .setThumbnail(server.iconURL())
@@ -41,7 +42,6 @@ module.exports = {
         if(server.emojis){
         embed.addField('Emojis', server.emojis.cache.size, true)
         }        
-        embed.addField("Roles", server.roles.cache.size, true)
 
         embed.addField('Canales(Total)', server.channels.cache.size, true)
         if (server.systemChannel) {
@@ -49,9 +49,10 @@ module.exports = {
           }
         embed.addField('Region', `${region[server.region]}`, true)
         .addField('Nivel de verificación',  server.verificationLevel , true)
-        .addField('Creado el', server.createdAt.toHourString(), true)
+        .addField('Creado el', server.createdAt.toDateString(), true)
         .addField('Status', ` <a:online:751961662470357083> ${[server.members.cache.filter(c => c.presence.status === 'online').size]} | <a:idle:751961722318749737> ${[server.members.cache.filter(c => c.presence.status === 'idle').size]} | <a:dnd:751961774525251684> ${[server.members.cache.filter(c => c.presence.status === 'dnd').size]} | <a:offline:751961827033874512> ${[server.members.cache.filter(c => c.presence.status === 'offline').size]} | <a:streaming:751961890946678924> ${[server.members.cache.filter(c => c.presence.status === 'streaming').size]} ` , true)
-      message.channel.send(embed)
+        .addField("Roles", roles.length > 1000 ? roles.slice(0, 1000)  + "\n Y muchos mas" : roles)
+        message.channel.send(embed)
       }
   }
 
