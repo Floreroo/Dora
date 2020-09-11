@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 
 
-
 module.exports = {
             name: 'user',
             description: 'Muestra la informacion de un usuario',
@@ -17,16 +16,9 @@ module.exports = {
       "online":"<a:online:751961662470357083> | En linea",
       "idle":"<a:idle:751961722318749737> | Ausente",
       "dnd": "<a:dnd:751961774525251684>| No Molestar",
-      "invisible":"<a:offline:751961827033874512> | Invisible/Desconectado",
+      "offline": "<a:offline:751961827033874512> | Offline",
     }
  
-    const ptype = {
-      PLAYING: "Jugando a",
-      LISTENING: "Escuchando",
-      WATCHING: "Viendo",
-      STREAMING: "Transmitiendo ",
-      CUSTOM_STATUS: "Custom status:"
-    };
  
     const badges = {
     
@@ -49,23 +41,16 @@ module.exports = {
   if (owo.presence.activities && owo.presence.activities[0]) {
     for (const npresence of Object.values(owo.presence.activities)) {
       if (npresence.type == "CUSTOM_STATUS") {
-        ptext += ptype[npresence.type] + "\n";
-        if (npresence.emoji) ptext += npresence.emoji.toString() + " ";
-        if (npresence.state) ptext += npresence.state;
-        ptext += "\n";
-      } else {
-        if (npresence.state) {
-          ptext += "\n" + npresence.state;
-        }
-        if (npresence.assets) {
-          if (npresence.assets.largeText)
-            ptext += "\n" + npresence.assets.largeText;
+        if (npresence.state) ptext +=  npresence.state + " | ";
+        
+
+     } else {
+
           if (npresence.assets.smallText)
-            ptext += "\n" + npresence.assets.smallText;
+            ptext += npresence.assets.smallText;
         }
-        ptext += "\n";
+        ptext + "\n";
       }
-    }
   } else ptext = "No tiene";
 
 
@@ -82,16 +67,15 @@ const miembro = await message.guild.members.fetch(owo);
     .addField("Apodo", message.guild.member(owo).nickname != null ? message.guild.member(owo).nickname : "No tiene.", true)
 
     .addField('Bot?', owo.bot ? "Si" : "No", true)
+    
+    uo.addField('Insignias', `${owo.flags.toArray().length < 1 ? `No tiene` : owo.flags.toArray().map(e => badges[e]).join(' ')}`, true)
 
     .addField('Role destacado', message.guild.member(owo).roles.highest.toString(), true)
-
-    .addField("Presencia",  ptext || 'Nada.', true)
-
- 
+    
     uo.addField(`Status`,` ${presencestatus[owo.presence.status]}`, true)
 
-    uo.addField('Insignias', `${owo.flags.toArray().length < 1 ? `No tiene` : owo.flags.toArray().map(e => badges[e]).join(' ')}`, true)
-    
+    .addField("Presencia",  ptext , true)
+ 
     uo.addField(`Ha entrado en ${server.name}`, miembro.joinedAt, true)
 
     .addField('Se ha logeado en discord', owo.createdAt, true)
