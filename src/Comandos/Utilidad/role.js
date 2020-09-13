@@ -24,7 +24,7 @@ if (permizos.indexOf('ADMINISTRATOR') === -1) {
         .setDescription(`Esta es la informacion de \*\*${a.name}\*\*`)
         .addField("Id", a.id, true)
         .addField("Ping", a.toString(), true)
-        .addField("Creado el", a.createdAt.toDateString(), true)
+        .addField("Creado el", a.createdAt.toLocaleString("es"), true)
         .addField("Color", a.hexColor, true)
         .addField("Miembros", todos || "No tiene", true)
         .addField("Bots", bots ? bots : "No tiene", true)

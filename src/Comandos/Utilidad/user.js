@@ -9,7 +9,7 @@ module.exports = {
 
  
 
- const owo = message.mentions.users.first() || client.users.cache.get(args[0]) || client.users.cache.find(x => x.tag === args[0]) ||message.author;
+ const owo = message.mentions.users.first() || client.users.cache.get(args[0]) || client.users.cache.find(x => x.tag === args[0]) || message.author;
  const server = message.guild
 
     let presencestatus = {
@@ -42,7 +42,7 @@ module.exports = {
     for (const npresence of Object.values(owo.presence.activities)) {
       if (npresence.type == "CUSTOM_STATUS") {
         if (npresence.state) ptext +=  npresence.state + " | ";
-        
+        if(npresence.emoji) ptext += npresence.emoji + " | ";
 
      } else {
 
@@ -57,6 +57,7 @@ module.exports = {
   
 const miembro = await message.guild.members.fetch(owo);
 
+try{
     const uo = new Discord.MessageEmbed()
     uo.setAuthor(owo.tag, owo.displayAvatarURL({dynamic: true}))
 
@@ -74,11 +75,11 @@ const miembro = await message.guild.members.fetch(owo);
     
     uo.addField(`Status`,` ${presencestatus[owo.presence.status]}`, true)
 
-    .addField("Presencia",  ptext , true)
+    .addField("Presencia",  ptext.slice(0, 1010) , true)
  
-    uo.addField(`Ha entrado en ${server.name}`, miembro.joinedAt, true)
+    uo.addField(`Ha entrado en ${server.name}`, miembro.joinedAt.toLocaleString("es"), true)
 
-    .addField('Se ha logeado en discord', owo.createdAt, true)
+    .addField('Se ha logeado en discord', owo.createdAt.toLocaleString("es"), true)
 
     .addField('Roles', `${miembro.roles.cache.map(c => c.toString()).join(' | ')}`)
 
@@ -88,10 +89,11 @@ const miembro = await message.guild.members.fetch(owo);
 
   message.channel.send(uo)
   
-
-     
+} catch(err) {
+  message.channel.send("Se ha producido un error al buscar este usuario: "+ err)
+}
      }
-  }
+    }
 
 
   

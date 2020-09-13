@@ -1,7 +1,9 @@
-module.exports = async (client, server) => {
+const { Model } = require('mongoose')
+
+module.exports = async (client, message, server) => {
   
     const Discord = require('discord.js')
-
+    const { ModelPrefix } = require('../database/models/Prefix')
     let canal = client.channels.cache.find(c => c.name === "「📣」server-leave")
     if(!canal) return
 
@@ -41,5 +43,9 @@ module.exports = async (client, server) => {
     .addField("Server Count", client.guilds.cache.size, true)
     .setColor("RANDOM")
     canal.send(embed)
+
+
+    await ModelPrefix.deleteOne({guildId: server.id})
+
 
 }

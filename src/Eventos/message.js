@@ -12,7 +12,7 @@ module.exports = async (client, message) => {
        if(message.channel.type === "dm") return
 
        let obt = await ModelPrefix.findOne({guildID: message.guild.id, guildName: message.guild.name}).exec()
-       let prefix = obt ? obt.prefix : "d!"
+       let prefix = obt ? obt.prefix : "dora "
   
        if (message.author.bot) return;
 

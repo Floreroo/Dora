@@ -46,8 +46,4 @@ module.exports = async (client, server) => {
     .addField("Server Count", client.guilds.cache.size, true)
     .setColor("RANDOM")
     canal.send(embed)
-
-let a = server.channels.cache.random()
-
-a.send("Hola, gracias por añadirme a este servidor, recuerda que puedes unirte a mi servidor de soporte! https://discord.gg/9w6vBqP")
-}
+  }

@@ -15,7 +15,7 @@ module.exports = {
     .addField("Id", a.id, true)
     .addField("Posicion", a.rawPosition, true)
     .addField("Categoria", a.parent.name, true)
-    .addField("Creado el", a.createdAt.toDateString(), true)
+    .addField("Creado el", a.createdAt.toLocaleString("es"), true)
     .addField("Nsfw?", a.nsfw ? "Si" : "No", true)
     if(a.lastMessage){
     embed.addField("Ultimo mensaje", `\`\`${a.lastMessage.content}\`\`` + "\n" + `[URL](${a.lastMessage.url})`, true)
