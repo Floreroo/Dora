@@ -11,7 +11,7 @@ export const database = require('./src/database/index')
 
 client.commands = new Collection()
 client.version = "0.6.5", 
-client.devs = require('./util/JSON/devs.json')
+client.devs = require('./util/JSON/devs.json').devs
 client.snipes = new Map
 
 function getDirectories(){
