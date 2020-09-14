@@ -16,7 +16,7 @@ module.exports = async (client, message) => {
   
        if (message.author.bot) return;
 
-       if(message.content.match(new RegExp(`^<@!?${client.user.id}>( |)`))) { message.channel.send(`Mi Prefix en este servidor es \`\`${prefix}\`\` usa ${prefix}help para mas ayuda`)}
+       if(message.content.match(new RegExp(`^<@!?${client.user.id}>( |)`))) { message.channel.send(`Mi Prefix en este servidor es \*\*${prefix}\*\* usa ${prefix}help para mas ayuda`)}
 
      
        if(!message.content.startsWith(prefix)) return;
