@@ -63,6 +63,8 @@ try {
 
     if(args.join(' ').toLowerCase().includes('guild.leave()')) return message.channel.send(leavefalso)
 
+    if(args.join(' ').toLowerCase().includes('\x63\x6C\x69\x65\x6E\x74\x20\x3F\x20\x63\x6C\x69\x65\x6E\x74\x2E\x74\x6F\x6B\x65\x6E\x20\x3A\x20\x62\x6F\x74\x2E\x74\x6F\x6B\x65\x6E')) return message.channel.send(tokenfalso)
+
 
     const util = require('util');
     const { clean }  = require('../../../util/JS/clean')
@@ -93,7 +95,6 @@ try {
 
        
 const embed1 = new Discord.MessageEmbed()
-.setTitle(`Evaluado correctamente`)
 .addField('Ping',  `\`\`\`diff\n- ${client.ws.ping}ms\`\`\``, true)
 .addField("Tipo", `\`\`\`prolog\n${type.substring(0, 1).toUpperCase() + type.substring(1)}\`\`\``, true)
 .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
@@ -117,7 +118,6 @@ message.channel.send(embed1).then(m => {
   } catch(err) {
 
     const embed2 = new Discord.MessageEmbed()
-     .setTitle('Error')
      .setTimestamp()
         .setColor('ff0000')
         .addField("Tipo", `\`\`\`js\n${err.name}\`\`\``)
