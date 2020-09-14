@@ -8,3 +8,4 @@ export default function(metaURL) {
     const __dirname = dirname(__filename);
     return { require, __filename, __dirname };
 } 
+

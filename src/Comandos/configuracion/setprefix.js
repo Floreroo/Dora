@@ -1,4 +1,3 @@
-const { Kasake, Melphi, ZorGame } = require('../../../util/JSON/devs.json');
 
 
 

@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const hora = require('../../../util/JS/hora');
+
 
 
 module.exports = {

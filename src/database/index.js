@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-module.exports = mongoose.connect(process.env.MONGO_URL, {
+module.exports = mongoose.connect("mongodb+srv://admin:KASake1234@algo.6dofj.mongodb.net/algo?retryWrites=true&w=majority", {
 
     useNewUrlParser: true,
     useUnifiedTopology: true,

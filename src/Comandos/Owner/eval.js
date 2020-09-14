@@ -47,8 +47,7 @@ const tokenfalso = new Discord.MessageEmbed()
 
  //Eval
 
-    const devs = require('../../../util/JSON/devs.json').devs
-    if (!devs.id.includes(message.author.id)) return;
+    if (!client.devs.id.includes(message.author.id)) return;
   
 try {
   let code = args.join(' ')
@@ -67,7 +66,7 @@ try {
 
 
     const util = require('util');
-    const { clean }  = require('../../../util/JS/clean')
+    const { clean }  = require('../../../src/util/JS/clean')
   
 
      

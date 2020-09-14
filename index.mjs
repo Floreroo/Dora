@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 dotenv.config();
-import commons from './util/JS/commons.mjs';
+import commons from './src/util/JS/pene.mjs';
 const { require } = commons(import.meta.url);
 
 const { Collection, Client } = require('discord.js')
@@ -8,33 +8,38 @@ const { readdirSync, statSync } = require("fs")
 export const client = new Client({ config: "./config.json", disableMentions: 'everyone', partials: ["MESSAGE", "CHANNEL", "REACTION"],  ws: { properties: { $browser: "Discord Android" }}})
 export const database = require('./src/database/index')
 
+const ascii = require('ascii-table')
+const table = new ascii().setHeading('Comando', 'Carpeta')
+const fs = require('fs')
 
 client.commands = new Collection()
 client.version = "0.6.5", 
-client.devs = require('./util/JSON/devs.json').devs
+client.devs = require('./src/util/JSON/devs.json').devs
 client.snipes = new Map
 
-function getDirectories(){
-  return readdirSync('./src/Comandos').filter(function subFolder(file) {
-    return statSync('./src/Comandos/'+file).isDirectory()
-  });
+function getDirectorios() {
+  return fs.readdirSync('./src/Comandos/').filter(function subFolder(file) {
+    return fs.statSync(`./src/Comandos/${file}`).isDirectory()
+  })
 }
-let commandFiles = readdirSync('./src/Comandos').filter(f => f.endsWith(".js"))
 
-for(const folder of getDirectories()) {
-  const folderFiles = readdirSync('./src/Comandos/'+folder).filter(f => f.endsWith(".js"))
-  for(const file of folderFiles) {
-    commandFiles.push([folder, file])
+const cmdFiles = fs.readdirSync('./src/Comandos/').filter(file => file.endsWith('.js'))
+for (const Folder of getDirectorios()) {
+  const FolderFile = fs.readdirSync(`./src/Comandos/${Folder}`).filter(end => end.endsWith('.js'))
+  for (const File of FolderFile) {
+    cmdFiles.push([Folder, File])
   }
 }
-for(const file of commandFiles) {
-  let command;
+
+for (const file of cmdFiles) {
+  let cmd;
   if(Array.isArray(file)) {
-    command = require(`./src/Comandos/${file[0]}/${file[1]}`)
+    cmd = require(`./src/Comandos/${file[0]}/${file[1]}`)
   } else {
-    command = require(`./src/Comandos/${file}`)
+    cmd = require(`./src/Comandos/${file}`)
   }
-  client.commands.set(command.name, command)
+  client.commands.set(cmd.name, cmd)
+  table.addRow(cmd.name, file[0])
 } 
 
 for(const file of readdirSync('./src/Eventos/')) {
@@ -45,6 +50,7 @@ for(const file of readdirSync('./src/Eventos/')) {
     
   }
 }
+
 
 client.login(process.env.DISCORD_TOKEN)
 

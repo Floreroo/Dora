@@ -18,7 +18,6 @@ module.exports = async (client, message) => {
 
        if(message.content.match(new RegExp(`^<@!?${client.user.id}>( |)`))) { message.channel.send(`Mi Prefix en este servidor es \*\*${prefix}\*\* usa ${prefix}help para mas ayuda`)}
 
-     
        if(!message.content.startsWith(prefix)) return;
 
        const args = message.content.slice(prefix.length).trim().split(/ +/g)
@@ -27,6 +26,6 @@ module.exports = async (client, message) => {
        let cmd = client.commands.get(command) || client.commands.find(c => c.alias && c.alias.includes(command))
        if(cmd) { return cmd.run(client, message, args, prefix) }
      
-        }
+       console.log(`${message.author.tag}: ${message.content}`)
 
-       
+}

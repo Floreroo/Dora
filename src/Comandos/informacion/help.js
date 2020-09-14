@@ -53,8 +53,8 @@ module.exports = {
       }
       if(args[0] == "owner"){
        
-  const devs = require('../../../util/JSON/devs.json').devs
-  if(!devs.id.includes(message.author.id)) return message.channel.send('Debes ser owner del bot para utilizar este comando')
+
+  if(!client.devs.id.includes(message.author.id)) return message.channel.send('Debes ser owner del bot para utilizar este comando')
         let embed1000 = new Discord.MessageEmbed()
         .setColor('RANDOM')
         .addField("Owner", `${prefix}eval \n${prefix}reload \n${prefix}shell`)

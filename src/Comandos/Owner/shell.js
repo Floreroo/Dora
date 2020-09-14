@@ -8,8 +8,8 @@ module.exports = {
  const { exec } = require('child_process')
 
         
- const devs = require('../../../util/JSON/devs.json').devs
- if(!devs.id.includes(message.author.id)) return message.channel.send('¡No tienes permisos para usar este comando!')
+
+ if(!client.devs.id.includes(message.author.id)) return message.channel.send('¡No tienes permisos para usar este comando!')
 
 
         let code = args.join(' ')
