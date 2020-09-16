@@ -45,9 +45,8 @@ module.exports = {
         if(npresence.emoji) ptext += npresence.emoji.toString() + " | ";
 
      } else {
+     if(npresence.name) ptext += npresence.name + " | ";
 
-          if (npresence.assets.smallText)
-            ptext += npresence.assets.smallText;
         }
         ptext + "\n";
       }
