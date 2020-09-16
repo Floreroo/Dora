@@ -7,11 +7,11 @@ module.exports = {
       async run(client, message, args, prefix) {
    
   const ModelPrefix = require('../../database/models/Prefix')
-
+  
   let permisos = message.member.hasPermission("MANAGE_GUILD") || client.devs.id.includes(message.author.id)
-  if(!permisos){
-      return message.channel.send("No tienes permisos para utilizar este comando \`\`MANGE_GUILD\`\`")
-  }  
+if(!permisos){
+    return message.channel.send("No tienes permisos para utilizar este comando \`\`MANGE_GUILD\`\`")
+}
 
 await ModelPrefix.findOne({guildID: message.guild.id}).deleteOne()
 

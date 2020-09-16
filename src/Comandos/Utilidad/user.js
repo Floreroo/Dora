@@ -42,7 +42,7 @@ module.exports = {
     for (const npresence of Object.values(owo.presence.activities)) {
       if (npresence.type == "CUSTOM_STATUS") {
         if (npresence.state) ptext +=  npresence.state + " | ";
-        if(npresence.emoji) ptext += npresence.emoji + " | ";
+        if(npresence.emoji) ptext += npresence.emoji.toString() + " | ";
 
      } else {
 

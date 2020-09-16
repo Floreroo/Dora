@@ -10,9 +10,10 @@ const { Discord, MessageEmbed} = require('discord.js')
 
         let Bienvenida = require('../../database/models/bienvenidas')
 
-if(!message.member.hasPermission("MANAGE_GUILD")){
-   return message.channel.send('No tienes permisos para usar este Comando.\n`Gestionar Servidor`') 
-}
+        let permisos = message.member.hasPermission("MANAGE_GUILD") || client.devs.id.includes(message.author.id)
+        if(!permisos){
+            return message.channel.send("No tienes permisos para utilizar este comando \`\`MANGE_GUILD\`\`")
+        }
 
 if(!args[0]) return message.channel.send('Debes mencionar un Canal.')
 
