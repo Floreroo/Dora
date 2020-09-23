@@ -7,12 +7,10 @@ module.exports = {
           
    const  ModelWelcome = require('../../database/models/bienvenidas')
 
-   let permisos = message.member.hasPermission("MANAGE_GUILD") || client.devs.id.includes(message.author.id)
-   if(!permisos){
-       return message.channel.send("No tienes permisos para utilizar este comando \`\`MANGE_GUILD\`\`")
-   }
+   let permisos = client.devs.id.includes(message.author.id)
+   if(!permisos) return message.channel.send('¡Este comando esta **deshabilitado**! Podras usarlo el dia 30/9/2020')
 
-  await ModelWelcome.findOne({ guildID: message.guild.id }).deleteOne()
+  await ModelWelcome.deleteOne({ guildID: message.guild.id })
 
           let embed = new MessageEmbed()
           .setDescription(`> El canal se bienvenidas se ha removido correctamente`)

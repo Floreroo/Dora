@@ -12,7 +12,7 @@ module.exports = {
         .setColor('RANDOM')
         .setFooter(client.user.username, client.user.displayAvatarURL())
         message.channel.send(inv)
-        
+    
     }
 }
 

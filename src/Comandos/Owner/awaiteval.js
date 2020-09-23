@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 module.exports = {
-            name: 'eval',
-            alias: ["e"],
+            name: 'awaiteval',
+            alias: ["awe"],
             description: 'Evalua el codigo',
        async run (client, message, args) {
 
@@ -70,7 +70,7 @@ try {
   
 
      
-  let output =  await clean(eval(code));
+  let output =  await clean(eval("(async() => { return " + args.join(' ') +" })()"));
   let type = typeof output;
   if (typeof output !== 'string') {
     output  = util.inspect(output, { depth: 0, maxStringLength: 1950});
