@@ -20,14 +20,12 @@ if(!permisos){
     if(args[0].length > 3) return message.channel.send('> El prefix no puede tener +3 caracteres!')
     if(args.join(' ').toLowerCase().includes(`${prefix}`)) return message.channel.send("No puedes poner el mismo prefix que hay establecido!")
 
-    message.channel.startTyping();
     let NewPrefix = await ModelPrefix.findOne({guildID: message.guild.id}).exec()
     if(NewPrefix){
     
     await NewPrefix.updateOne({guildID: message.guild.id, prefix: args[0], guildName: message.guild.name})
     
     message.channel.send("> El prefix se ha establecido a " + "``" + args[0] + "``").then (() => {
-message.channel.stopTyping(true)
     });
     
 

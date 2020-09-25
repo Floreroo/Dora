@@ -3,7 +3,7 @@ dotenv.config();
 import commons from './src/util/JS/pene.mjs';
 const { require } = commons(import.meta.url);
 
-const { Collection, Client } = require('discord.js')
+const { Collection, Client} = require('discord.js')
 const { readdirSync, statSync } = require("fs")
 export const client = new Client({ config: "./config.json", disableMentions: 'everyone', partials: ["MESSAGE", "CHANNEL", "REACTION"],  ws: { properties: { $browser: "Discord Android" }}})
 export const database = require('./src/database/index')

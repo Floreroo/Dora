@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 module.exports = {
-            name: 'awaiteval',
-            alias: ["awe"],
+            name: 'asynceval',
+            alias: ["ase"],
             description: 'Evalua el codigo',
        async run (client, message, args) {
 
@@ -66,7 +66,7 @@ try {
 
 
     const util = require('util');
-    const { clean }  = require('../../../src/util/JS/clean')
+    const { clean }  = require('../../util/JS/clean')
   
 
      

@@ -90,7 +90,6 @@ try {
   */
       
      
-      
 
        
 const embed1 = new Discord.MessageEmbed()

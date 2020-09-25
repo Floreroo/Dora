@@ -25,7 +25,5 @@ module.exports = async (client, message) => {
      
        let cmd = client.commands.get(command) || client.commands.find(c => c.alias && c.alias.includes(command))
        if(cmd) { return cmd.run(client, message, args, prefix) }
-     
-       console.log(`${message.author.tag}: ${message.content}`)
 
 }
