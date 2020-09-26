@@ -5,6 +5,19 @@ module.exports = {
     alias: ["emojiinfo", "jumbo"],
     async run (client, message, args) {
 
+        const ModelBlack = require('../../database/models/blacklist')
+
+            const poronga = await ModelBlack.findOne({blackID: message.author.id})
+
+            const xdd = client.users.cache.get(poronga)
+          
+            if([xdd].includes) return message.channel.send("¡Estas en mi blacklist!");
+          
+
+
+      //B
+        
+
         if(!args[0]) return message.channel.send('Debes poner un emoji!')
 
         const emoji = message.guild.emojis.cache.find(x => x.name === args[0].split(":")[1]) ||  message.guild.emojis.cache.find(x => x.id === args[0]) || message.guild.emojis.cache.find(c => c.name === args[0])

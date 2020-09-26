@@ -4,9 +4,21 @@ const Discord = require('discord.js');
             name: 'avatar',
             description: 'Muestra el avatar de un usuario',
             alias: [],
-            run: (client, message, args) => {
+            async run (client, message, args) {
 
- 
+                const ModelBlack = require('../../database/models/blacklist')
+
+            const poronga = await ModelBlack.findOne({blackID: message.author.id})
+
+            const xdd = client.users.cache.get(poronga)
+          
+            if([xdd].includes) return message.channel.send("¡Estas en mi blacklist!");
+          
+
+
+              //B
+         
+
         const u = message.mentions.users.first() || client.users.resolve(args[0]) || message.author;
     let embed = new Discord.MessageEmbed()
     .setTitle(`Avatar de ${u.username}`)

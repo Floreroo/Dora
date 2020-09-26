@@ -5,6 +5,19 @@ module.exports = {
   alias: ["comandos"],
   async run (client, message, args, prefix) {
 
+    const ModelBlack = require('../../database/models/blacklist')
+
+            const poronga = await ModelBlack.findOne({blackID: message.author.id})
+
+            const xdd = client.users.cache.get(poronga)
+          
+            if([xdd].includes) return message.channel.send("¡Estas en mi blacklist!");
+          
+
+
+  //B
+
+
     if(args[0]){
 
       if(args[0] == "config"){
@@ -30,7 +43,7 @@ module.exports = {
 
      if(args[0] === "info"){
      let embed5 = new Discord.MessageEmbed()
-     .addField("Informacion", `${prefix}help \n${prefix}invite \n${prefix}noticias \n${prefix}ping \n${prefix}stats`, true)
+     .addField("Informacion", `${prefix}help \n${prefix}invite \n${prefix}ping \n${prefix}stats`, true)
      .setColor('RANDOM')
      .setDescription(`**${message.member.user.username}** recuerda que puedes unirte a mi Servidor De [Soporte](https://discord.gg/EXyn6yU)`)
      .setFooter('INFORMACION', message.guild.iconURL())

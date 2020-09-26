@@ -4,7 +4,20 @@ module.exports = {
     name: "snipe",
     description: "Muestra el ultimo mensaje eliminado",
     alias: [],
-  run (client, message, args) {
+  async run (client, message, args) {
+
+    const ModelBlack = require('../../database/models/blacklist')
+
+            const poronga = await ModelBlack.findOne({blackID: message.author.id})
+
+            const xdd = client.users.cache.get(poronga)
+          
+            if([xdd].includes) return message.channel.send("¡Estas en mi blacklist!");
+          
+
+
+  //B
+
 
     const channel = message.mentions.channels.first() || client.channels.resolve(args[0]) || message.channel;
     const snipe =  client.snipes.get(channel.id)

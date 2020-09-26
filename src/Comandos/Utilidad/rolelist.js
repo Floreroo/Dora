@@ -5,8 +5,20 @@ const Discord = require('discord.js')
             name: 'rolelist',
             description: 'Muestra los roles del servidor',
             alias: ["r-l"],
-            run: (client, message, args) => {
+            async run (client, message, args) {
 
+                const ModelBlack = require('../../database/models/blacklist')
+
+            const poronga = await ModelBlack.findOne({blackID: message.author.id})
+
+            const xdd = client.users.cache.get(poronga)
+          
+            if([xdd].includes) return message.channel.send("¡Estas en mi blacklist!");
+          
+
+
+              //B
+            
 
     let pene = client.guilds.resolve(args[0]) || message.guild;
         let roles =  pene.roles.cache.filter(x => !x.managed).map(x => x).sort((a, b) => b.position - a.position || parseInt(a.id.slice(0, -10)) - parseInt(b.id.slice(0, -10)) || parseInt(a.id.slice(10)) - parseInt(b.id.slice(10)).first(2)[1]).join("\n")

@@ -13,6 +13,19 @@ module.exports = {
             alias: ["botstats"],
             async run (client, message, args) {
 
+              const ModelBlack = require('../../database/models/blacklist')
+
+            const poronga = await ModelBlack.findOne({blackID: message.author.id})
+
+            const xdd = client.users.cache.get(poronga)
+          
+            if([xdd].includes) return message.channel.send("¡Estas en mi blacklist!");
+          
+
+
+            //B
+                  
+
         let percent = await p();
         const embed = new Discord.MessageEmbed()
         .setAuthor(client.user.tag, client.user.displayAvatarURL())

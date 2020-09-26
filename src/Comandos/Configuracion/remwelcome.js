@@ -4,7 +4,20 @@ module.exports = {
  name: "remwelcome",
  alias: ["remwel", "delwelcome", "delwel"],
  async run (client, message, args) {
+  
+  const ModelBlack = require('../../database/models/blacklist')
+
+            const poronga = await ModelBlack.findOne({blackID: message.author.id})
+
+            const xdd = client.users.cache.get(poronga)
           
+            if([xdd].includes) return message.channel.send("¡Estas en mi blacklist!");
+          
+
+
+//B
+
+  
    const  ModelWelcome = require('../../database/models/bienvenidas')
 
    let permisos = client.devs.id.includes(message.author.id)

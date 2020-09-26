@@ -13,7 +13,7 @@ const table = new ascii().setHeading('Comando', 'Carpeta')
 const fs = require('fs')
 
 client.commands = new Collection()
-client.version = "0.6.5", 
+client.version = "0.7.2", 
 client.devs = require('./src/util/JSON/devs.json').devs
 client.snipes = new Map
 

@@ -5,7 +5,12 @@ module.exports = {
     description: 'Muestra una imagen de supreme con el texto que escribiste',
     alias: [],
     async run (client, message, args) {
-     
+
+        
+
+      //B
+    
+    
         const coño = args.join(" ")
         const algo = encodeURIComponent(coño)
 

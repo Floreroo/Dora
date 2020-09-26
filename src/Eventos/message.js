@@ -8,7 +8,6 @@ module.exports = async (client, message) => {
        const cooldowns = new Collection()
     
       
-
        if(message.channel.type === "dm") return
 
        let obt = await ModelPrefix.findOne({guildID: message.guild.id, guildName: message.guild.name}).exec()

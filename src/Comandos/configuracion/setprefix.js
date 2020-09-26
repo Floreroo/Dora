@@ -7,6 +7,18 @@ module.exports = {
             alias: ["s-p"],
         async run(client, message, args, prefix) {
      
+            const ModelBlack = require('../../database/models/blacklist')
+
+            const poronga = await ModelBlack.findOne({blackID: message.author.id})
+
+            const xdd = client.users.cache.get(poronga)
+          
+            if([xdd].includes) return message.channel.send("¡Estas en mi blacklist!");
+          
+
+
+          //B
+        
     const ModelPrefix = require('../../database/models/Prefix')
     const { MessageEmbed } = require('discord.js')
 
@@ -25,12 +37,10 @@ if(!permisos){
     
     await NewPrefix.updateOne({guildID: message.guild.id, prefix: args[0], guildName: message.guild.name})
     
-    message.channel.send("> El prefix se ha establecido a " + "``" + args[0] + "``").then (() => {
-    });
-    
+    message.channel.send("> El prefix se ha establecido a " + "``" + args[0] + "``")
 
 } else {
-        message.channel.startTyping().then(m => m.stopTyping({timeout: 6000 }))
+    
     let NewPrefix2 = new ModelPrefix({guildID: message.guild.id, prefix: args[0]})
     await NewPrefix2.save()
     

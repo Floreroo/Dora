@@ -6,7 +6,19 @@ module.exports = {
   name: 'server',
   description: 'Muestra la informacion del servidor',
   alias: ["s-i", "serverinfo"],
-  run: (client, message, args) => {
+  async run (client, message, args) {
+
+    const ModelBlack = require('../../database/models/blacklist')
+
+            const poronga = await ModelBlack.findOne({blackID: message.author.id})
+
+            const xdd = client.users.cache.get(poronga)
+          
+            if([xdd].includes) return message.channel.send("¡Estas en mi blacklist!");
+          
+
+
+  //B
 
     let region = {
           europe: "Europa :flag_eu:",

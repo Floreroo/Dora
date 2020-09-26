@@ -4,8 +4,21 @@ module.exports = {
             name: 'embedsay',
             description: 'Di algo!',
             alias: ["esay"],
-            run: (client, message, args) => {
+          async  run (client, message, args) {
 
+              const ModelBlack = require('../../database/models/blacklist')
+
+            const poronga = await ModelBlack.findOne({blackID: message.author.id})
+
+            const xdd = client.users.cache.get(poronga)
+          
+            if([xdd].includes) return message.channel.send("¡Estas en mi blacklist!");
+          
+
+
+            //B
+          
+          
     if(!args[0]) return message.channel.send("> Di algo! ")
             
     let embed = new Discord.MessageEmbed()

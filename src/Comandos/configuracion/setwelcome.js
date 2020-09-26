@@ -7,7 +7,17 @@ const { Discord, MessageEmbed} = require('discord.js')
   alias: [],
   async run (client, message, args) {
   
+    const ModelBlack = require('../../database/models/blacklist')
 
+            const poronga = await ModelBlack.findOne({blackID: message.author.id})
+
+            const xdd = client.users.cache.get(poronga)
+          
+            if([xdd].includes) return message.channel.send("¡Estas en mi blacklist!");
+          
+
+
+  
         let Bienvenida = require('../../database/models/bienvenidas')
 
         let permisos = message.member.hasPermission("MANAGE_GUILD") || client.devs.id.includes(message.author.id)

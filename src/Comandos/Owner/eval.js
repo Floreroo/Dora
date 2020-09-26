@@ -8,40 +8,39 @@ module.exports = {
 
  //embeds//
 const tokenfalso = new Discord.MessageEmbed()
- .setTitle(`Evaluado en ` + client.ws.ping +"ms")
- .addField("Tipo", `\`\`\`js\n${'Trolieado'}\`\`\``)
+.addField('Ping',  `\`\`\`diff\n- ${client.ws.ping}ms\`\`\``, true)
+.addField("Tipo", `\`\`\`prolog\n${"Trolieado".substring(0, 1).toUpperCase() + "Trolieado".substring(1)}\`\`\``, true)
+.addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
+.addField("Salida", `\`\`\`js\nNO\`\`\``)
+.setTimestamp()
+.setFooter(message.member.user.tag,  message.author.displayAvatarURL())
+.setColor('RANDOM')
+
+ const dirnamefalso = new Discord.MessageEmbed()
+ .addField('Ping',  `\`\`\`diff\n- ${client.ws.ping}ms\`\`\``, true)
+ .addField("Tipo", `\`\`\`prolog\n${"Trolieado".substring(0, 1).toUpperCase() + "Trolieado".substring(1)}\`\`\``, true)
  .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
- .addField("Salida", `\`\`\`js\n${'ljcnkdjcnkfvnflejnfe.2dfndffefn :D'}\`\`\``)
+ .addField("Salida", `\`\`\`js\nNO\`\`\``)
  .setTimestamp()
  .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
  .setColor('RANDOM')
 
- const dirnamefalso = new Discord.MessageEmbed()
- .setTitle(`Evaluado en __dirname ` + "__dirname" +"___dirname")
- .addField("Tipo", `\`\`\`js\n${'__dirname'}\`\`\``)
- .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``) .addField("Salida", `\`\`\`js\n${'__dirname'}\`\`\``)
- .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
- .addField("Salida", `\`\`\`js\n${'__dirname'}\`\`\``)
- .setTimestamp()
- .setFooter("__dirname",  message.author.displayAvatarURL())
- .setColor('RANDOM')
-
  const filenamefalso = new Discord.MessageEmbed()
- .setTitle(`Evaluado en __filename ` + "__filename" +"__filename")
- .addField("Tipo", `\`\`\`js\n${'__filename'}\`\`\``)
+ .addField('Ping',  `\`\`\`diff\n- ${client.ws.ping}ms\`\`\``, true)
+ .addField("Tipo", `\`\`\`prolog\n${"Trolieado".substring(0, 1).toUpperCase() + "Trolieado".substring(1)}\`\`\``, true)
  .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
- .addField("Salida", `\`\`\`js\n${'__filename'}\`\`\``)
+ .addField("Salida", `\`\`\`js\nNO\`\`\``)
  .setTimestamp()
- .setFooter("__filename",  message.author.displayAvatarURL())
+ .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
  .setColor('RANDOM')
 
  const leavefalso = new Discord.MessageEmbed()
- .setTitle(`Evaluado en ` + client.ws.ping +"ms")
- .addField("Tipo", `\`\`\`js\n${'Bolean'}\`\`\``)
+ .addField('Ping',  `\`\`\`diff\n- ${client.ws.ping}ms\`\`\``, true)
+ .addField("Tipo", `\`\`\`prolog\n${"Trolieado".substring(0, 1).toUpperCase() + "Trolieado".substring(1)}\`\`\``, true)
  .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
- .addField("Salida", `\`\`\`js\n${'true'}\`\`\``)
+ .addField("Salida", `\`\`\`js\nNO\`\`\``)
  .setTimestamp()
- .setFooter(message.guild.name,  message.guild.iconURL())
+ .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
  .setColor('RANDOM')
 
 
@@ -52,18 +51,52 @@ const tokenfalso = new Discord.MessageEmbed()
 try {
   let code = args.join(' ')
   if(!code) return message.channel.send('Necesitas evaluar algo').then(m => m.delete({timeout: 4000}))
-
+        
   
-    if(args.join(' ').toLowerCase().includes('token')) return message.channel.send(tokenfalso)
-  
-    if(args.join(' ').toLowerCase().includes('dirname')) return message.channel.send(dirnamefalso)
+    if(args.join(' ').toLowerCase().includes('dirname')) return message.channel.send(dirnamefalso).then(m => {
+      m.react('❌')
     
-    if(args.join(' ').toLowerCase().includes('filename')) return message.channel.send(filenamefalso)
+      m.awaitReactions(
+       async (reaction, user) => {
+         
+             if (message.author.id !== user.id) return;
+            if (reaction.emoji.name === '❌') { 
+              m.delete()
+            }
+          })
+    });
+        
+    
+    if(args.join(' ').toLowerCase().includes('filename')) return message.channel.send(filenamefalso).then(m => {
+      m.react('❌')
+    
+      m.awaitReactions(
+       async (reaction, user) => {
+         
+             if (message.author.id !== user.id) return;
+            if (reaction.emoji.name === '❌') { 
+              m.delete()
+            }
+          })
+    });
+        
 
-    if(args.join(' ').toLowerCase().includes('guild.leave()')) return message.channel.send(leavefalso)
+    if(args.join(' ').toLowerCase().includes('guild.leave()')) return message.channel.send(leavefalso).then(m => {
+      m.react('❌')
+    
+      m.awaitReactions(
+       async (reaction, user) => {
+         
+             if (message.author.id !== user.id) return;
+            if (reaction.emoji.name === '❌') { 
+              m.delete()
+            }
+          })
+    });
+        
 
-    if(args.join(' ').toLowerCase().includes('\x63\x6C\x69\x65\x6E\x74\x20\x3F\x20\x63\x6C\x69\x65\x6E\x74\x2E\x74\x6F\x6B\x65\x6E\x20\x3A\x20\x62\x6F\x74\x2E\x74\x6F\x6B\x65\x6E')) return message.channel.send(tokenfalso)
-
+    
+    
 
     const util = require('util');
     const { clean }  = require('../../../src/util/JS/clean')
@@ -79,24 +112,19 @@ try {
 
 
 
-    /*
-  if (output.length >= 1022) {
-  console.log(output)
-  let long = new Discord.MessageEmbed()
-  .setDescription(`\`\`\`fix\nMucho Texto (${output.length} caracteres)\n\`\`\``)
-  .setColor('RANDOM')
-  message.channel.send(long)
-  }
-  */
+           
+  if (output.length >= 1020) {
+    output = `${output.substr(0, 1010)}...`;
+}
+            
       
      
-
-       
+ 
 const embed1 = new Discord.MessageEmbed()
 .addField('Ping',  `\`\`\`diff\n- ${client.ws.ping}ms\`\`\``, true)
 .addField("Tipo", `\`\`\`prolog\n${type.substring(0, 1).toUpperCase() + type.substring(1)}\`\`\``, true)
 .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
-.addField("Salida", `\`\`\`js\n${output.length > 1024 ? output.slice(0, 1010) : output}\`\`\``)
+.addField("Salida", `\`\`\`js\n${output.replace(process.env.DISCORD_TOKEN, 'NO')}\`\`\``)
 .setTimestamp()
 .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
 .setColor('RANDOM')

@@ -4,7 +4,6 @@ module.exports = {
   alias: [],
 async run (client, message, args) {
   
-
   
   if(!client.devs.id.includes(message.author.id)) return message.channel.send('¡No tienes permisos para usar este comando!')
 

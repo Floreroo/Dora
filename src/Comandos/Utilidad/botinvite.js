@@ -4,8 +4,19 @@ module.exports = {
     name: 'botinvite',
     description: 'Evalua el codigo',
     alias: ["b-in"],
-   
-run: (client, message, args) => {
+async run (client, message, args) {
+
+    const ModelBlack = require('../../database/models/blacklist')
+
+            const poronga = await ModelBlack.findOne({blackID: message.author.id})
+
+            const xdd = client.users.cache.get(poronga)
+          
+            if([xdd].includes) return message.channel.send("¡Estas en mi blacklist!");
+          
+
+
+  //B
 
 
         const u = message.mentions.users.first() || client.users.resolve(args[0]);

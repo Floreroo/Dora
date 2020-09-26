@@ -7,8 +7,6 @@ module.exports = {
  const Discord = require('discord.js');
  const { exec } = require('child_process')
 
-        
-
  if(!client.devs.id.includes(message.author.id)) return message.channel.send('¡No tienes permisos para usar este comando!')
 
 

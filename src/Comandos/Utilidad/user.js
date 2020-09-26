@@ -7,7 +7,17 @@ module.exports = {
             alias: ["u-i", "userinfo"],
            async run (client, message, args) {
 
- 
+            const ModelBlack = require('../../database/models/blacklist')
+
+            const poronga = await ModelBlack.findOne({blackID: message.author.id})
+
+            const xdd = client.users.cache.get(poronga)
+          
+            if([xdd].includes) return message.channel.send("¡Estas en mi blacklist!");
+          
+
+
+          //B        
 
  const owo = message.mentions.users.first() || client.users.cache.get(args[0]) || client.users.cache.find(x => x.tag === args[0]) || message.author;
  const server = message.guild
