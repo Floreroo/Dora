@@ -1,3 +1,4 @@
+
 module.exports = async (client, message) => {
 
      
@@ -14,6 +15,9 @@ module.exports = async (client, message) => {
        let prefix = obt ? obt.prefix : "d!"
   
        if (message.author.bot) return;
+
+      
+     
 
        if(message.content.match(new RegExp(`^<@!?${client.user.id}>( |)`))) { message.channel.send(`Mi Prefix en este servidor es \*\*${prefix}\*\* usa ${prefix}help para mas ayuda`)}
 

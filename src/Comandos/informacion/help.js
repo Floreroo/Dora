@@ -5,15 +5,7 @@ module.exports = {
   alias: ["comandos"],
   async run (client, message, args, prefix) {
 
-    const ModelBlack = require('../../database/models/blacklist')
-
-            const poronga = await ModelBlack.findOne({blackID: message.author.id})
-
-            const xdd = client.users.cache.get(poronga)
-          
-            if([xdd].includes) return message.channel.send("¡Estas en mi blacklist!");
-          
-
+   //A
 
   //B
 
