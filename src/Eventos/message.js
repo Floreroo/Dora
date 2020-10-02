@@ -1,4 +1,3 @@
-
 module.exports = async (client, message) => {
 
      
@@ -14,10 +13,7 @@ module.exports = async (client, message) => {
        let obt = await ModelPrefix.findOne({guildID: message.guild.id, guildName: message.guild.name}).exec()
        let prefix = obt ? obt.prefix : "d!"
   
-       if (message.author.bot) return;
-
-      
-     
+       if(!message.author.bot) return;
 
        if(message.content.match(new RegExp(`^<@!?${client.user.id}>( |)`))) { message.channel.send(`Mi Prefix en este servidor es \*\*${prefix}\*\* usa ${prefix}help para mas ayuda`)}
 
@@ -29,4 +25,6 @@ module.exports = async (client, message) => {
        let cmd = client.commands.get(command) || client.commands.find(c => c.alias && c.alias.includes(command))
        if(cmd) { return cmd.run(client, message, args, prefix) }
 
-}
+
+
+} 

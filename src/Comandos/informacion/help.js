@@ -76,6 +76,17 @@ module.exports = {
       }
     } 
 
+    if(args[0] == "chat"){
+      let embed4 = new Discord.MessageEmbed()
+      .addField("Chat", `${prefix}send ${prefix}chat ${prefix}chat-delete`)
+      .setColor('RANDOM')
+      .setDescription(`**${message.member.user.username}** recuerda que puedes unirte a mi Servidor De [Soporte](https://discord.gg/EXyn6yU)`)
+      .setFooter('INFORMACION', message.guild.iconURL())
+      .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
+      return message.channel.send(embed4)
+
+    }
+
         let embed2 = new Discord.MessageEmbed()
         .setThumbnail(client.user.displayAvatarURL({ dynamic: true, size: 2048 }))
         .setFooter('INFORMACION · Numero total de comandos '+client.commands.size, message.guild.iconURL())

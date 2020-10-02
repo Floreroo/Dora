@@ -17,7 +17,9 @@ client.version = "0.7.2",
 client.devs = require('./src/util/JSON/devs.json').devs
 client.snipes = new Map
 client.mongoose = require("./src/database/index")
-client.radio = "https://infamesrpradio.com/player/"
+client.radio = "https://infamesrpradio.com/player/",
+client.chat = new Map
+
 function getDirectorios() {
   return fs.readdirSync('./src/Comandos/').filter(function subFolder(file) {
     return fs.statSync(`./src/Comandos/${file}`).isDirectory()
@@ -54,5 +56,3 @@ for(const file of readdirSync('./src/Eventos/')) {
 
 
 client.login(process.env.DISCORD_TOKEN)
-
- 
