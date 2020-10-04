@@ -1,25 +1,22 @@
 module.exports = {
-hora: function hora () {
-          const pene = new Date
-          horas = pene.getHours()
-          minutos = pene.getMinutes()
-          segundos = pene.getSeconds()
-          
-          if(segundos < 10){
-          segundos = `0${segundos}`
-          }
-          
-          if(minutos < 10){
-          minutos = `0${minutos}`
-          }
-          
-          if(horas < 10){
-          horas = `0${horas}`
-          
-          }
-          
-          return `${horas}:${minutos}:${segundos}`
 
-        }
+
+  hora: function Time() {
+
+    Tiempo = new Date()
+    Hora = Tiempo.getHours()
+    Minuto = Tiempo.getMinutes()
+
+    if(Hora < 10) {
+        Hora = `0${Hora}`
+    }
+
+    if(Minuto < 10) {
+        Minuto = `0${Minuto}`
+    }
+
+    return `${Hora}:${Minuto}`
+}
+
 }
        

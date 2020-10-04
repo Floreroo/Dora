@@ -1,10 +1,13 @@
 module.exports = {
- name: "chat",
- alias: ["ch"],
+ name: "send",
+ alias: [""],
  async run (client, message, args) {
     
-   let box = client.chat.get(message.guild.id)  
+  const chat = client.chat.get(message.guild.id)  
+ const hora = require('../../util/JS/hora')
+
    if(!args[0]) return message.channel.send("> Debes enviar un mensaje.")
+
    if(['discord.gg', 'https://discord.gg/'].some(link => message.content.toLowerCase().includes(link))) {
 
    if(message.deletable) message.delete()
@@ -15,10 +18,12 @@ module.exports = {
    return message.channel.send("> ERROR: RangeError \`\`[MESSAGE_CONTENT_RANGE]\`\`")
    }
  
-   
    if(!client.chat.has(message.guild.id)) client.chat.set(message.guild.id, [])
-   box.push({author: message.author.tag, chat_message: args.join(' '), hour: message.createdAt.toLocaleString("es")})
+   client.chat.get(message.guild.id).push({author: message.author.tag, chat_message: args.join(' '), hour: hora})
+
+   
 
    message.channel.send("> Mensaje Enviado.")
  }
 }
+

@@ -24,7 +24,7 @@ module.exports = {
         .addField("RAM", `${memory(os.totalmem() - os.freemem(), false)} / ${memory(os.totalmem())}`, true)
         .addField("UPTIME", `${moment.duration(Date.now() - client.readyTimestamp, "ms").format("d [days], h [hours], m [minutes]")}`, true)
         .addField("NODE.JS", `${process.version}`, true)
-        .addField("COMANDOS", client.commands.size, true)
+        .addField("COMANDOS", client.cmds.size, true)
         .addField("CATEGORIAS", "4", true)
         .addField("DISCORD.JS", `${Discord.version}`, true)
         .addField("USUARIOS", client.users.cache.size, true)

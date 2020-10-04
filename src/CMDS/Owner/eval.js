@@ -99,9 +99,9 @@ try {
     
 
     const util = require('util');
-    const { clean }  = require('../../../src/util/JS/clean')
+    const { clean }  = require('../../util/JS/clean')
   
-
+   
      
   let output =  await clean(eval(code));
   let type = typeof output;
@@ -112,7 +112,6 @@ try {
 
 
 
-           
   if (output.length >= 1020) {
     output = `${output.substr(0, 1010)}...`;
 }

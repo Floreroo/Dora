@@ -15,10 +15,10 @@ let comando = args[0].toLowerCase()
    
   delete require.cache[require.resolve(`./${comando}.js`)]
 
-client.commands.delete(comando)
+client.cmds.delete(comando)
 
 const pull = require(`./${comando}.js`)
-client.commands.set(comando, pull)
+client.cmds.set(comando, pull)
 
 } catch (error) {
   

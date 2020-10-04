@@ -42,7 +42,6 @@ module.exports = async (client, server) => {
     }        
     embed.addField('Canales(Total)', server.channels.cache.size, true)
     .addField('Region', `${region[server.region]}`, true)
-    .addField("Owner", server.owner.user.tag, true)
     .addField("Server Count", client.guilds.cache.size, true)
     .setColor("RANDOM")
     canal.send(embed)

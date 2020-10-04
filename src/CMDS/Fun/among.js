@@ -3,12 +3,7 @@ const { MessageEmbed } = require('discord.js')
 module.exports = {
  name: "among",
  alias: ["among-us"],
- async run (client, message, args){
- 
-       //A
-
-      //B
-        
+ async run (client, message, args) {
 
           let pablo = client.users.cache.get("390726024536653865")
  let a = ["no era El Impostor.", "era El Impostor.", "was ejected."]

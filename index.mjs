@@ -12,7 +12,7 @@ const ascii = require('ascii-table')
 const table = new ascii().setHeading('Comando', 'Carpeta')
 const fs = require('fs')
 
-client.commands = new Collection()
+client.cmds = new Collection()
 client.version = "0.7.2", 
 client.devs = require('./src/util/JSON/devs.json').devs
 client.snipes = new Map
@@ -21,14 +21,15 @@ client.radio = "https://infamesrpradio.com/player/",
 client.chat = new Map
 
 function getDirectorios() {
-  return fs.readdirSync('./src/Comandos/').filter(function subFolder(file) {
-    return fs.statSync(`./src/Comandos/${file}`).isDirectory()
+  return require('fs').readdirSync('./src/CMDS/').filter(function subFolder(file) {
+    return require('fs').statSync(`./src/CMDS/${file}`).isDirectory()
   })
 }
 
-const cmdFiles = fs.readdirSync('./src/Comandos/').filter(file => file.endsWith('.js'))
+const cmdFiles = require('fs').readdirSync('./src/CMDS/').filter(file => file.endsWith('.js'))
+
 for (const Folder of getDirectorios()) {
-  const FolderFile = fs.readdirSync(`./src/Comandos/${Folder}`).filter(end => end.endsWith('.js'))
+  const FolderFile = require('fs').readdirSync(`./src/CMDS/${Folder}`).filter(end => end.endsWith('.js'))
   for (const File of FolderFile) {
     cmdFiles.push([Folder, File])
   }
@@ -37,11 +38,11 @@ for (const Folder of getDirectorios()) {
 for (const file of cmdFiles) {
   let cmd;
   if(Array.isArray(file)) {
-    cmd = require(`./src/Comandos/${file[0]}/${file[1]}`)
+    cmd = require(`./src/CMDS/${file[0]}/${file[1]}`)
   } else {
-    cmd = require(`./src/Comandos/${file}`)
+    cmd = require(`./src/CMDS/${file}`)
   }
-  client.commands.set(cmd.name, cmd)
+  client.cmds.set(cmd.name, cmd)
   table.addRow(cmd.name, file[0])
 } 
 
