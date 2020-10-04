@@ -3,12 +3,12 @@ module.exports = async (client) => {
 console.log('Stamo activo papi')
 
 setInterval (() => {
-   let puta = ["EN MANTENIMIENTO..."]
+   let puta = [`${client.ws.ping}ms`]
   client.user.setPresence({
   activity: { name: puta[Math.floor(Math.random()* puta.length)], type: "WATCHING", $browser: "DISCORD IOS", url: "https://twitch.tv/#/" },
   status: "online",
   
 
   })
-  }, 6000)
+  }, 2000)
 }

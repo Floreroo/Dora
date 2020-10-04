@@ -6,7 +6,7 @@ module.exports = {
     let box = client.chat.get(message.guild.id)
 
       client.chat.delete(message.guild.id)
-      return message.channel.send("> Chat Reseteado.").catch(err => message.channel.send(`> ERROR: ${err}`)) 
+      return message.channel.send("> Chat Reseteado.").catch(err => message.channel.send(`> ERROR: ${err}`))
 
  }
 }
