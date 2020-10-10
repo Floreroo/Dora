@@ -6,7 +6,6 @@ module.exports = async (client, message) => {
        const { Collection } = require('discord.js')
        const ModelPrefix = require("../database/models/Prefix")
        const cooldowns = new Collection()
-    
       
        if(message.channel.type === "dm") return
 
@@ -20,6 +19,7 @@ module.exports = async (client, message) => {
        if(!message.content.startsWith(prefix)) return
 
        console.log(`${message.author.tag}: ${message.content}`)
+       
 
        const args = message.content.slice(prefix.length).trim().split(/ +/g)
        const command = args.shift().toLowerCase()
@@ -27,4 +27,5 @@ module.exports = async (client, message) => {
        let cmd = client.cmds.get(command) || client.cmds.find(c => c.alias && c.alias.includes(command))
        if(cmd) { return cmd.run(client, message, args, prefix) }
 
+       
 } 

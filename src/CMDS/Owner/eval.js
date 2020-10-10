@@ -6,45 +6,14 @@ module.exports = {
        async run (client, message, args) {
 
 
- //embeds//
-const tokenfalso = new Discord.MessageEmbed()
-.addField('Ping',  `\`\`\`diff\n- ${client.ws.ping}ms\`\`\``, true)
-.addField("Tipo", `\`\`\`prolog\n${"Trolieado".substring(0, 1).toUpperCase() + "Trolieado".substring(1)}\`\`\``, true)
-.addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
-.addField("Salida", `\`\`\`js\nNO\`\`\``)
-.setTimestamp()
-.setFooter(message.member.user.tag,  message.author.displayAvatarURL())
-.setColor('RANDOM')
-
- const dirnamefalso = new Discord.MessageEmbed()
- .addField('Ping',  `\`\`\`diff\n- ${client.ws.ping}ms\`\`\``, true)
- .addField("Tipo", `\`\`\`prolog\n${"Trolieado".substring(0, 1).toUpperCase() + "Trolieado".substring(1)}\`\`\``, true)
- .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
- .addField("Salida", `\`\`\`js\nNO\`\`\``)
- .setTimestamp()
- .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
- .setColor('RANDOM')
-
- const filenamefalso = new Discord.MessageEmbed()
- .addField('Ping',  `\`\`\`diff\n- ${client.ws.ping}ms\`\`\``, true)
- .addField("Tipo", `\`\`\`prolog\n${"Trolieado".substring(0, 1).toUpperCase() + "Trolieado".substring(1)}\`\`\``, true)
- .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
- .addField("Salida", `\`\`\`js\nNO\`\`\``)
- .setTimestamp()
- .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
- .setColor('RANDOM')
-
  const leavefalso = new Discord.MessageEmbed()
  .addField('Ping',  `\`\`\`diff\n- ${client.ws.ping}ms\`\`\``, true)
  .addField("Tipo", `\`\`\`prolog\n${"Trolieado".substring(0, 1).toUpperCase() + "Trolieado".substring(1)}\`\`\``, true)
  .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
- .addField("Salida", `\`\`\`js\nNO\`\`\``)
+ .addField("Salida", `\`\`\`js\ntrue\`\`\``)
  .setTimestamp()
  .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
  .setColor('RANDOM')
-
-
- //Eval
 
     if (!client.devs.id.includes(message.author.id)) return;
   
@@ -52,56 +21,11 @@ try {
   let code = args.join(' ')
   if(!code) return message.channel.send('Necesitas evaluar algo').then(m => m.delete({timeout: 4000}))
         
-  
-    if(args.join(' ').toLowerCase().includes('dirname')) return message.channel.send(dirnamefalso).then(m => {
-      m.react('❌')
-    
-      m.awaitReactions(
-       async (reaction, user) => {
-         
-             if (message.author.id !== user.id) return;
-            if (reaction.emoji.name === '❌') { 
-              m.delete()
-            }
-          })
-    });
-        
-    
-    if(args.join(' ').toLowerCase().includes('filename')) return message.channel.send(filenamefalso).then(m => {
-      m.react('❌')
-    
-      m.awaitReactions(
-       async (reaction, user) => {
-         
-             if (message.author.id !== user.id) return;
-            if (reaction.emoji.name === '❌') { 
-              m.delete()
-            }
-          })
-    });
-        
-
-    if(args.join(' ').toLowerCase().includes('guild.leave()')) return message.channel.send(leavefalso).then(m => {
-      m.react('❌')
-    
-      m.awaitReactions(
-       async (reaction, user) => {
-         
-             if (message.author.id !== user.id) return;
-            if (reaction.emoji.name === '❌') { 
-              m.delete()
-            }
-          })
-    });
-        
-
-    
-    
+ if(code.toLowerCase().includes("guild.leave()")) return message.channel.send(leavefalso)
 
     const util = require('util');
     const { clean }  = require('../../util/JS/clean')
   
-   
      
   let output =  await clean(eval(code));
   let type = typeof output;

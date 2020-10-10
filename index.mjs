@@ -18,7 +18,7 @@ client.devs = require('./src/util/JSON/devs.json').devs
 client.snipes = new Map
 client.mongoose = require("./src/database/index")
 client.radio = "https://infamesrpradio.com/player/",
-client.chat = new Map
+
 
 function getDirectorios() {
   return require('fs').readdirSync('./src/CMDS/').filter(function subFolder(file) {

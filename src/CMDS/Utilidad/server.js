@@ -55,7 +55,7 @@ module.exports = {
         embed.addField('Region', `${region[server.region]}`, true)
         .addField('Nivel de verificación',  server.verificationLevel , true)
         .addField('Creado el', `${server.createdAt.toLocaleString("es")}`, true) 
-        .addField('Status', ` <a:online:751961662470357083> **Online:** ${[server.members.cache.filter(c => c.presence.status === 'online').size]}\n <a:idle:751961722318749737> **Idle:** ${[server.members.cache.filter(c => c.presence.status === 'idle').size]}\n <a:dnd:751961774525251684> **Dnd:** ${[server.members.cache.filter(c => c.presence.status === 'dnd').size]}\n <a:offline:751961827033874512> **Offline:** ${[server.members.cache.filter(c => c.presence.status === 'offline').size]}\n <a:streaming:751961890946678924> **Streaming:** ${server.members.cache.filter(m => m.presence.activities.map(a => a.type).toString() === "STREAMING").size} ` , true)
+        .addField('Status', ` <a:online:751961662470357083> ${[server.members.cache.filter(c => c.presence.status === 'online').size]} <a:idle:751961722318749737> ${[server.members.cache.filter(c => c.presence.status === 'idle').size]} <a:dnd:751961774525251684> ${[server.members.cache.filter(c => c.presence.status === 'dnd').size]} <a:offline:751961827033874512> ${[server.members.cache.filter(c => c.presence.status === 'offline').size]} <a:streaming:751961890946678924> ${server.members.cache.filter(m => m.presence.activities.map(a => a.type).toString() === "STREAMING").size} ` , true)
         .addField("Roles", roles.length > 1000 ? roles.slice(0, 1000)  + "\n Y muchos mas" : roles)
         message.channel.send(embed)
         
