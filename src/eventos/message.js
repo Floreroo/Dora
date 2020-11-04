@@ -24,7 +24,7 @@ module.exports = async (client, message) => {
        const args = message.content.slice(prefix.length).trim().split(/ +/g)
        const command = args.shift().toLowerCase()
      
-       let cmd = client.cmds.get(command) || client.cmds.find(c => c.alias && c.alias.includes(command))
+       let cmd = client.commands.get(command) || client.commands.find(c => c.alias && c.alias.includes(command))
        if(cmd) { return cmd.run(client, message, args, prefix) }
 
        
