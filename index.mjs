@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 dotenv.config();
-import commons from './src/util/JS/pene.mjs';
+import commons from './src/util/JS/commons.mjs';
 const { require } = commons(import.meta.url);
 
 const { Collection, Client} = require('discord.js')
