@@ -78,7 +78,7 @@ module.exports = {
 
         let embed2 = new Discord.MessageEmbed()
         .setThumbnail(client.user.displayAvatarURL({ dynamic: true, size: 2048 }))
-        .setFooter('INFORMACION · Numero total de comandos '+client.cmds.size, message.guild.iconURL())
+        .setFooter('INFORMACION · Numero total de comandos '+client.commands.size, message.guild.iconURL())
         .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
         .setDescription(`Hola **${message.author.username}**, soy *Dora La Exploradora* un bot multifuncional. \nPara mas informacion/ayuda puedes unirte a mi Servidor De [Soporte](https://discord.gg/EXyn6yU)  `)  
         .addField("__**Configuracion**__", `${prefix}help config`, true)

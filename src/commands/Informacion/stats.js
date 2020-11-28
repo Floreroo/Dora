@@ -15,7 +15,7 @@ module.exports = {
         .setAuthor(client.user.tag, client.user.displayAvatarURL())
         .addField("UPTIME", `${moment.duration(Date.now() - client.readyTimestamp, "ms").format("d [days], h [hours], m [minutes]")}`, true)
         .addField("NODE.JS", `${process.version}`, true)
-        .addField("COMANDOS", client.cmds.size, true)
+        .addField("COMANDOS", client.commands.size, true)
         .addField("CATEGORIAS", "6", true)
         .addField("DISCORD.JS", `${Discord.version}`, true)
         .addField("USUARIOS", client.users.cache.size, true)
