@@ -20,6 +20,7 @@
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
     "melphi": "^1.0.7",
     "melphis": "0.0.5",
     "melphiworker": "^1.1.1",
