@@ -34,7 +34,7 @@ module.exports = async (client, server) => {
     .setAuthor(server.name, server.iconURL())
     .setThumbnail(server.iconURL())
     .addField('ID', server.id, true)
-    .addField('Owner', server.owner.user.tag, true)
+    .addField('Owner', server.owner.tag, true)
     .addField('Canales',  server.channels.cache.filter(m => m.type === 'text').size + " texto" + " / " + server.channels.cache.filter(c => c.type === 'voice').size + " voz", true)
     .addField('Miembros', server.memberCount, true)
     if(server.emojis){

@@ -12,7 +12,7 @@ client.version = "0.7.2",
 client.devs = require('./src/util/JSON/devs.json').devs
 client.snipes = new Map
 client.mongoose = require("./src/database/index")
-client.radio = "https://infamesrpradio.com/player/",
+client.melphi ="https://discord.com/users/534951970310586378",
 client.commands = new Collection();
 
 function getDirectorios() {
