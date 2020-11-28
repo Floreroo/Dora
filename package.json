@@ -17,7 +17,7 @@
     "canvas": "^2.6.1",
     "captainjs": "^1.0.4",
     "child_process": "^1.0.2",
-    "discord.js": "^12.3.1",
+    "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "melphi": "^1.0.7",

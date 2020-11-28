@@ -8,12 +8,12 @@ const { readdirSync, statSync } = require("fs")
 export const client = new Client({ config: "./config.json", disableMentions: 'everyone', partials: ["MESSAGE", "CHANNEL", "REACTION"],  ws: { properties: { $browser: "Discord Android" }}})
 export const database = require('./src/database/index')
 
-client.version = "0.7.2", 
-client.devs = require('./src/util/JSON/devs.json').devs
-client.snipes = new Map
-client.mongoose = require("./src/database/index")
-client.melphi ="https://discord.com/users/534951970310586378",
 client.commands = new Collection();
+client.snipes = new Map()
+client.db = require("./src/database/index")
+client.version = "0.8.0", 
+client.devs = require('./src/util/JSON/devs.json').devs
+client.melphi ="https://discord.com/users/534951970310586378",
 
 function getDirectorios() {
 	return require('fs')
