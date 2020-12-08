@@ -6,30 +6,24 @@ const { require } = commons(import.meta.url);
 const { Collection, Client} = require('discord.js')
 const { readdirSync, statSync } = require("fs")
 export const client = new Client({ config: "./config.json", disableMentions: 'everyone', partials: ["MESSAGE", "CHANNEL", "REACTION"],  ws: { properties: { $browser: "Discord Android" }}})
-export const database = require('./src/database/index')
+export const database = require('./src/database/index');
 
 client.commands = new Collection();
-client.snipes = new Map()
-client.db = require("./src/database/index")
-client.version = "0.8.0", 
-client.devs = require('./src/util/JSON/devs.json').devs
-client.melphi ="https://discord.com/users/534951970310586378",
+client.snipes = new Map();
+client.db = require("./src/database/index");
+client.version = "0.8.0";
+client.devs = require('./src/util/JSON/devs.json').devs;
+client.melphi ="https://discord.com/users/534951970310586378";
 
-function getDirectorios() {
-	return require('fs')
-		.readdirSync('./src/commands')
-		.filter(function subFolder(file) {
-			return require('fs')
-				.statSync(`./src/commands/${file}`)
-				.isDirectory();
-		});
+function x() {
+	return require('fs').readdirSync('./src/commands').filter(function subFolder(file) {
+	return require('fs').statSync(`./src/commands/${file}`).isDirectory();
+    });
 }
 
-const cmdFiles = require('fs')
-	.readdirSync('./src/commands')
-	.filter(file => file.endsWith('.js'));
+const cmdFiles = require('fs').readdirSync('./src/commands').filter(file => file.endsWith('.js'));
 
-for (const Folder of getDirectorios()) {
+for (const Folder of x()) {
 	const FolderFile = require('fs')
 		.readdirSync(`./src/commands/${Folder}`)
 		.filter(end => end.endsWith('.js'));
