@@ -11,8 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "@vitalets/google-translate-api": "^3.0.0",
-    "A": "0.0.1",
-    "amo": "0.0.7",
     "ascii-table": "0.0.9",
     "canvas": "^2.6.1",
     "captainjs": "^1.0.4",
@@ -21,9 +19,6 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
-    "melphi": "^1.0.7",
-    "melphis": "0.0.5",
-    "melphiworker": "^1.1.1",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
     "mongodb": "^3.6.0",
