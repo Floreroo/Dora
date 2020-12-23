@@ -1,15 +1,10 @@
 
-    module.exports = {
+module.exports = {
             name: 'sayimage',
             description: 'Pon algo!',
             alias: ["s-im"],
          async run (client, message, args) {
-
-           //A
-
-              //B
-            
-            
+   
 let { MessageAttachment } = require('discord.js')
 
 let e =  args[0] || message.attachments.first().url

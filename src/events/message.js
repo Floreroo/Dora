@@ -1,11 +1,6 @@
 module.exports = async (client, message) => {
 
-     
-    
-       const Discord = require('discord.js')
-       const { Collection } = require('discord.js')
        const ModelPrefix = require("../database/models/Prefix")
-       const cooldowns = new Collection()
       
        if(message.channel.type === "dm") return
 
@@ -25,7 +20,5 @@ module.exports = async (client, message) => {
        const command = args.shift().toLowerCase()
      
        let cmd = client.commands.get(command) || client.commands.find(c => c.alias && c.alias.includes(command))
-       if(cmd) { return cmd.run(client, message, args, prefix) }
-
-       
+       if(cmd) { return cmd.run(client, message, args, prefix) }      
 } 

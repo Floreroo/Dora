@@ -1,47 +1,28 @@
 const Discord = require('discord.js')
 module.exports = {
-            name: 'eval',
-            alias: ["e"],
-            description: 'Evalua el codigo',
-       async run (client, message, args) {
+  name: 'eval',
+  alias: ["e"],
+  description: 'Evalua el codigo',
+  async run (client, message, args) {
 
-
- const leavefalso = new Discord.MessageEmbed()
- .addField('Ping',  `\`\`\`diff\n- ${client.ws.ping}ms\`\`\``, true)
- .addField("Tipo", `\`\`\`prolog\n${"Trolieado".substring(0, 1).toUpperCase() + "Trolieado".substring(1)}\`\`\``, true)
- .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)
- .addField("Salida", `\`\`\`js\ntrue\`\`\``)
- .setTimestamp()
- .setFooter(message.member.user.tag,  message.author.displayAvatarURL())
- .setColor('RANDOM')
-
-    if (!client.devs.id.includes(message.author.id)) return;
+  if (!client.devs.id.includes(message.author.id)) return;
   
-try {
+  try {
   let code = args.join(' ')
   if(!code) return message.channel.send('Necesitas evaluar algo').then(m => m.delete({timeout: 4000}))
         
- if(code.toLowerCase().includes("guild.leave()")) return message.channel.send(leavefalso)
-
-    const util = require('util');
-    const { clean }  = require('../../util/JS/clean')
-  
-     
+  const util = require('util');
+  const { clean }  = require('../../util/JS/clean')
+    
   let output =  await clean(eval(code));
   let type = typeof output;
   if (typeof output !== 'string') {
-    output  = util.inspect(output, { depth: 0, maxStringLength: 1950});
-    
+    output  = util.inspect(output, { depth: 0, maxStringLength: 1950}); 
   }
-
-
 
   if (output.length >= 1020) {
     output = `${output.substr(0, 1010)}...`;
-}
-            
-      
-     
+}     
  
 const embed1 = new Discord.MessageEmbed()
 .addField('Ping',  `\`\`\`diff\n- ${client.ws.ping}ms\`\`\``, true)

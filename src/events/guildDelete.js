@@ -7,28 +7,26 @@ module.exports = async (client, message, server) => {
     let canal = client.channels.cache.find(c => c.name === "「📣」server-leave")
     if(!canal) return
 
-    
-
     let region = {
-        europe: "Europa :flag_eu:",
-        brazil: "Brasil :flag_br: ",
-        hongkong: "Hong Kong :flag_hk:",
-        japan: "Japón :flag_jp:",
-        russia: "Rusia :flag_ru:",
-        singapore: "Singapur :flag_sg:",
-        southafrica: "Sudáfrica :flag_za:",
-        sydney: "Sydney :flag_au:",
-        "us-central": "Central US :flag_us:",
-        "us-east": "Este US :flag_us:",
-        "us-south": "Sur US :flag_us:",
-        "us-west": "Oeste US :flag_us:",
-        "vip-us-east": "VIP US Este :flag_us:",
-        "eu-central": "Europa Central :flag_eu:",
-        "eu-west": "Europa Oeste :flag_eu:",
-        london: "London :flag_gb:",
-        amsterdam: "Amsterdam :flag_nl:",
-        india: "India :flag_in:"
-      }
+    europe: "Europa :flag_eu:",
+    brazil: "Brasil :flag_br: ",
+    hongkong: "Hong Kong :flag_hk:",
+    japan: "Japón :flag_jp:",
+    russia: "Rusia :flag_ru:",
+    singapore: "Singapur :flag_sg:",
+    southafrica: "Sudáfrica :flag_za:",
+    sydney: "Sydney :flag_au:",
+    "us-central": "Central US :flag_us:",
+    "us-east": "Este US :flag_us:",
+    "us-south": "Sur US :flag_us:",
+    "us-west": "Oeste US :flag_us:",
+    "vip-us-east": "VIP US Este :flag_us:",
+    "eu-central": "Europa Central :flag_eu:",
+    "eu-west": "Europa Oeste :flag_eu:",
+    london: "London :flag_gb:",
+    amsterdam: "Amsterdam :flag_nl:",
+    india: "India :flag_in:"
+    }
 
     let embed = new Discord.MessageEmbed()
     .setAuthor(server.name, server.iconURL())
@@ -41,8 +39,5 @@ module.exports = async (client, message, server) => {
     .setColor("RANDOM")
     canal.send(embed)
 
-
     await ModelPrefix.deleteOne({guildId: server.id})
-
-
 }

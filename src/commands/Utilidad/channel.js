@@ -5,13 +5,7 @@ module.exports = {
     alias: ["c-i", "channelinfo"],
     async run (client, message, args) {
 
-       //A
-
-      //B
-    
-    
-
-        const { MessageEmbed } = require('discord.js')
+    const { MessageEmbed } = require('discord.js')
 
     let a = message.mentions.channels.first() || message.guild.channels.resolve(args[0]) || message.channel;
 
