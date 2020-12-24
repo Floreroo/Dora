@@ -30,10 +30,7 @@ const { Discord, MessageEmbed} = require('discord.js')
   await NewBienvenida2.save()
 
   let embed2 = new MessageEmbed()
-  .setDescription(`> El canal se bienvenidas se ha establecido en **${canal.name}**.`)
-  .setColor('RANDOM')
-  .setFooter(message.guild.name, message.guild.iconURL({size: 2048, dynamic: true}))
-  message.channel.send(embed2)}
+  message.channel.send(`> El canal se bienvenidas se ha establecido en **${canal.name}**.`)}
   }
   if(args[0] == "remove"){
   await ModelWelcome.deleteOne({ guildID: message.guild.id })
