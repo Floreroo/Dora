@@ -4,24 +4,18 @@ module.exports = {
             alias: [],
             async run (client, message, args) {
 
-             //A
-
-            //B
-       
-    
-              
-              if(!client.devs.id.includes(message.author.id)) return 
+              if(!client.devs.id.includes(message.author.id)) return
 
         try{
             await message.channel.send('`DESCONECTADO`').then (() => {
                     process.exit();
                 });
-            
-        
+
+
 
 } catch (error) {
             message.channel.send('ERROR: '+ error.message)
-        
+
     }
   }
 }
