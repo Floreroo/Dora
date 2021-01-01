@@ -1,1 +1,1 @@
-Worker: node src/index
+Worker: node index.mjs
