@@ -2,30 +2,30 @@ module.exports = {
   name: "reload",
   description: "Recarga un comando",
   alias: [],
-  async run (client, message, args) {
-  
-  
-  if(!client.devs.id.includes(message.author.id)) return message.channel.send('¡No tienes permisos para usar este comando!')
+  async run(client, message, args) {
 
-  if(!args[0]) return message.channel.send('Ingrese el comando que quiera recargar')
 
-  let comando = args[0].toLowerCase()
+    if (!client.devs.id.includes(message.author.id)) return message.channel.send('¡No tienes permisos para usar este comando!')
 
-  try{
-   
-  delete require.cache[require.resolve(`./${comando}.js`)]
+    if (!args[0]) return message.channel.send('Ingrese el comando que quiera recargar')
 
-  client.commands.delete(comando)
+    let comando = args[0].toLowerCase()
 
-  const pull = require(`./${comando}.js`)
-  client.commands.set(comando, pull)
+    try {
 
-  } catch (error) {
-  
-  return message.channel.send(`No se ha recargado: \`${args[0].toUpperCase()}\``)
-  }
+      delete require.cache[require.resolve(`./${comando}.js`)]
 
-  message.channel.send(`El comando \`${args[0].toUpperCase()}\` ha sido recargado`)
+      client.commands.delete(comando)
+
+      const pull = require(`./${comando}.js`)
+      client.commands.set(comando, pull)
+
+    } catch (error) {
+
+      return message.channel.send(`No se ha recargado: \`${args[0].toUpperCase()}\``)
+    }
+
+    message.channel.send(`El comando \`${args[0].toUpperCase()}\` ha sido recargado`)
 
   }
 }

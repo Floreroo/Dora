@@ -1,11 +1,11 @@
 module.exports = async (client, server) => {
-  
-    const Discord = require('discord.js')
 
-    let canal = client.channels.cache.find(c => c.name === "「📣」server-join")
-    if(!canal) return 
+  const Discord = require('discord.js')
 
-    let region = {
+  let canal = client.channels.cache.find(c => c.name === "「📣」server-join")
+  if (!canal) return
+
+  let region = {
     europe: "Europa :flag_eu:",
     brazil: "Brasil :flag_br: ",
     hongkong: "Hong Kong :flag_hk:",
@@ -24,21 +24,21 @@ module.exports = async (client, server) => {
     london: "London :flag_gb:",
     amsterdam: "Amsterdam :flag_nl:",
     india: "India :flag_in:"
-    }
+  }
 
-    let embed = new Discord.MessageEmbed()
+  let embed = new Discord.MessageEmbed()
     .setAuthor(server.name, server.iconURL())
     .setThumbnail(server.iconURL())
     .addField('ID', server.id, true)
     .addField('Owner', server.owner.tag, true)
-    .addField('Canales',  server.channels.cache.filter(m => m.type === 'text').size + " texto" + " / " + server.channels.cache.filter(c => c.type === 'voice').size + " voz", true)
+    .addField('Canales', server.channels.cache.filter(m => m.type === 'text').size + " texto" + " / " + server.channels.cache.filter(c => c.type === 'voice').size + " voz", true)
     .addField('Miembros', server.memberCount, true)
-    if(server.emojis){
+  if (server.emojis) {
     embed.addField('Emojis', server.emojis.cache.size, true)
-    }        
-    embed.addField('Canales(Total)', server.channels.cache.size, true)
+  }
+  embed.addField('Canales(Total)', server.channels.cache.size, true)
     .addField('Region', `${region[server.region]}`, true)
     .addField("Server Count", client.guilds.cache.size, true)
     .setColor("RANDOM")
-    canal.send(embed)
+  canal.send(embed)
 }

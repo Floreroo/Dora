@@ -1,13 +1,17 @@
-const { Model } = require('mongoose')
+const {
+  Model
+} = require('mongoose')
 
 module.exports = async (client, message, server) => {
-  
-    const Discord = require('discord.js')
-    const { ModelPrefix } = require('../database/models/Prefix')
-    let canal = client.channels.cache.find(c => c.name === "「📣」server-leave")
-    if(!canal) return
 
-    let region = {
+  const Discord = require('discord.js')
+  const {
+    ModelPrefix
+  } = require('../database/models/Prefix')
+  let canal = client.channels.cache.find(c => c.name === "「📣」server-leave")
+  if (!canal) return
+
+  let region = {
     europe: "Europa :flag_eu:",
     brazil: "Brasil :flag_br: ",
     hongkong: "Hong Kong :flag_hk:",
@@ -26,18 +30,20 @@ module.exports = async (client, message, server) => {
     london: "London :flag_gb:",
     amsterdam: "Amsterdam :flag_nl:",
     india: "India :flag_in:"
-    }
+  }
 
-    let embed = new Discord.MessageEmbed()
+  let embed = new Discord.MessageEmbed()
     .setAuthor(server.name, server.iconURL())
     .setThumbnail(server.iconURL())
     .addField('ID', server.id, true)
-    .addField('Owner', server.owner.user.tag, true)     
-    embed.addField('Canales(Total)', server.channels.cache.size, true)
+    .addField('Owner', server.owner.user.tag, true)
+  embed.addField('Canales(Total)', server.channels.cache.size, true)
     .addField('Region', `${region[server.region]}`, true)
     .addField("Server Count", client.guilds.cache.size, true)
     .setColor("RANDOM")
-    canal.send(embed)
+  canal.send(embed)
 
-    await ModelPrefix.deleteOne({guildId: server.id})
+  await ModelPrefix.deleteOne({
+    guildId: server.id
+  })
 }
