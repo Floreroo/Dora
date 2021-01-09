@@ -51,17 +51,16 @@ module.exports = {
           .addField("Imagen", `${prefix}pornhub \n${prefix}supreme`)
           .setFooter('INFORMACION', message.guild.iconURL())
           .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
-        return message.channel.send(embed)
-
+        return message.channel.send(embed);
       }
 
       if (args[0] == "voice") {
-        let embed1000 = new Discord.MessageEmbed()
-          .setColor('RANDOM')
-          .addField("Voice", `${prefix}join \n${prefix}leave`)
-          .setFooter('INFORMACION', message.guild.iconURL())
-          .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
-        return message.channel.send(embed1000)
+        let embed1000 = new Discord.MessageEmbed();
+          .setColor('RANDOM');
+          .addField("Voice", `${prefix}join \n${prefix}leave`);
+          .setFooter('INFORMACION', message.guild.iconURL());
+          .setAuthor(message.member.user.tag, message.author.displayAvatarURL());
+        return message.channel.send(embed1000);
       }
 
     if (args[0] == "mod") {
