@@ -73,7 +73,6 @@ module.exports = {
         .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
       return message.channel.send(embed1000)
     }
-   }
 
     let embed2 = new Discord.MessageEmbed()
       .setThumbnail(client.user.displayAvatarURL({
