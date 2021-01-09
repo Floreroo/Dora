@@ -63,7 +63,6 @@ module.exports = {
           .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
         return message.channel.send(embed1000)
       }
-    }
 
     if (args[0] == "mod") {
       let embed1000 = new Discord.MessageEmbed()
@@ -73,7 +72,7 @@ module.exports = {
         .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
       return message.channel.send(embed1000)
     }
-
+}
     let embed2 = new Discord.MessageEmbed()
       .setThumbnail(client.user.displayAvatarURL({
         dynamic: true,
