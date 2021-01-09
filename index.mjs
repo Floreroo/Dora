@@ -9,11 +9,11 @@
  const {
    Collection,
    Client
- } = require('discord.js')
+ } = require('discord.js');
  const {
    readdirSync,
    statSync
- } = require("fs")
+ } = require("fs");
  export const client = new Client({
    config: "./config.json",
    disableMentions: 'everyone',
@@ -23,7 +23,7 @@
        $browser: "Discord Android"
      }
    }
- })
+ });
  export const database = require('./src/database/index');
 
  client.commands = new Collection();
