@@ -7,7 +7,7 @@ const {
 module.exports = {
   name: "welcome",
   descripcion: "Estalece el canal de bienvenidas en un servidor",
-  alias: [],
+  alias: ["wel"],
   async run(client, message, args) {
 
     let Bienvenida = require('../../database/models/bienvenidas')

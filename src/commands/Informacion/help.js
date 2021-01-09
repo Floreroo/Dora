@@ -9,7 +9,7 @@ module.exports = {
 
       if (args[0] == "config") {
         let embed3 = new Discord.MessageEmbed()
-          .addField("Configuracion", `${prefix}setprefix \n${prefix}setwelcome \n${prefix}remwelcome(deshabilitado) \n${prefix}remprefix(en pruebas)`)
+          .addField("Configuracion", `${prefix}setprefix \n${prefix}setwelcome[${prefix}wel add & remove]`)
           .setColor('RANDOM')
           .setFooter('INFORMACION', message.guild.iconURL())
           .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
@@ -65,12 +65,22 @@ module.exports = {
       }
     }
 
+    if (args[0] == "mod") {
+      let embed1000 = new Discord.MessageEmbed()
+        .setColor('RANDOM')
+        .addField("Mod", `${prefix}ban \n${prefix}kick`)
+        .setFooter('INFORMACION', message.guild.iconURL())
+        .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
+      return message.channel.send(embed1000)
+    }
+   }
+
     let embed2 = new Discord.MessageEmbed()
       .setThumbnail(client.user.displayAvatarURL({
         dynamic: true,
         size: 2048
       }))
-      .setFooter('INFORMACION · Numero total de comandos ' + client.commands.size, message.guild.iconURL())
+      .setFooter('INFORMACION · Número total de comandos ' + client.commands.size, message.guild.iconURL())
       .setDescription(`Hola, \*\*${message.author.username}\*\*. Soy Du-Du-Du-Dora, un bot multifuncional. Quién sabe, algún día puede que nos conozcamos, pero antes únete a mi [Servidor de Soporte](https://discord.gg/EXyn6yU) o visitar mi [Página Web](https://ladorachula.github.io).`)
       .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
       .addField("__**Configuracion**__", `${prefix}help config`, true)

@@ -1,7 +1,7 @@
 module.exports = {
   name: 'prefix',
   description: 'Establece el prefix en un servidor',
-  alias: ["p"],
+  alias: ["p", "setprefix"],
   async run(client, message, args, prefix) {
 
     const ModelPrefix = require('../../database/models/Prefix')
