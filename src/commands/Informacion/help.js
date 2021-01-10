@@ -55,12 +55,12 @@ module.exports = {
       }
 
       if (args[0] == "voice") {
-        let embed1000 = new Discord.MessageEmbed();
+        let embed394 = new Discord.MessageEmbed();
           .setColor('RANDOM');
           .addField("Voice", `${prefix}join \n${prefix}leave`);
           .setFooter('INFORMACION', message.guild.iconURL());
           .setAuthor(message.member.user.tag, message.author.displayAvatarURL());
-        return message.channel.send(embed1000);
+        return message.channel.send(embed349);
       }
 
     if (args[0] == "mod") {
