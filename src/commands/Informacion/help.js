@@ -60,7 +60,7 @@ module.exports = {
           .addField("Voice", `${prefix}join \n${prefix}leave`);
           .setFooter('INFORMACION', message.guild.iconURL());
           .setAuthor(message.member.user.tag, message.author.displayAvatarURL());
-        return message.channel.send(embed349);
+        return message.channel.send(embed394);
       }
 
     if (args[0] == "mod") {
