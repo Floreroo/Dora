@@ -24,7 +24,7 @@ module.exports = {
       dyanmic: true
     }));
     .setTimestamp();
-    .setFooter(messgae.guild.icon({
+    .setFooter(message.guild.icon({
       dynamic: true
     }), message.guild.name);
     message.channel.send(embed);
