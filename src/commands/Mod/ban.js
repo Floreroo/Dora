@@ -13,7 +13,7 @@ module.exports = {
 
     if (i) return message.channel.send("Debes mencionar/poner la id del usuario que quieras banear.");
 
-    i.ban(reason: args[1], days: 7);
+    i.ban(reason: args[1]);
 
     const embed = new Discord.MessageEmbed();
     .setTitle("Miembro baneado");
