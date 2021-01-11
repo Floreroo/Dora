@@ -47,8 +47,8 @@ module.exports = {
 
       if (args[0] == "img") {
         let embed = new Discord.MessageEmbed()
-          .setColor('RANDOM')
           .addField("Imagen", `${prefix}pornhub \n${prefix}supreme`)
+            .setColor('RANDOM')
           .setFooter('INFORMACION', message.guild.iconURL())
           .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
         return message.channel.send(embed);
@@ -56,8 +56,8 @@ module.exports = {
 
       if (args[0] == "voice") {
         let embed394 = new Discord.MessageEmbed();
-          .setColor('RANDOM');
           .addField("Voice", `${prefix}join \n${prefix}leave`);
+          .setColor('RANDOM');
           .setFooter('INFORMACION', message.guild.iconURL());
           .setAuthor(message.member.user.tag, message.author.displayAvatarURL());
         return message.channel.send(embed394);
@@ -65,13 +65,12 @@ module.exports = {
 
     if (args[0] == "mod") {
       let embed1000 = new Discord.MessageEmbed()
-        .setColor('RANDOM')
         .addField("Mod", `${prefix}ban \n${prefix}kick`)
+        .setColor('RANDOM');
         .setFooter('INFORMACION', message.guild.iconURL())
         .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
       return message.channel.send(embed1000)
     }
-}
     let embed2 = new Discord.MessageEmbed()
       .setThumbnail(client.user.displayAvatarURL({
         dynamic: true,
@@ -90,4 +89,5 @@ module.exports = {
       .setColor('RANDOM')
     message.channel.send(embed2)
   }
+ }
 }
