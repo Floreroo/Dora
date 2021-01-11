@@ -54,7 +54,7 @@ module.exports = {
         .addField('Roles', `${miembro.roles.cache.map(c => c.toString()).join(' | ')}`)
         .setThumbnail(owo.displayAvatarURL({
           dynamic: true
-        }));
+        }))
         .setColor('RANDOM')
       message.channel.send(uo);
 

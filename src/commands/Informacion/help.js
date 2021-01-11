@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+
 module.exports = {
   name: 'help',
   description: 'Comando de informacion',
@@ -51,22 +52,22 @@ module.exports = {
             .setColor('RANDOM')
           .setFooter('INFORMACION', message.guild.iconURL())
           .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
-        return message.channel.send(embed);
+        return message.channel.send(embed)
       }
 
       if (args[0] == "voice") {
-        let embed394 = new Discord.MessageEmbed();
-          .addField("Voice", `${prefix}join \n${prefix}leave`);
-          .setColor('RANDOM');
-          .setFooter('INFORMACION', message.guild.iconURL());
-          .setAuthor(message.member.user.tag, message.author.displayAvatarURL());
-        return message.channel.send(embed394);
+        let embed0 = new Discord.MessageEmbed()
+          .addField("Voice", `${prefix}join \n${prefix}leave`)
+          .setColor('RANDOM')
+          .setFooter('INFORMACION', message.guild.iconURL())
+          .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
+        return message.channel.send(embed0)
       }
 
     if (args[0] == "mod") {
       let embed1000 = new Discord.MessageEmbed()
         .addField("Mod", `${prefix}ban \n${prefix}kick`)
-        .setColor('RANDOM');
+        .setColor('RANDOM')
         .setFooter('INFORMACION', message.guild.iconURL())
         .setAuthor(message.member.user.tag, message.author.displayAvatarURL())
       return message.channel.send(embed1000)
