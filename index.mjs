@@ -51,7 +51,7 @@
  }
 
  for (const file of cmdFiles) {
-
+       
    let cmd;
    if (Array.isArray(file)) {
      cmd = require(`./src/commands/${file[0]}/${file[1]}`);
