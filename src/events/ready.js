@@ -13,7 +13,7 @@ module.exports = async (client) => {
       status: "online",
 
     })
-  }, 5000)
+  }, 1000)
 }
 function Fecha() {
  var now = new Date();
