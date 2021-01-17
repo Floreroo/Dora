@@ -13,7 +13,7 @@ module.exports = async (client) => {
       status: "online",
 
     })
-  }, 60000)
+  }, 10000)
 }
 function Fecha() {
  var now = new Date();
@@ -24,7 +24,7 @@ function Fecha() {
  var m = now.getMinutes();
  var s = now.getSeconds();
 
- return `${d.toString().substr(0,2)}/${mon.toString().substr(0,1)}/${y} ${h}:${m}`
+ return `${d.toString().substr(0,2)}/${mon.toString().substr(0,1)}/${y} ${h}:${m}:${s}`
 }
 
 Fecha()
