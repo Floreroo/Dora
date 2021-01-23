@@ -28,10 +28,8 @@
 
  client.commands = new Collection();
  client.snipes = new Map();
- client.db = require("./src/database/index");
  client.version = "0.8.0";
  client.devs = require('./src/util/JSON/devs.json').devs;
- client.melphi = "https://discord.com/users/534951970310586378";
 
  function x() {
    return require('fs').readdirSync('./src/commands').filter(function subFolder(file) {
@@ -51,7 +49,7 @@
  }
 
  for (const file of cmdFiles) {
-       
+
    let cmd;
    if (Array.isArray(file)) {
      cmd = require(`./src/commands/${file[0]}/${file[1]}`);
