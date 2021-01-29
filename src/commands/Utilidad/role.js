@@ -15,7 +15,7 @@ module.exports = {
     let permizos = a.permissions.toArray();
 
     if (permizos.indexOf('ADMINISTRATOR') === -1) {
-      var coño = permizos.join(' | ') || "A";
+      var coño = permizos.join(' | ') || "Ehto no tiene na'";
     } else {
       var coño = 'ADMINISTRADOR';
     }

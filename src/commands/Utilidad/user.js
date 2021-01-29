@@ -16,8 +16,7 @@ module.exports = {
       "dnd": "<a:dnd:751961774525251684>| No Molestar",
       "offline": "<a:offline:751961827033874512> | Offline",
     }
-
-
+    
     const badges = {
       "EARLY_SUPPORTER": "<:DiscordNitroEarlySupporter:730664032662585414>",
       "DISCORD_EMPLOYEE": "<:DiscordStaff:730664032419315773>",
