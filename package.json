@@ -25,6 +25,7 @@
     "mongodb": "^3.6.0",
     "mongoose": "^5.10.0",
     "node": "^14.8.0",
+    "node.js": "0.0.1-security",
     "ping-monitor": "^0.5.1",
     "ytdl-core": "^3.4.2"
   },
