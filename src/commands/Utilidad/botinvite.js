@@ -15,7 +15,7 @@
          format: "png",
          size: 2048,
          dynamic: true
-       }))
+       }));
        .setColor('RANDOM')
        .setFooter(" Pedido por: " + message.member.user.tag, message.author.displayAvatarURL())
      message.channel.send(embed)
